@@ -263,7 +263,6 @@ body{
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: red;
   top: 0;
   bottom: 0;
   text-align: center;
@@ -285,7 +284,6 @@ body{
 {
   width: 600px;
   height: 320px;
-  background-color: yellow;
   display: inline-block;
 }
 .details_teacher h3
@@ -293,7 +291,6 @@ body{
   align-items: center;
   text-align: center;
   font-size: 30px;
-  background-color: blue;
   margin-bottom: 30px;
 }
 
@@ -329,7 +326,6 @@ body{
 {
   width: 600px;
   height: 320px;
-  background-color: yellow;
   display: inline-block;
 }
 .details_student h3
@@ -337,7 +333,6 @@ body{
   align-items: center;
   text-align: center;
   font-size: 30px;
-  background-color: blue;
   margin-bottom: 30px;
 }
 
@@ -1638,7 +1633,6 @@ ul{
           border-radius: 10%;
           cursor: pointer;
           border: 1.5px solid #38d39f;
-          background-color: red;
           font-size: 15px;
         }
 
