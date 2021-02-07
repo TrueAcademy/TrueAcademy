@@ -1,0 +1,2623 @@
+*{  
+  margin: 0; 
+  padding: 0;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+body{
+  font-family: 'Poppins', sans-serif;
+}
+
+.navbar{
+  position: inherit;
+  background-color: #272a29;
+  width: 100%;
+  top: 0;
+  z-index: 999;
+  transition: .3s linear;
+  padding: 10px 0px;
+}
+
+.inner-navbar{
+  max-width: 1400px;
+  height: 70px; 
+  margin: auto;
+  padding: 0 40px;
+}
+
+.navbar .inner-navbar{
+  display: flex;
+  align-items: center;
+}
+
+.logo{
+  width: 100px;
+  height: 65px;
+  background-image: url(../images/logo.png);
+  background-size: 100px;
+  background-repeat: no-repeat;
+  top: 0;
+  bottom: 0;
+}
+.inner-navbar a{
+  font-size: 23px;
+  color: white;
+  text-decoration-color: white;
+}
+.inner-navbar h1
+{
+  padding-right: 10px;
+}
+
+.menu-toggler{
+  margin-left: 35px;
+  background: none;
+  width: 30px;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  outline: none;
+  z-index: 999;
+  display: none;
+}
+
+.menu-toggler span{
+  display: block;
+  height: 3px;
+  background-color: #fff;
+  margin: 6px 0;
+  position: relative;
+  transition: .3s linear;
+}
+.navbar-menu
+{
+  width: 650px;
+  height: 70px;
+  display: flex;
+  justify-content: space-around;
+
+}
+.navbar-menu a{
+  line-height: 39px;
+  text-align: center;
+  margin-top: 14px;
+  height: 40px;
+  width: 120px;
+  color: #38d39f;
+  font-size: 15px;
+  font-weight: 600;
+  transition: .2s linear;
+  border-radius: 50px;
+}
+
+.navbar-menu a:hover{
+  color: #272a29;
+  background:#38d39f;
+}
+.Signin-btn
+{
+  margin-left: 140px;
+  width: 140px;
+  height: 70px;
+  display: flex;
+  justify-content: space-around;
+}
+.Signin-btn a
+{
+  height: 40px;
+  width: 120px;
+  text-align: center;
+  line-height: 39px;
+  color: #38d39f;
+  font-size: 15px;
+  font-weight: 600;
+  transition: .2s linear;
+  border-radius: 50px;
+  margin-top: 14px;
+  border: 1px solid #38d39f;
+}
+.Signin-btn a:hover
+{
+  color: #272a29;
+  background:#38d39f; 
+}
+#home{
+  height: 100vh;
+  min-height: 500px;
+  background: url(../images/banner15.jpg) no-repeat center;
+  background-size: cover;
+}
+
+#home .inner-width{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+}
+
+#home .content{
+  width: 100%;
+  color: #fff;
+}
+
+#home .content h1{
+  font-size: 60px;
+  margin-top: 160px;
+}
+#home .content h4{
+  font-size: 20px;
+  margin-top: 30px;
+}
+.sm a{
+  color: #fff;
+  font-size: 22px;
+  margin: 0 10px;
+  transition: .2s linear;
+  margin-top: 50px;
+}
+
+.sm a:hover{
+  color: #48dbfb;
+}
+
+.buttons{
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+.buttons ul{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  height: 100px;
+  width: 700px;
+  padding-right: 28PX;
+}
+.buttons ul a{
+  list-style: none;
+  font-size: 17px;
+  text-transform: uppercase;
+  padding: 16px 24px;
+  text-align: center;
+  border-radius: 10px;
+  cursor: pointer;
+  text-decoration:none;
+  height: 55px;
+  line-height: 24px;
+  background: #38d39f;
+  color: white
+}
+.buttons ul a:hover
+{
+  transform: scale(0.9);
+  transition-duration: 0.4s; 
+  background-color: #2fb588;
+}
+.extra
+{
+   display: none;
+}
+
+/****************************************************************************************/
+
+.info{
+  text-align: center;
+  align-content: center;
+  align-items: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+.info h1{
+  font-size: 40px;
+  text-align: center;
+}
+.info p{
+  color: gray;
+  font-size: 23px;
+}
+.teacher_student{
+  width: 100%;
+  height:350px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.teacher{
+  width: 520px;
+  height: 300px;
+}
+.student{
+  width: 480px;
+  height: 300px;
+}
+.teacher img{
+  width: 480px;
+  height: 300px;
+}
+.teacher img:hover{
+  transform: scale(0.9);
+  transition-duration: 0.4s; 
+  opacity:0.6; 
+}
+.student img{
+  width: 480px;
+  height: 300px
+}
+.student img:hover{
+  transform: scale(0.9);
+  transition-duration: 0.4s;
+  opacity:0.6; 
+}
+/********************************************************************************************/
+/********************************************************************************************/
+/********************************************************************************************/
+/********************************************************************************************/
+/********************************************************************************************/
+/********************************************************************************************/
+
+.for_teacher
+{
+  width: 100vw;
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: red;
+  top: 0;
+  bottom: 0;
+  text-align: center;
+}
+.for_teacher2
+{
+  width: 500px;
+  height: 320px;
+  background-color: green;
+  display: flex;
+  margin-right: 40px;
+}
+.for_teacher2 img
+{
+  width: 500px;
+  height: 320px;
+}
+.details_teacher
+{
+  width: 600px;
+  height: 320px;
+  background-color: yellow;
+  display: inline-block;
+}
+.details_teacher h3
+{
+  align-items: center;
+  text-align: center;
+  font-size: 30px;
+  background-color: blue;
+  margin-bottom: 30px;
+}
+
+
+
+
+
+.for_student
+{
+  width: 100vw;
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: red;
+  top: 0;
+  bottom: 0;
+  text-align: center;
+}
+.for_student2
+{
+  width: 500px;
+  height: 320px;
+  background-color: green;
+  display: flex;
+  margin-right: 40px;
+}
+.for_student2 img
+{
+  width: 500px;
+  height: 320px;
+}
+.details_student
+{
+  width: 600px;
+  height: 320px;
+  background-color: yellow;
+  display: inline-block;
+}
+.details_student h3
+{
+  align-items: center;
+  text-align: center;
+  font-size: 30px;
+  background-color: blue;
+  margin-bottom: 30px;
+}
+
+
+
+
+
+
+/********************************************************************************************/
+/********************************************************************************************/
+/********************************************************************************************/
+/********************************************************************************************/
+/********************************************************************************************/
+/********************************************************************************************/
+/********************************************************************************************/
+.container_2{
+  max-width: 1170px;
+  margin:auto;
+}
+.row{
+  display: flex;
+  flex-wrap: wrap;
+}
+ul{
+  list-style: none;
+}
+.footer{
+  background-color: #24262b;
+    padding: 70px 0;
+}
+.footer-col{
+   width: 25%;
+   padding: 0 15px;
+}
+.footer-col h4{
+  font-size: 18px;
+  color: #ffffff;
+  text-transform: capitalize;
+  margin-bottom: 35px;
+  font-weight: 500;
+  position: relative;
+}
+.footer-col h4::before{
+  content: '';
+  position: absolute;
+  left:0;
+  bottom: -10px;
+  background-color: #e91e63;
+  height: 2px;
+  box-sizing: border-box;
+  width: 50px;
+}
+.footer-col ul li:not(:last-child){
+  margin-bottom: 10px;
+}
+.footer-col ul li a{
+  font-size: 16px;
+  text-transform: capitalize;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 300;
+  color: #bbbbbb;
+  display: block;
+  transition: all 0.3s ease;
+}
+.footer-col ul li a:hover{
+  color: #ffffff;
+  padding-left: 8px;
+}
+.footer-col .social-links a{
+  display: inline-block;
+  height: 40px;
+  width: 40px;
+  background-color: rgba(255,255,255,0.2);
+  margin:0 10px 10px 0;
+  text-align: center;
+  line-height: 40px;
+  border-radius: 50%;
+  color: #ffffff;
+  transition: all 0.5s ease;
+}
+.footer-col .social-links a:hover{
+  color: #24262b;
+  background-color: #ffffff;
+}
+
+/*responsive*/
+@media(max-width: 767px){
+  .footer-col{
+    width: 50%;
+    margin-bottom: 30px;
+}
+}
+@media(max-width: 574px){
+  .footer-col{
+    width: 100%;
+}
+}
+
+
+/********************************************************************************************/
+/********************************************************************************************/
+/********************************************************************************************/
+/********************************************************************************************/
+/********************************************************************************************/
+/********************************************************************************************/
+/********************************************************************************************/
+
+
+
+
+
+.main_card
+{
+  height: 600px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: space-around;
+  
+}
+
+.card_1
+{
+  height: 430px;
+  width: 350px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  box-shadow: 0 3rem 6rem rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: 0.2s;
+  background-color: #fff;
+  margin-left: 40px;
+}
+.card_1:hover{
+  transform: translateY(-0.5%);
+  box-shadow: 0 4rem 8rem rgba(0, 0, 0, 0.5);
+}
+.card_1 h4
+{
+  color: black;
+  font-size: 18px;
+  font-weight: 500px;
+}
+.card_1 p
+{
+  color: gray;
+  font-size: 8px;
+  margin-top: 10px;
+  bottom: 10px;
+  padding: 10px;
+  margin-bottom: 110px;
+}
+.card_2
+{
+  height: 430px;
+  width: 350px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow:0px 4px 3px gray;
+  overflow: hidden;
+  box-shadow: 0 3rem 6rem rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: 0.2s;
+  background-color: #fff;
+}
+.card_2:hover{
+  transform: translateY(-0.5%);
+  box-shadow: 0 4rem 8rem rgba(0, 0, 0, 0.5);
+}
+
+.card_img2
+{
+  margin-top: 5px;
+}
+.card_2 h4
+{
+  color: black;
+  font-size: 18px;
+  font-weight: 500px;
+}
+.card_2 p
+{
+  color: gray;
+  font-size: 6px;
+  margin-top: 10px;
+  bottom: 10px;
+  padding: 10px;
+}
+.card_3
+{
+  height: 430px;
+  width: 350px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow:0px 4px 3px gray;
+  overflow: hidden;
+  box-shadow: 0 3rem 6rem rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: 0.2s;
+  background-color: #fff;
+  margin-right: 40px;
+}
+.card_3:hover{
+  transform: translateY(-0.5%);
+  box-shadow: 0 4rem 8rem rgba(0, 0, 0, 0.5);
+}
+.card_3 h4
+{
+  color: black;
+  font-size: 18px;
+  font-weight: 500px;
+}
+.card_3 p
+{
+  color: gray;
+  font-size: 6px;
+  margin-top: 10px;
+  bottom: 10px;
+  padding:10px;
+  margin-bottom: 80px;
+}
+
+
+/********************************************************************************************/
+
+
+@media screen and (max-width: 980px){
+  .menu-toggler{
+    display: block;
+  }
+  .navbar
+  {
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+  .navbar-menu{
+    position: fixed;
+    height: 100vh;
+    width: 100%;
+    background-color: #353b48;
+    top: 0;
+    right: -100%;
+    max-width: 400px;
+    padding: 80px 50px;
+  }
+
+  .navbar-menu a{
+    display: block;
+    font-size: 30px;
+    margin: 30px 0;
+  }
+
+  .inner-navbar{
+    max-width: 1400px;
+    height: 70px; 
+    margin: auto;
+  }
+  .logo{
+    width: 100px;
+    height: 67px;
+    background-image: url(../images/logo.png);
+    background-size: 100px;
+    background-repeat: no-repeat;
+    top: 0;
+    bottom: 0;
+  }
+  .inner-navbar a{
+    font-size: 23px;
+    color: white;
+    text-decoration-color: white;
+  }
+
+  .Signin-btn{
+    display: none;
+  }
+  .navbar-menu.active{
+    right: 0;
+    display:inline-block;
+    top:70px;
+    padding-left: 100px;
+}
+  .navbar-menu a{
+  line-height: 48px;
+  text-align: center;
+  height: 50px;
+  width: 160px;
+  color: #38d39f;
+  font-size: 35px;
+  transition: .2s linear;
+  border-radius: 50px;
+}
+
+.navbar-menu a:hover{
+  color: #272a29;
+  background:#38d39f;
+}
+
+.Signin-btn.active
+{
+  margin-left: 140px;
+  width: 140px;
+  height: 70px;
+  display: flex;
+  justify-content: space-around;
+}
+
+  .menu-toggler.active span:nth-child(1){
+    transform: rotate(-45deg);
+    top: 4px;
+  }
+
+  .menu-toggler.active span:nth-child(2){
+    opacity: 0;
+  }
+
+  .menu-toggler.active span:nth-child(3){
+    transform: rotate(45deg);
+    bottom: 14px;
+  }
+
+  .main_card
+  {
+    display: grid;
+    grid-gap: 20px;
+    height: 1400px;
+  }
+  .card_1
+  {
+    margin-left: 0px;
+    margin-top: 10px;
+  }
+  .card_3
+  {
+    margin-right: 0px;
+    margin-bottom: 10px;
+  }
+}
+@media screen and (max-width: 812px)
+{
+  .navbar
+  {
+    padding-top: 0px;
+    padding-bottom: 0px;
+  }
+  .logo{
+    width: 80px;
+    height: 67px;
+    background-image: url(../images/logo.png);
+    background-size: 70px;
+    background-repeat: no-repeat;
+    top: 0;
+    margin-top: 14px;
+    bottom: 0;
+  }
+  .inner-navbar a{
+    font-size: 15px;
+    color: white;
+    text-decoration-color: white;
+  }
+
+.teacher_student{
+  width: 100vw;
+  height:600px;
+  display: grid;
+  grid-column: all;
+  grid-gap: 10px;
+}
+.teacher{
+  width: 370px;
+  height: 250px;
+}
+.student{
+  width: 370px;
+  height: 250px;
+}
+.teacher img{
+  width: 370px;
+  height: 250px;
+}
+.teacher img:hover{
+  transform: scale(0.9);
+  transition-duration: 0.4s; 
+  opacity:0.6; 
+}
+.student img{
+  width: 370px;
+  height: 250px;
+}
+.student img:hover{
+  transform: scale(0.9);
+  transition-duration: 0.4s;
+  opacity:0.6; 
+}
+.buttons ul{
+  display: grid;
+  grid-column: all;
+  align-items: center;
+  justify-content: center;
+  height: 20vh;
+  width: 100vw;
+  margin-top: 20px;
+  padding-left: 20px;
+}
+.buttons ul a{
+  list-style: none;
+  font-size: 14px;
+  text-transform: uppercase;
+  padding: 16px 10px;
+  text-align: center;
+  border-radius: 10px;
+  cursor: pointer;
+  text-decoration:none;
+  height: 45px;
+  width: 300px;
+  line-height: 15px;
+  background: #38d39f;
+  color: white
+  margin-right:20px;
+}
+.info{
+  text-align: center;
+  align-content: center;
+  align-items: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+.info h1{
+  font-size: 30px;
+  text-align: center;
+}
+.info p{
+  color: gray;
+  font-size: 18px;
+}
+#home .content h1{
+  font-size: 40px;
+  margin-top: 100px;
+}
+#home .content h4{
+  font-size: 18px;
+  margin-top: 30px;
+}
+.sm a{
+  color: #fff;
+  font-size: 22px;
+  margin: 0 10px;
+  transition: .2s linear;
+  margin-top: 20px;
+}
+#home{
+  height: 90vh;
+  min-height: 500px;
+  margin:0;
+  background: url(../images/banner15.jpg) no-repeat center;
+  background-size: cover;
+  background-attachment: fixed;
+}
+.main_card
+  {
+    display: grid;
+    grid-gap: 20px;
+    height: 1400px;
+  }
+  .card_1
+  {
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
+  }
+  .card_2
+  {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  .card_3
+  {
+    margin-right: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+  }
+}
+
+
+
+
+
+
+
+/*---------------------------------------------Sign up form css teacher----------------------------------*/
+/*---------------------------------------------Sign up form css teacher----------------------------------*/
+/*---------------------------------------------Sign up form css teacher----------------------------------*/
+/*---------------------------------------------Sign up form css teacher----------------------------------*/
+
+
+
+
+
+.modal_teacher
+{
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background-color: rgba(0,0,0,0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  visibility: hidden;
+  opacity: 0;
+  filter: drop-shadow(0px 4px 3px black);
+  animation: drop ;
+  animation-duration: 4s;
+}
+@keyframes drop {
+  0% {
+    opacity: 0;
+    transform: translateY(-60px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+.active_form
+{
+  visibility: visible;
+  opacity: 1;
+}
+.mainformdiv
+{
+  background: #fff;
+  width: 460px;
+  height: 660px;
+  margin-top: 2vh;
+  font-family: 'Poppins', sans-serif;
+  border-radius: 10px;
+}
+.start
+{
+  display: flex;
+}
+.close_button
+{
+  padding-left: 150px;
+  padding-top: 10px;
+}
+#close{
+  font-size: 22px;
+  color: gray;
+}
+.form img
+{
+  width: 6vw;
+  align-items: center;
+  margin-left: 12vw;
+}
+.input_divone {
+  display: flex;
+  justify-content: space-around;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  color: gray;
+}
+.input_divone h4
+{
+  font-size: 15px;
+}
+.input_f{
+  width:180px;
+  height:35px;
+  margin-top: 5px;
+  padding-left: 5px;
+  border: 2px solid lightgray;
+  border-radius: 3px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  color: gray;
+  outline:none;
+}
+.input_l{
+  width:180px;
+  height:35px;
+  margin-top: 5px;
+  padding-left: 5px;
+  border: 2px solid lightgray;
+  border-radius: 3px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  color: gray;
+  outline: none;
+}
+.input_divtwo{
+  display: flex;
+  justify-content: space-around;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  color: gray
+}
+.input_divtwo h4
+{
+  font-size: 15px;
+}
+.input_u{
+  width:415px;
+  height:35px;
+  margin-top: 5px;
+  padding-left: 5px;
+  border: 2px solid lightgray;
+  border-radius: 3px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  color: gray;
+  outline:none;
+}
+
+.input_divthree{
+  display: flex;
+  justify-content: space-around;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  color: gray
+}
+.input_divthree h4
+{
+  font-size: 15px;
+}
+
+.input_e{
+  width:415px;
+  height:35px;
+  margin-top: 5px;
+  padding-left: 5px;
+  border: 2px solid lightgray;
+  border-radius: 3px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  color: gray;
+  outline:none;
+    outline:none;
+}
+
+.input_divfour{
+  display: flex;
+  justify-content: space-around;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  color: gray
+}
+.input_divfour h4
+{
+  font-size: 15px;
+}
+
+.input_m{
+  width:415px;
+  height:35px;
+  margin-top: 5px;
+  padding-left: 5px;
+  border: 2px solid lightgray;
+  border-radius: 3px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  color: gray;
+  outline:none;
+    outline:none;
+}
+
+.input_divfive{
+  display: flex;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  color: gray;
+  margin-left: 12px;
+  padding-left: 11px;
+}
+.input_divfive
+{
+  font-size: 15px;
+}
+#male
+{
+  padding-left: 20px;
+}
+#female
+{
+  padding-left: 20px;
+}
+.input_divsix{
+  display: flex;
+  justify-content: space-around;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  color: gray
+}
+.input_divsix h4
+{
+  font-size: 15px;
+}
+.input_p{
+  width:415px;
+  height:35px;
+  margin-top: 5px;
+  padding-left: 5px;
+  border: 2px solid lightgray;
+  border-radius: 3px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  color: gray;
+  outline:none;
+  outline:none;
+}
+
+.btn_signup{
+  width: 30vw;
+  height: 8vh;
+  padding-left: 10vw;
+}
+.btn
+{
+  width:10vw;
+  height:40px;
+  border-radius: 3px;
+  border:none;
+  margin-top: 8px;
+  background: #2fb39a;
+  font-size:20px;
+  color: white;
+  outline: none;
+  cursor: pointer;
+}
+
+.social_network{
+  width:100%;
+  height: auto;
+  display: flex;
+  justify-content: space-around;
+  padding-top: 10px;
+}
+.fa_icons i{
+  color: #38d39f;
+  width: 40px;
+  height: 40px;
+  border-right: 50%;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 1.5px solid #38d39f;
+}
+
+.fa_icons i:hover{
+  background-color: #38d39f;
+  color: white
+}
+
+
+
+
+/*---------------------------------------------Sign up form css student----------------------------------*/
+/*---------------------------------------------Sign up form css student----------------------------------*/
+/*---------------------------------------------Sign up form css student----------------------------------*/
+/*---------------------------------------------Sign up form css student----------------------------------*/
+
+
+
+
+
+.modal_student
+{
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background-color: rgba(0,0,0,0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  visibility: hidden;
+  opacity: 0;
+  filter: drop-shadow(0px 4px 3px black);
+  animation: drop ;
+  animation-duration: 4s;
+}
+@keyframes drop {
+  0% {
+    opacity: 0;
+    transform: translateY(-60px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+.active_form
+{
+  visibility: visible;
+  opacity: 1;
+}
+.mainformdiv
+{
+  background: #fff;
+  width: 460px;
+  height: 660px;
+  margin-top: 2vh;
+  font-family: 'Poppins', sans-serif;
+  border-radius: 10px;
+}
+.start
+{
+  display: flex;
+}
+.close_button
+{
+  padding-left: 150px;
+  padding-top: 10px;
+}
+#close{
+  font-size: 22px;
+  color: gray;
+}
+.form img
+{
+  width: 6vw;
+  align-items: center;
+  margin-left: 12vw;
+}
+.input_divone {
+  display: flex;
+  justify-content: space-around;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  color: gray;
+}
+.input_divone h4
+{
+  font-size: 15px;
+}
+.input_f{
+  width:180px;
+  height:35px;
+  margin-top: 5px;
+  padding-left: 5px;
+  border: 2px solid lightgray;
+  border-radius: 3px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  color: gray;
+  outline:none;
+}
+.input_l{
+  width:180px;
+  height:35px;
+  margin-top: 5px;
+  padding-left: 5px;
+  border: 2px solid lightgray;
+  border-radius: 3px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  color: gray;
+  outline: none;
+}
+.input_divtwo{
+  display: flex;
+  justify-content: space-around;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  color: gray
+}
+.input_divtwo h4
+{
+  font-size: 15px;
+}
+.input_u{
+  width:415px;
+  height:35px;
+  margin-top: 5px;
+  padding-left: 5px;
+  border: 2px solid lightgray;
+  border-radius: 3px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  color: gray;
+  outline:none;
+}
+
+.input_divthree{
+  display: flex;
+  justify-content: space-around;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  color: gray
+}
+.input_divthree h4
+{
+  font-size: 15px;
+}
+
+.input_e{
+  width:415px;
+  height:35px;
+  margin-top: 5px;
+  padding-left: 5px;
+  border: 2px solid lightgray;
+  border-radius: 3px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  color: gray;
+  outline:none;
+    outline:none;
+}
+
+.input_divfour{
+  display: flex;
+  justify-content: space-around;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  color: gray
+}
+.input_divfour h4
+{
+  font-size: 15px;
+}
+
+.input_m{
+  width:415px;
+  height:35px;
+  margin-top: 5px;
+  padding-left: 5px;
+  border: 2px solid lightgray;
+  border-radius: 3px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  color: gray;
+  outline:none;
+    outline:none;
+}
+
+.input_divfive{
+  display: flex;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  color: gray;
+  margin-left: 12px;
+  padding-left: 11px;
+}
+.input_divfive
+{
+  font-size: 15px;
+  color: gray;
+}
+#male
+{
+  padding-left: 20px;
+  color: gray;
+}
+#female
+{
+  padding-left: 20px;
+  color: gray;
+}
+.input_divsix{
+  display: flex;
+  justify-content: space-around;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  color: gray
+}
+.input_divsix h4
+{
+  font-size: 15px;
+}
+.input_p{
+  width:415px;
+  height:35px;
+  margin-top: 5px;
+  padding-left: 5px;
+  border: 2px solid lightgray;
+  border-radius: 3px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  color: gray;
+  outline:none;
+  outline:none;
+}
+#show
+{
+  position: absolute;
+  margin-top: 16px;
+  left: 950px;
+}
+
+.btn_signup{
+  width: 30vw;
+  height: 8vh;
+  padding-left: 10vw;
+}
+.btn
+{
+  width:10vw;
+  height:40px;
+  border-radius: 3px;
+  border:none;
+  margin-top: 8px;
+  background: #2fb39a;
+  font-size:20px;
+  color: white;
+  outline: none;
+  cursor: pointer;
+}
+
+.social_network{
+  width:100%;
+  height: auto;
+  display: flex;
+  justify-content: space-around;
+  padding-top: 10px;
+}
+.fa_icons i{
+  color: #38d39f;
+  width: 40px;
+  height: 40px;
+  border-right: 50%;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 1.5px solid #38d39f;
+}
+
+.fa_icons i:hover{
+  background-color: #38d39f;
+  color: white
+}
+
+@media screen and (max-width: 812px)
+{
+        .modal_student
+        {
+          position: fixed;
+          width: 100vw;
+          height: 100vh;
+          top: 0;
+          left: 0;
+          background-color: rgba(0,0,0,0.7);
+          display: flex;
+          justify-content: center;
+          align-items: center; 
+          visibility: hidden;
+          opacity: 0;
+          filter: drop-shadow(0px 4px 3px black);
+          animation: drop ;
+          animation-duration: 4s;
+        }
+        @keyframes drop {
+          0% {
+            opacity: 0;
+            transform: translateY(-60px);
+          }
+          100% {
+            opacity: 1;
+            transform: translateY(0px);
+          }
+        }
+        .active_form
+        {
+          visibility: visible;
+          opacity: 1;
+        }
+        .mainformdiv
+        {
+          background: #fff;
+          width: 300px;
+          height: 540px;
+          font-family: 'Poppins', sans-serif;
+          border-radius: 10px;
+        }
+        .start img
+        {
+          width: 80px;
+          margin-left: 117px;
+        }
+        .close_button
+        {
+          padding-left: 75px;
+          padding-top: 6px;
+          font-size: 3px;
+        }
+        #close{
+          font-size: 22px;
+          color: gray;
+        }
+        .input_divone {
+          display: flex;
+          justify-content: space-around;
+          padding-top: 5px;
+          padding-bottom: 5px;
+          color: gray;
+        }
+        .input_divone h4
+        {
+          font-size: 12px;
+        }
+        .input_f{
+          width:120px;
+          height:27px;
+          margin-top: 3px;
+          padding-left: 3px;
+          border: 2px solid lightgray;
+          border-radius: 3px;
+          font-family: 'Poppins', sans-serif;
+          font-size: 12px;
+          color: gray;
+          outline:none;
+        }
+        .input_l{
+          width:120px;
+          height:27px;
+          margin-top: 3px;
+          padding-left: 3px;
+          border: 2px solid lightgray;
+          border-radius: 3px;
+          font-family: 'Poppins', sans-serif;
+          font-size: 12px;
+          color: gray;
+          outline: none;
+        }
+        .input_divtwo{
+          display: flex;
+          justify-content: space-around;
+          align-items: center;
+          padding-top: 5px;
+          padding-bottom: 5px;
+          color: gray
+        }
+        .input_divtwo h4
+        {
+          font-size: 12px;
+        }
+        .input_u{
+          width:270px;
+          height:27px;
+          margin-top: 5px;
+          padding-left: 5px;
+          border: 2px solid lightgray;
+          border-radius: 3px;
+          font-family: 'Poppins', sans-serif;
+          font-size: 12px;
+          color: gray;
+          outline:none;
+        }
+
+        .input_divthree{
+          display: flex;
+          justify-content: space-around;
+          padding-top: 5px;
+          padding-bottom: 5px;
+          color: gray
+        }
+        .input_divthree h4
+        {
+          font-size: 12px;
+        }
+
+        .input_e{
+          width:270px;
+          height:27px;
+          margin-top: 5px;
+          padding-left: 5px;
+          border: 2px solid lightgray;
+          border-radius: 3px;
+          font-family: 'Poppins', sans-serif;
+          font-size: 12px;
+          color: gray;
+          outline:none;
+        }
+
+        .input_divfour{
+          display: flex;
+          justify-content: space-around;
+          padding-top: 5px;
+          padding-bottom: 5px;
+          color: gray
+        }
+        .input_divfour h4
+        {
+          font-size: 12px;
+        }
+
+        .input_m{
+          width:270px;
+          height:27px;
+          margin-top: 5px;
+          padding-left: 5px;
+          border: 2px solid lightgray;
+          border-radius: 3px;
+          font-family: 'Poppins', sans-serif;
+          font-size: 12px;
+          color: gray;
+          outline:none;
+        }
+
+        .input_divfive{
+          display: flex;
+          padding-top: 15px;
+          padding-bottom: 15px;
+          color: gray;
+          margin-left: 12px;
+          padding-left: 11px;
+        }
+        .input_divfive
+        {
+          font-size: 13px;
+        }
+        #male
+        {
+          padding-left: 20px;
+        }
+        #female
+        {
+          padding-left: 20px;
+        }
+        .input_divsix{
+          display: flex;
+          justify-content: space-around;
+          padding-top: 3px;
+          padding-bottom: 3px;
+          color: gray
+        }
+        .input_divsix h4
+        {
+          font-size: 12px;
+        }
+        .input_p{
+          width:270px;
+          height:27px;
+          margin-top: 5px;
+          padding-left: 5px;
+          border: 2px solid lightgray;
+          border-radius: 3px;
+          font-family: 'Poppins', sans-serif;
+          font-size: 12px;
+          color: gray;
+          outline:none;
+        }
+
+        .btn_signup{
+          justify-content: center;
+          align-items: center;
+          width: 300px;
+          height:auto;
+        }
+        .btn
+        {
+          width:100px;
+          height:30px;
+          border-radius: 5px;
+          border:none;
+          margin-top: 5px;
+          margin-bottom: 5px;
+          margin-left: 62px;
+          background: #2fb39a;
+          font-size:13px;
+          color: white;
+          outline: none;
+          cursor: pointer;
+        }
+
+        .social_network{
+          width:100%;
+          height: auto;
+          display: flex;
+          justify-content: space-around;
+          padding-top: 5px;
+        }
+        .fa_icons i{
+          color: #38d39f;
+          width: 10px;
+          height: 10px;
+          border-right: 50%;
+          background-color: white;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border-radius: 10%;
+          cursor: pointer;
+          border: 1.5px solid #38d39f;
+          background-color: red;
+          font-size: 15px;
+        }
+
+        .fa_icons i:hover{
+          background-color: #38d39f;
+          color: white
+        }
+}
+
+
+
+
+
+/*---------------------------------------------Sign In form css teacher ----------------------------------*/
+/*---------------------------------------------Sign In form css teacher----------------------------------*/
+/*---------------------------------------------Sign In form css teacher----------------------------------*/
+/*---------------------------------------------Sign In form css teacher----------------------------------*/
+
+
+
+.modal_signin_teacher
+{
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+  opacity: 0;
+  filter: drop-shadow(0px 4px 3px black);
+  animation: drop ;
+  animation-duration: 4s;
+}
+@keyframes drop {
+  0% {
+    opacity: 0;
+    transform: translateY(-60px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+.active_signin
+{
+  visibility: visible;
+  opacity: 1;
+}
+.mainformdiv_signin
+{
+  background: #fff;
+  width: 460px;
+  height: 450px;
+  margin-top: 2vh;
+  font-family: 'Poppins', sans-serif;
+  border-radius: 10px;
+  align-items: center;
+}
+.start_signin
+{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.start_signin img
+{
+  width: 6vw;
+}
+#close_signin{
+  font-size: 22px;
+  color: gray;
+}
+.input_divone_signin{
+  display: flex;
+  justify-content: space-around;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  color: gray
+}
+.input_divone_signin h4
+{
+    font-size: 15px;
+}
+
+.input_u_signin{
+  width:415px;
+  height:35px;
+  margin-top: 5px;
+  padding-left: 5px;
+  border: 2px solid lightgray;
+  border-radius: 3px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  color: gray;
+  outline:none;
+}
+.input_divtwo_signin{
+  display: flex;
+  justify-content: space-around;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  color: gray
+}
+.input_divtwo_signin h4
+{
+    font-size: 15px;
+}
+.input_p_signin{
+  width:415px;
+  height:35px;
+  margin-top: 5px;
+  padding-left: 5px;
+  border: 2px solid lightgray;
+  border-radius: 3px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  color: gray;
+  outline: none;
+}
+
+.btn_signin{
+  width: 100%;
+  height: 8vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20vw;
+}
+.btn_signin_2
+{
+  width:10vw;
+  height:40px;
+  border-radius: 3px;
+  border:none;
+  margin-top: 8px;
+  background: #2fb39a;
+  font-size:20px;
+  color: white;
+}
+
+.social_network{
+  width:100%;
+  height: auto;
+  display: flex;
+  justify-content: space-around;
+  padding-top: 10px;
+}
+.fa_icons i{
+  color: #38d39f;
+  width: 40px;
+  height: 40px;
+  border-right: 50%;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 1.5px solid #38d39f;
+}
+
+.fa_icons i:hover{
+  background-color: #38d39f;
+  color: white
+}
+
+.main_switch_btn
+{
+  text-align: center;
+  align-items: center;
+  width: 30vw;
+  height:10vh;
+  display: flex;
+  font-family: 'Poppins', sans-serif;
+  border-radius: 10px;
+}
+.switch_btn
+{
+  margin-left: 100px;
+  padding: 1vh 1vw 1vh 1vw;
+}
+.switch_btn ul
+{
+  display: flex;
+  border-radius: 50px;
+  box-shadow:0px 4px 3px gray;
+  width: 215px;
+  height: 40px;
+  border: 1px solid #38d39f;
+  font-size: 15px;
+  line-height: 22px;
+}
+.Instructors_teacher
+{
+  padding: 1.2vh 1.3vw 1vh 1vw;
+  border-radius: 50px;
+  background: #38d39f;
+  color: white;
+  height: 40px;
+  text-decoration:none;
+}
+.Students_teacher
+{
+  padding-top: 1vh;
+  padding-bottom:1vh;
+  padding-left: 1vw;
+  border-radius: 50px;
+  color: #38d39f;
+  text-decoration:none;
+}
+.close_btn_signin
+{
+  margin-left: 5.2vw;
+  margin-bottom:5vh;
+}
+
+
+
+
+
+/*---------------------------------------------Sign in form css student ----------------------------------*/
+/*---------------------------------------------Sign in form css student----------------------------------*/
+/*---------------------------------------------Sign in form css student----------------------------------*/
+/*---------------------------------------------Sign in form css student----------------------------------*/
+
+
+.modal_signin_student
+{
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  filter: drop-shadow(0px 4px 3px black);
+}
+.mainformdiv_signin
+{
+  background: #fff;
+  width: 460px;
+  height: 450px;
+  top: 0vh;
+  margin-bottom: 10px;
+  font-family: 'Poppins', sans-serif;
+  border-radius: 10px;
+}
+.start_signin
+{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.start_signin img
+{
+    width: 6vw;
+}
+#close_signin{
+  font-size: 22px;
+  color: gray;
+}
+.input_divone_signin{
+  display: flex;
+  justify-content: space-around;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  color: gray
+}
+.input_divone_signin h4
+{
+    font-size: 15px;
+}
+
+.input_u_signin{
+  width:415px;
+  height:35px;
+  margin-top: 5px;
+  padding-left: 5px;
+  border: 2px solid lightgray;
+  border-radius: 3px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  color: gray;
+  outline:none;
+}
+.input_divtwo_signin{
+  display: flex;
+  justify-content: space-around;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  color: gray
+}
+.input_divtwo_signin h4
+{
+    font-size: 15px;
+}
+.input_p_signin{
+  width:415px;
+  height:35px;
+  margin-top: 5px;
+  padding-left: 5px;
+  border: 2px solid lightgray;
+  border-radius: 3px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  color: gray;
+  outline: none;
+}
+
+.btn_signin{
+  width: 100%;
+  height: 8vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.btn_signin_2
+{
+  width:10vw;
+  height:40px;
+  border-radius: 3px;
+  border:none;
+  margin-top: 8px;
+  background: #2fb39a;
+  font-size:20px;
+  color: white;
+}
+
+.social_network{
+  width:100%;
+  height: auto;
+  display: flex;
+  justify-content: space-around;
+  padding-top: 10px;
+}
+.fa_icons i{
+  color: #38d39f;
+  width: 40px;
+  height: 40px;
+  border-right: 50%;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 1.5px solid #38d39f;
+}
+
+.fa_icons i:hover{
+  background-color: #38d39f;
+  color: white
+}
+
+.main_switch_btn
+{
+  text-align: center;
+  align-items: center;
+  width: 30vw;
+  height:10vh;
+  display: flex;
+  font-family: 'Poppins', sans-serif;
+  border-radius: 10px;
+}
+.switch_btn
+{
+  margin-left: 100px;
+  padding: 1vh 1vw 1vh 1vw;
+}
+.switch_btn ul
+{
+  display: flex;
+  border-radius: 50px;
+  box-shadow:0px 4px 3px gray;
+  width: 220px;
+  height: 40px;
+  border: 1px solid #38d39f;
+  font-size: 15px;
+  line-height: 22px;
+}
+.Instructors
+{
+  padding-top: 1vh;
+  padding-bottom:1vh;
+  padding-left: 1vw;
+  border-radius: 50px;
+  color: #38d39f;
+  background-color: transparent;
+  text-decoration:none;
+}
+.Students
+{
+  padding: 1vh 1.8vw 1vh 1.8vw;
+  border-radius: 50px;
+  background: #38d39f;
+  color: white;
+  height: 40px;
+  text-decoration:none;
+  margin-left: 16px;
+}
+.close_btn_signin
+{
+  margin-left: 5.2vw;
+  margin-bottom:5vh;
+}
+
+
+
+
+@media screen and (max-width: 812px)
+{
+      .modal_signin_teacher_abc_pqr
+      {
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        top: 0;
+        left: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(0,0,0,0.7);
+      }
+      .mainformdiv_signin_abc_pqr
+      {
+        background: #fff;
+        width: 320px;
+        height: 350px;
+        margin-top: 2vh;
+        font-family: 'Poppins', sans-serif;
+        border-radius: 10px;
+      }
+      .start_signin_abc_pqr
+      {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+      }
+      .start_signin_abc_pqr img
+      {
+        width: 70px;
+      }
+      .input_divone_signin_abc_pqr{
+        display: flex;
+        justify-content: space-around;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        color: gray
+      }
+      .input_divone_signin_abc_pqr h4
+      {
+          font-size: 12px;
+      }
+
+      .input_u_signin_abc_pqr{
+        width:290px;
+        height:27px;
+        margin-top: 5px;
+        padding-left: 5px;
+        border: 2px solid lightgray;
+        border-radius: 3px;
+        font-family: 'Poppins', sans-serif;
+        font-size: 12px;
+        color: gray;
+        outline:none;
+      }
+      .input_divtwo_signin_abc_pqr{
+        display: flex;
+        justify-content: space-around;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        color: gray
+      }
+      .input_divtwo_signin_abc_pqr h4
+      {
+          font-size: 12px;
+      }
+      .input_p_signin_abc_pqr{
+        width:290px;
+        height:27px;
+        margin-top: 5px;
+        padding-left: 5px;
+        border: 2px solid lightgray;
+        border-radius: 3px;
+        font-family: 'Poppins', sans-serif;
+        font-size: 12px;
+        color: gray;
+        outline: none;
+      }
+
+      .btn_signin_abc_pqr{
+        width: 320px;
+        height: 40px;
+        padding-left: 10vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .btn_signin_2_abc_pqr
+      {
+        width:100px;
+        height:30px;
+        border-radius: 3px;
+        border:none;
+        margin-top: 6px;
+        background: #2fb39a;
+        font-size:14px;
+        color: white;
+        margin-right: 30px;
+      }
+
+      .social_networks{
+        width:100%;
+        height: auto;
+        display: flex;
+        justify-content: space-around;
+        padding-top: 10px;
+      }
+      .fa_icons i{
+        color: #38d39f;
+        width: 35px;
+        height: 35px;
+        border-right: 50%;
+        background-color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        cursor: pointer;
+        border: 1.5px solid #38d39f;
+        font-size: 14px;
+      }
+
+      .fa_icons i:hover{
+        background-color: #38d39f;
+        color: white
+      }
+
+      .main_switch_btn_abc_pqr
+      {
+        text-align: center;
+        align-items: center;
+        width: 320px;
+        height: 50px;
+        display: flex;
+        font-family: 'Poppins', sans-serif;
+        border-radius: 10px;
+      }
+      .switch_btn_abc_pqr
+      {
+        margin-left: 70px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+      }
+      .switch_btn_abc_pqr ul
+      {
+        display: flex;
+        border-radius: 50px;
+        box-shadow:0px 4px 3px gray;
+        width: 180px;
+        height: 35px;
+        border: 1px solid #38d39f;
+        font-size: 14px;
+        line-height: 34px;
+        margin-top: 15px;
+      }
+      .Instructors_teacher_abc_pqr
+      {
+
+        padding-top: 1px;
+        padding-bottom:1px;
+        padding-left: 8px;
+        padding-right: 3px;
+        border-radius: 50px;
+        color: #38d39f;
+        text-decoration:none;
+      }
+      .Students_teacher_abc_pqr
+      {
+        height: 35px;
+        width: 100px;
+        border-radius: 50px;
+        background: #38d39f;
+        color: white;
+        text-decoration:none;
+      }
+      .close_btn_signin_abc_pqr
+      {
+        margin-left: 8vw;
+        font-size: 18px;
+        color: gray;
+        margin-left: 45px;
+        margin-bottom: 10px;
+      }
+}
+
+
+
+
+/*---------------------------------------------Sign in form css teacher 2 ----------------------------------*/
+/*---------------------------------------------Sign in form css teacher 2----------------------------------*/
+/*---------------------------------------------Sign in form css teacher 2----------------------------------*/
+/*---------------------------------------------Sign in form css teacher 2----------------------------------*/
+.modal_signin_teacher_abc
+{
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  filter: drop-shadow(0px 4px 3px black);
+}
+.mainformdiv_signin_abc
+{
+  background: #fff;
+  width: 460px;
+  height: 450px;
+  font-family: 'Poppins', sans-serif;
+  border-radius: 10px;
+}
+.start_signin_abc
+{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.start_signin_abc img
+{
+  width: 6vw;
+}
+#close_abc{
+  font-size: 22px;
+  color: gray;
+}
+.input_divone_signin_abc{
+  display: flex;
+  justify-content: space-around;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  color: gray
+}
+.input_divone_signin_abc h4
+{
+    font-size: 15px;
+}
+
+.input_u_signin_abc{
+  width:415px;
+  height:35px;
+  margin-top: 5px;
+  padding-left: 5px;
+  border: 2px solid lightgray;
+  border-radius: 3px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  color: gray;
+  outline:none;
+}
+.input_divtwo_signin_abc{
+  display: flex;
+  justify-content: space-around;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  color: gray
+}
+.input_divtwo_signin_abc h4
+{
+    font-size: 15px;
+}
+.input_p_signin_abc{
+  width:415px;
+  height:35px;
+  margin-top: 5px;
+  padding-left: 5px;
+  border: 2px solid lightgray;
+  border-radius: 3px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  color: gray;
+  outline: none;
+}
+
+.btn_signin_abc{
+  width: 30vw;
+  height: 8vh;
+  padding-left: 10vw;
+}
+.btn_signin_2_abc
+{
+  width:10vw;
+  height:40px;
+  border-radius: 3px;
+  border:none;
+  margin-top: 8px;
+  background: #2fb39a;
+  font-size:20px;
+  color: white;
+}
+
+.social_networks{
+  width:100%;
+  height: auto;
+  display: flex;
+  justify-content: space-around;
+  padding-top: 10px;
+}
+.fa_icons i{
+  color: #38d39f;
+  width: 40px;
+  height: 40px;
+  border-right: 50%;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 1.5px solid #38d39f;
+}
+
+.fa_icons i:hover{
+  background-color: #38d39f;
+  color: white
+}
+
+.main_switch_btn_abc
+{
+  text-align: center;
+  align-items: center;
+  width: 30vw;
+  height:10vh;
+  display: flex;
+  font-family: 'Poppins', sans-serif;
+  border-radius: 10px;
+}
+.switch_btn_abc
+{
+  margin-left: 100px;
+  padding: 1vh 1vw 1vh 1vw;
+}
+.switch_btn_abc ul
+{
+  display: flex;
+  border-radius: 50px;
+  box-shadow:0px 4px 3px gray;
+  width: 215px;
+  height: 40px;
+  border: 1px solid #38d39f;
+  font-size: 15px;
+  line-height: 22px;
+}
+.Instructors_teacher_abc
+{
+  padding: 1.2vh 1.2vw 1vh 1.2vw;
+  border-radius: 50px;
+  background: #38d39f;
+  color: white;
+  height: 40px;
+  top: 0px;
+  text-decoration:none;
+  margin-right: 5px;
+}
+.Students_teacher_abc
+{
+  padding-top: 1vh;
+  padding-bottom:1vh;
+  padding-left: 1vw;
+  border-radius: 50px;
+  color: #38d39f;
+  text-decoration:none;
+}
+.close_btn_signin_abc
+{
+  margin-left: 5.2vw;
+  margin-bottom:5vh;
+}
+@media screen and (max-width: 812px)
+{
+      .modal_signin_teacher_abc_xyz
+      {
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        top: 0;
+        left: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(0,0,0,0.7);
+      }
+      .mainformdiv_signin_abc_xyz
+      {
+        background: #fff;
+        width: 320px;
+        height: 350px;
+        margin-top: 2vh;
+        font-family: 'Poppins', sans-serif;
+        border-radius: 10px;
+      }
+      .start_signin_abc_xyz
+      {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+      }
+      .start_signin_abc_xyz img
+      {
+        width: 70px;
+      }
+      .input_divone_signin_abc_xyz{
+        display: flex;
+        justify-content: space-around;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        color: gray
+      }
+      .input_divone_signin_abc_xyz h4
+      {
+          font-size: 12px;
+      }
+
+      .input_u_signin_abc_xyz{
+        width:290px;
+        height:27px;
+        margin-top: 5px;
+        padding-left: 5px;
+        border: 2px solid lightgray;
+        border-radius: 3px;
+        font-family: 'Poppins', sans-serif;
+        font-size: 12px;
+        color: gray;
+        outline:none;
+      }
+      .input_divtwo_signin_abc_xyz{
+        display: flex;
+        justify-content: space-around;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        color: gray
+      }
+      .input_divtwo_signin_abc_xyz h4
+      {
+          font-size: 12px;
+      }
+      .input_p_signin_abc_xyz{
+        width:290px;
+        height:27px;
+        margin-top: 5px;
+        padding-left: 5px;
+        border: 2px solid lightgray;
+        border-radius: 3px;
+        font-family: 'Poppins', sans-serif;
+        font-size: 12px;
+        color: gray;
+        outline: none;
+      }
+
+      .btn_signin_abc_xyz{
+        width: 320px;
+        height: 40px;
+        padding-left: 10vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .btn_signin_2_abc_xyz
+      {
+        width:100px;
+        height:30px;
+        border-radius: 3px;
+        border:none;
+        margin-top: 6px;
+        background: #2fb39a;
+        font-size:14px;
+        color: white;
+        margin-right: 30px;
+      }
+
+      .social_networks{
+        width:100%;
+        height: auto;
+        display: flex;
+        justify-content: space-around;
+        padding-top: 10px;
+      }
+      .fa_icons i{
+        color: #38d39f;
+        width: 35px;
+        height: 35px;
+        border-right: 50%;
+        background-color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        cursor: pointer;
+        border: 1.5px solid #38d39f;
+        font-size: 14px;
+      }
+
+      .fa_icons i:hover{
+        background-color: #38d39f;
+        color: white
+      }
+
+      .main_switch_btn_abc_xyz
+      {
+        text-align: center;
+        align-items: center;
+        width: 320px;
+        height: 50px;
+        display: flex;
+        font-family: 'Poppins', sans-serif;
+        border-radius: 10px;
+      }
+      .switch_btn_abc_xyz
+      {
+        margin-left: 70px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+      }
+      .switch_btn_abc_xyz ul
+      {
+        display: flex;
+        border-radius: 50px;
+        box-shadow:0px 4px 3px gray;
+        width: 180px;
+        height: 35px;
+        border: 1px solid #38d39f;
+        font-size: 14px;
+        line-height: 34px;
+        margin-top: 15px;
+      }
+      .Instructors_teacher_abc_xyz
+      {
+        padding: 1.2px 1px 1px 1px;
+        height: 35px;
+        width: 100px;
+        border-radius: 50px;
+        background: #38d39f;
+        color: white;
+        text-decoration:none;
+      }
+      .Students_teacher_abc_xyz
+      {
+        padding-top: 1px;
+        padding-bottom:1px;
+        padding-left: 8px;
+        border-radius: 50px;
+        color: #38d39f;
+        text-decoration:none;
+      }
+      .close_btn_signin_abc_xyz
+      {
+        margin-left: 8vw;
+        font-size: 18px;
+        color: gray;
+        margin-left: 45px;
+        margin-bottom: 10px;
+      }
+}
+
+
+/************************************************************************************************/
+/************************************************************************************************/
+/************************************************************************************************/
+/************************************************************************************************/
+
+
+
