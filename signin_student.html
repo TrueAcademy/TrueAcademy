@@ -25,7 +25,7 @@
     <!------------------------------Sign in Form student------------------------------------------->
     <div class="modal_signin_student" style="background-image: url(images/loginbg.png);background-repeat: no-repeat;background-size: 100vw 100vh;backface-visibility: visible;">
         <div class="mainformdiv_signin">
-            <form class="form_signin">
+            <form class="form_signin" action="signin_student.php" method="post">
                 <div class="main_switch_btn">
                     <div class="switch_btn">
                         <ul>
@@ -42,8 +42,8 @@
 
                 <div class="input_divone_signin">
                     <div>
-                        <h4><i class="fas fa-user-circle"></i> Username</h4>
-                        <input class="input_u_signin" type="text" name="Username">
+                        <h4><i class="fas fa-user-circle"></i> Email</h4>
+                        <input class="input_u_signin" type="text" name="email">
                     </div>
                 </div>
 
@@ -56,7 +56,7 @@
                 </div>
 
                 <div class="btn_signin">
-                    <input type="Submit" class="btn_signin_2" value="Sign In">
+                    <input type="Submit" class="btn_signin_2" value="done" name="done">
                 </div>
 
                 <div class="social_network">
