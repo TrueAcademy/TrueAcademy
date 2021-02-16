@@ -174,7 +174,7 @@
 
 <div class="modal_teacher" id="modal">
   <div class="mainformdiv" id="form">
-    <form class="form">
+    <form class="form" action="teacherInsert.php" method="post">
       <div class="start">
           <img class="avatar" src="images/Teacher-Profile2.png">
           <div class="close_button">
@@ -186,12 +186,12 @@
       <div class="input_divone">
         <div>
           <h4> <i class="fas fa-user"></i>   First name</h4>
-          <input class="input_f" type="text" name="First-name">
+          <input class="input_f" type="text" name="firstname">
         </div>
 
         <div>
           <h4> <i class="fas fa-user"></i>   last name</h4>
-          <input class="input_l" type="text" name="Last-name">
+          <input class="input_l" type="text" name="lastname">
         </div>
       </div>
 
@@ -200,7 +200,7 @@
       <div class="input_divtwo">
         <div>
           <h4><i class="fas fa-user-circle"></i> Username</h4>
-          <input class="input_u" type="text" name="Username">
+          <input class="input_u" type="text" name="username">
         </div>
       </div>
 
@@ -209,7 +209,7 @@
       <div class="input_divthree">
         <div>
           <h4><i class="fas fa-envelope"></i> Email</h4>
-          <input class="input_e" type="text" name="Email">
+          <input class="input_e" type="text" name="email">
         </div>
       </div>
 
@@ -218,7 +218,7 @@
       <div class="input_divfour">
         <div>
           <h4><i class="fa fa-phone" aria-hidden="true"></i> Mobile Number</h4>
-          <input class="input_m" type="phone-number" name="mobile-no">
+          <input class="input_m" type="phone-number" name="mobileno">
         </div>
       </div>
 
@@ -240,7 +240,7 @@
       </div>
 
       <div class="btn_signup">
-        <input type="Submit" class="btn" value="Sign Up">
+        <input type="Submit" class="btn" value="done" name="done">
       </div>
     </form>
 
