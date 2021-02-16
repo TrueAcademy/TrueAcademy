@@ -25,6 +25,10 @@
         $collection = "studentTable/";
         $postdata = $database->getReference($collection)->push($data);
 
+        $auth = $firebase->getAuth();
+        $user = $auth->createUserWithEmailAndPassword($email,$password);
+
+
         if($postdata){
             echo "<script type='text/javascript'>alert('submitted successfully!')</script>";
             header("Location : index.html"); 
