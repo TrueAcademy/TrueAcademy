@@ -12,7 +12,7 @@
 
     $database = $firebase -> getDatabase();
 
-    //$database = $factory->createDatabase();
+    // $database = $factory->createDatabase();
 
     // var_dump($database);
 
