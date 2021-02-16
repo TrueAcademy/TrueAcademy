@@ -3,6 +3,7 @@
 
     use Kreait\Firebase\Factory;
     use Kreait\Firebase\ServiceAccount;
+    use Kreait\Firebase\Auth;
 
     $serviceAccount = ServiceAccount::fromJsonFile(__DIR__.'/trueacademy-13962-firebase-adminsdk-cmins-96aa6aea7a.json');
     $firebase = (new Factory())

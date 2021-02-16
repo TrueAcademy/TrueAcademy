@@ -25,7 +25,10 @@
         $collection = "teacherTable/";
         $postdata = $database->getReference($collection)->push($data);
 
-        if($postdata){
+        $auth = $firebase->getAuth();
+        $user = $auth->createUserWithEmailAndPassword($email,$password);
+
+        if($postdata!=null){
             echo "<script type='text/javascript'>alert('submitted successfully!')</script>";
             header("Location : index.html"); 
         }
