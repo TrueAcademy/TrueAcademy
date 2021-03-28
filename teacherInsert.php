@@ -25,16 +25,28 @@
         $collection = "teacherTable/";
         $postdata = $database->getReference($collection)->push($data);
 
-        $auth = $firebase->getAuth();
-        $user = $auth->createUserWithEmailAndPassword($email,$password);
+        
 
-        if($postdata!=null){
+        try{
+
+            $auth = $firebase->getAuth();
+            $user = $auth->createUserWithEmailAndPassword($email,$password);  
+
             echo "<script type='text/javascript'>alert('submitted successfully!')</script>";
             header("Location : index.html"); 
+
         }
-        else{
-            echo "<script type='text/javascript'>alert('failed! try again .... ')</script>";
+        catch(exception $e){
+            echo "<script type='text/javascript'>alert('Something went wrong! ')</script>";
         }
+
+        // if($postdata!=null){
+        //     echo "<script type='text/javascript'>alert('submitted successfully!')</script>";
+        //     header("Location : index.html"); 
+        // }
+        // else{
+        //     echo "<script type='text/javascript'>alert('failed! try again .... ')</script>";
+        // }
 
 
 
