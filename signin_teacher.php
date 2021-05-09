@@ -24,7 +24,7 @@
             
                 $_SESSION['firebase_user_id'] = $user->id;
             
-                header("Location:home.php");
+                header("Location:dashboard_teacher.php");
                 exit;
             }
             
