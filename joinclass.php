@@ -2,15 +2,18 @@
 
     include("includes/dbconfig.php");
 
-    // $classcode = $_POST["classcode"];
+    
 
     if(true){
 
+        // $classcode = $_POST["classcode"];
         
         $classcode = "code123"; // checking class code
 
+      
+        $collection = "/classes";
+
         //Remove after some time 
-        // $collection = "/classes";
 
         // $data = [
         //     'classcode' => "code123",
@@ -20,13 +23,21 @@
 
         // till here 
 
-        $classdata = $database->getReference($collection)->getValue();
+        $classdata = $database->getReference($collection)
+        ->orderByChild('classcode')  // 
+        ->equalTo($classcode)
+        ->getValue();
+        // $classkey = $classdata->getKey();
+
+        var_dump($classdata);
 
         if($classdata == null){
             echo "class not found!";
         }
-        else if($classdata['classcode'] == $classcode ){
-            echo "class found!";
+        else {
+
+                echo "class found!";
+
         }
             
     }
