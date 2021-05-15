@@ -24,15 +24,42 @@
             </div>
         </nav>
 
+            <form action="createclass.php" method="post">
+                <button type="submit" name="createclass" value="createclass">create class</button>
+            </form>
+
+
             <div class="sub_card">
                 <div class="center_div">
-                        <div class="card">
-                            <div class="top_div top_div_1">
-                                <h3  class="h3">Rushikesh</h3>
-                                <img src="images/card_acc.jpg" alt="">
-                            </div>
-                        </div>
-                        <div class="card">
+
+
+                        <?php
+                            include("includes/dbconfig.php");
+
+                            $collection = "classes/";
+
+                            if(!isset($_SESSION['email'])){
+                                echo "nothing to show";
+                            }
+                            else{
+
+                            
+
+
+                        
+                        //     echo "<div class="$card">";
+                        //        echo "<div class="top_div top_div_1">"
+                        //            echo "<h3  class="h3">Rushikesh</h3>"
+                        //            echo "<img src="images/card_acc.jpg" alt="">"
+                        //         echo "</div>"
+                        //    echo " </div>"
+                        
+                        
+
+                         }   // closing isset if 
+
+                        ?>
+                        <!-- <div class="card">
                             <div class="top_div top_div_2">
                                 <h3 class="h3">Rushikesh</h3>
                                 <img src="images/card_acc.jpg" alt="">
@@ -103,7 +130,7 @@
                                 <img src="images/card_acc.jpg" alt="">
                             </div>
                         </div>
-                        
+                         -->
                         
                         
                     </div>
