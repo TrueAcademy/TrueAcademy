@@ -23,7 +23,8 @@
                 session_start();
             
                 $_SESSION['firebase_user_id'] = $user->id;
-            
+                $_SESSION['email'] = $user->email; 
+
                 header("Location:dashboard_teacher.php");
                 exit;
             }
