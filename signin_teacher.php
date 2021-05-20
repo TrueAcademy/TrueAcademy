@@ -22,9 +22,12 @@
             if ($auth->verifyPassword($email, $password)) {
                 session_start();
             
-                $_SESSION['firebase_user_id'] = $user->id;
-            
-                header("Location:home.php");
+                //$_SESSION['firebase_user_id']=$user->id;
+                $_SESSION['email'] = $email; 
+
+                //var_dump($email);
+
+                header("Location:dashboard_teacher.php");
                 exit;
             }
             
