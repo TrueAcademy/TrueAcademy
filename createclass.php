@@ -9,11 +9,11 @@
 
         session_start();
 
-        // $classcode = $_POST["classcode"];
-        // $classname = $_POST["classname"];
+        $classcode = $_POST["classcode"];
+        $classname = $_POST["classname"];
 
-        $classcode = "test123";
-        $classname = "create class";
+        // $classcode = "test123";
+        // $classname = "create class";
 
         $collection = "classes/";
 
