@@ -22,7 +22,7 @@
             if ($auth->verifyPassword($email, $password)) {
                 session_start();
             
-                $_SESSION['firebase_user_id'] = $user->id;
+                $_SESSION['email'] = $email;
             
                 header("Location:dashboard_student.php");
                 exit;
