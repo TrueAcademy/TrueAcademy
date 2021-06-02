@@ -1,3 +1,21 @@
+<?php
+ 
+    session_start();
+
+    if(isset($_SESSION['email'])){
+
+    
+        // echo "Session is running !! ";
+        echo "Email : ". $_SESSION['email'];
+   
+
+    }else{
+        echo "<script type='text/javascript'>alert('Cant open user is not authorized!')</script>";
+        header("Location : index.html"); 
+    }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -39,7 +57,7 @@
                         <img src="images/card_acc.jpg" alt="">
                     </div>
                 </div>
-                <div class="card">
+                <!-- <div class="card">
                     <div class="top_div top_div_2">
                         <h3 class="h3">Rushikesh</h3>
                         <img src="images/card_acc.jpg" alt="">
@@ -109,7 +127,7 @@
                         <h3 class="h3">Rushikesh</h3>
                         <img src="images/card_acc.jpg" alt="">
                     </div>
-                </div>
+                </div> -->
 
 
 
@@ -125,31 +143,23 @@
 
 
     <div class="create_class_form" id="myForm">
-        <form action="" class="mainformdiv">
+        <form action="joinclass.php" method="POST" class="mainformdiv">
 
             <div class="close_button">
                 <a href="#" onclick="closeForm()" id="close_btn"><i id="close" class="far fa-times-circle"></i></a>
             </div>
 
-            <div class="input_divone">
-                <div>
-                    <h4>Class Name</h4>
-                    <input class="input_CN" type="text" name="Class_Name">
-                </div>
-            </div>
-
-
 
             <div class="input_divtwo">
                 <div>
                     <h4>Class Code</h4>
-                    <input class="input_CC" type="text" name="Class_Code">
+                    <input class="input_CC" type="text" name="classcode">
                 </div>
             </div>
 
 
             <div class="btn_Create_class">
-                <input type="Submit" class="btn" value="Create Class" name="done">
+                <input type="Submit" class="btn" value="done" name="done">
             </div>
         </form>
 
