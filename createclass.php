@@ -30,12 +30,40 @@
         try {
 
             $postdata = $database->getReference($collection)->push($data);
+            
+
+            $collection = "teacherTable/";
+            $teacherData = $database->getReference($collection)
+                ->orderByChild('email')
+                ->equalTo($_SESSION['email'])
+                ->getvalue();
+
+            echo $teacherData;
+
+            foreach($teacherData as $token => $key){
+
+                if($key['email'] == $_SESSION['email'] ){
+
+                    $newToken = $collection.$token."/classcreated";
+
+                    echo $newToken;
+                    
+                    $data = [
+                        'classcode' => $classcode
+                    ];
+
+                    $database->getReference($newToken)->push($data);
+                   
+                }
+
+            }
+
             echo "<script type='text/javascript'>alert('class created successfully!')</script>";
             header("Location:dashboard_teacher.php");
         
         }
         catch(Exception $e){
-            echo "<script type='text/javascript'>alert('something went wrong! please try again ... ')</script>";
+            // echo "<script type='text/javascript'>alert('something went wrong! please try again ... ')</script>";
         }
 
         
