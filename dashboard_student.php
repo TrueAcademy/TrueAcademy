@@ -2,16 +2,18 @@
  
     session_start();
 
-    if(isset($_SESSION['email'])){
+    if( $_SESSION['email'] == null ){
 
     
-        // echo "Session is running !! ";
-        echo "Email : ". $_SESSION['email'];
+
+        echo "<script type='text/javascript'>alert('Cant open user is not authorized!')</script>";
+        header("Location:index.html"); 
    
 
     }else{
-        echo "<script type='text/javascript'>alert('Cant open user is not authorized!')</script>";
-        header("Location : index.html"); 
+        
+        // echo "Session is running !! ";
+        // echo "Email : ". $_SESSION['email'];
     }
 
 ?>
