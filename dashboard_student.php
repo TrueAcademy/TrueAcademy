@@ -49,92 +49,91 @@
             </div>
         </nav>
 
-        <div class="sub_card">
-            <div class="center_div">
-                <div class="card">
-                    <div class="top_div top_div_1">
-                        <h3 class="h3">Rushikesh</h3>
-                        <img src="images/card_acc.jpg" alt="">
-                    </div>
-                </div>
-                <!-- <div class="card">
-                    <div class="top_div top_div_2">
-                        <h3 class="h3">Rushikesh</h3>
-                        <img src="images/card_acc.jpg" alt="">
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="top_div top_div_3">
-                        <h3 class="h3">Rushikesh</h3>
-                        <img src="images/card_acc.jpg" alt="">
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="top_div top_div_4">
-                        <h3 class="h3">Rushikesh</h3>
-                        <img src="images/card_acc.jpg" alt="">
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="top_div top_div_5">
-                        <h3 class="h3">Rushikesh</h3>
-                        <img src="images/card_acc.jpg" alt="">
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="top_div top_div_6">
-                        <h3 class="h3">Rushikesh</h3>
-                        <img src="images/card_acc.jpg" alt="">
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="top_div top_div_7">
-                        <h3 class="h3">Rushikesh</h3>
-                        <img src="images/card_acc.jpg" alt="">
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="top_div top_div_8">
-                        <h3 class="h3">Rushikesh</h3>
-                        <img src="images/card_acc.jpg" alt="">
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="top_div top_div_9">
-                        <h3 class="h3">Rushikesh</h3>
-                        <img src="images/card_acc.jpg" alt="">
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="top_div top_div_10">
-                        <h3 class="h3">Rushikesh</h3>
-                        <img src="images/card_acc.jpg" alt="">
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="top_div top_div_11">
-                        <h3 class="h3">Rushikesh</h3>
-                        <img src="images/card_acc.jpg" alt="">
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="top_div top_div_12">
-                        <h3 class="h3">Rushikesh</h3>
-                        <img src="images/card_acc.jpg" alt="">
-                    </div>
-                </div> -->
 
 
+        
+        <?php
+        
+            include("includes/dbconfig.php");
 
-            </div>
-        </div>
+            $studentcollection = "studentTable/";
+            $studentRef = $database->getReference($studentcollection)
+            ->orderByChild('email')  
+            ->equalTo($_SESSION['email'])
+            ->getValue();
+
+            foreach($studentRef as $token => $key ){
+
+
+                 if($key['email'] == $_SESSION['email']){
+
+                    $studentToken = $studentcollection.$token."/classjoined";
+                    $joinedclass = $database->getReference($studentToken)->getvalue();
+
+                    $classcollection = "classes";
+                   
+                    ?>
+                    
+                    <div class="sub_card">
+                        <div class="center_div">
+                    
+                                <?php
+
+                                foreach($joinedclass as $row => $key ){
+
+
+                                    $classdata = $database->getReference($classcollection)
+                                    ->orderByChild('classcode')
+                                    ->equalTo($key['classcode'])
+                                    ->getvalue();
+
+                                    // var_dump($classdata);
+
+                                    foreach($classdata as $row1 => $classkey){
+
+
+                                        // echo $classkey['classname'];
+
+                                        // echo "\n\n";
+
+                                        ?>
+
+
+                                    
+                                                <div class="card">
+                                                    <div class="top_div top_div_1">
+                                                        <h3 class="h3"><?php echo $classkey['classname'] ?></h3>
+                                                        <img src="images/card_acc.jpg" alt="">
+                                                    </div>
+                                                </div>
+                                        
+
+
+                                        <?php
+
+                                    }
+
+
+                                }
+
+
+                            }   
+
+
+                        }
+                    
+                ?>
+
+                        </div>
+                    </div>
+
+
+        
+       
     </div>
 
+
+   
     </div>
     <!-- /********************************************************************************************* -->
     <!-- /********************************************************************************************* -->
