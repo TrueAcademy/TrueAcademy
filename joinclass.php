@@ -39,7 +39,6 @@
                     if($key['email'] == $_SESSION['email'] ){
 
                         $studentToken = $collection.$token."/classjoined";
-                        
                         $joinedclass = [
                             'classcode' => $classcode
                         ];

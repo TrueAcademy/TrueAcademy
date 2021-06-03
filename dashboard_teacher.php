@@ -43,12 +43,13 @@
                 <a href="#" class="profile"><i class="fas fa-user"></i></a>
                 <div class="profile_li">
                     <a href="#" class="PROFILE">Profile</a>
-                    <a href="#" class="LOGOUT">Logout</a>
+                    <a href="logout.php" class="LOGOUT">Logout</a>  
                 </div>
+
             </div>
         </nav>
 
-
+        <!-- <label for="loginer">Demo</label> -->
 
 
         <?php
