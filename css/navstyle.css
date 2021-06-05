@@ -34,9 +34,10 @@ nav
 }
 .right_div
 {
-    width: 200px;
+    width: 300px;
     height: 100px;
     display: flex;
+    flex-direction: column;
     justify-content: space-around;
     align-items: center;
     padding-right:20px;
@@ -63,10 +64,16 @@ nav
     display: flex;
     justify-content: center;
     align-items: center;
+    /* margin-bottom: 10px; */
 }
 .profile:focus + .profile_li
 {
   opacity: 1;
+}
+
+.login_name {
+  color: white;
+  font-size: 12px;
 }
 
 
@@ -87,6 +94,10 @@ nav
   margin-left: 15px;
   opacity: 0;
 }
+
+
+
+
 .PROFILE
 {
  width: 110px;

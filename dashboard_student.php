@@ -81,40 +81,49 @@
                     
                                 <?php
 
-                                foreach($joinedclass as $row => $key ){
+                                if($joinedclass == null){
+                                    echo "No class Joined yet!";
+                                }
+                                else{
+
+                               
+
+                                    foreach($joinedclass as $row => $key ){
 
 
-                                    $classdata = $database->getReference($classcollection)
-                                    ->orderByChild('classcode')
-                                    ->equalTo($key['classcode'])
-                                    ->getvalue();
+                                        $classdata = $database->getReference($classcollection)
+                                        ->orderByChild('classcode')
+                                        ->equalTo($key['classcode'])
+                                        ->getvalue();
 
-                                    // var_dump($classdata);
+                                        // var_dump($classdata);
 
-                                    foreach($classdata as $row1 => $classkey){
-
-
-                                        // echo $classkey['classname'];
-
-                                        // echo "\n\n";
-
-                                        ?>
+                                        foreach($classdata as $row1 => $classkey){
 
 
-                                    
-                                                <div class="card">
-                                                    <div class="top_div top_div_1">
-                                                        <h3 class="h3"><?php echo $classkey['classname'] ?></h3>
-                                                        <img src="images/card_acc.jpg" alt="">
-                                                    </div>
-                                                </div>
+                                            // echo $classkey['classname'];
+
+                                            // echo "\n\n";
+
+                                            ?>
+
+
                                         
+                                                    <div class="card">
+                                                        <div class="top_div top_div_1">
+                                                            <h3 class="h3"><?php echo $classkey['classname'] ?></h3>
+                                                            <img src="images/card_acc.jpg" alt="">
+                                                        </div>
+                                                    </div>
+                                            
 
 
-                                        <?php
+                                            <?php
+
+                                        }
+
 
                                     }
-
 
                                 }
 

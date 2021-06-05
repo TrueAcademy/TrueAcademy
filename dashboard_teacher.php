@@ -70,7 +70,7 @@
                     $teacherToken = $teachercollection.$token."/classcreated";
                     $createdclass = $database->getReference($teacherToken)->getvalue();
 
-                    $classcollection = "classes";
+                    $classcollection = "classes/";
                    
                     ?>
                     
@@ -79,43 +79,53 @@
                     
                     <?php
 
-                    foreach($createdclass as $row => $key ){
+                    if($createdclass == null ){
+
+                        echo "No class created Yet!";
+
+                    }
+                    else{
+
+                    
+
+                        foreach($createdclass as $row => $key ){
 
 
-                        $classdata = $database->getReference($classcollection)
-                        ->orderByChild('classcode')
-                        ->equalTo($key['classcode'])
-                        ->getvalue();
+                            $classdata = $database->getReference($classcollection)
+                            ->orderByChild('classcode')
+                            ->equalTo($key['classcode'])
+                            ->getvalue();
 
-                        // var_dump($classdata);
+                            // var_dump($classdata);
 
-                        foreach($classdata as $row1 => $classkey){
-
-
-                            // echo $classkey['classname'];
-
-                            // echo "\n\n";
-
-                            ?>
+                            foreach($classdata as $row1 => $classkey){
 
 
-                           
-                                    <div class="card" id="card" onclick="window.location.href='teacher/coursepage_teacher.php?classcode=<?php echo $classkey['classcode'] ?> '" >
-                                        <div class="top_div top_div_1">
-                                            <h3 class="h3"><?php echo $classkey['classname'] ?></h3>
-                                            <img src="images/card_acc.jpg" alt="">
+                                // echo $classkey['classname'];
+
+                                // echo "\n\n";
+
+                                ?>
+
+
+                            
+                                        <div class="card" id="card" onclick="window.location.href='teacher/coursepage_teacher.php?classcode=<?php echo $classkey['classcode'] ?> '" >
+                                            <div class="top_div top_div_1">
+                                                <h3 class="h3"><?php echo $classkey['classname'] ?></h3>
+                                                <img src="images/card_acc.jpg" alt="">
+                                            </div>
                                         </div>
-                                    </div>
-                               
+                                
 
 
-                            <?php
+                                <?php
+
+                            }
+
 
                         }
 
-
                     }
-
 
                 }   
 

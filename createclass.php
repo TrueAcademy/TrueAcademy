@@ -21,10 +21,17 @@
 
         //var_dump($email);
 
+        $totalJoined = 0;
+        $totalExamCoducted = 0;
+        $totalAssignmentGiven = 0;
+
         $data = [
             'classowner' => $email,
             'classcode' => $classcode,
-            'classname' => $classname
+            'classname' => $classname,
+            'totalJoined' => $totalJoined,
+            'totalExamConducted' => $totalExamCoducted,
+            'totalAssignmemtGiven' => $totalAssignmentGiven
         ];
 
         try {
