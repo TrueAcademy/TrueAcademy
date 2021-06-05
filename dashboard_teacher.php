@@ -74,7 +74,7 @@
                    
                     ?>
                     
-                    <div class="sub_card">
+                    <div class="sub_card" id="sub_card">
                                 <div class="center_div">
                     
                     <?php
@@ -100,7 +100,7 @@
 
 
                            
-                                    <div class="card">
+                                    <div class="card" id="card" onclick="window.location.href='teacher/coursepage_teacher.php?classcode=<?php echo $classkey['classcode'] ?> '" >
                                         <div class="top_div top_div_1">
                                             <h3 class="h3"><?php echo $classkey['classname'] ?></h3>
                                             <img src="images/card_acc.jpg" alt="">
@@ -175,6 +175,12 @@
 
             function closeForm() {
                 document.getElementById("myForm").style.display = "none";
+            }
+
+            document.getElementById('card,').addEventListener("click", openNextPage);
+
+            function openNextPage() {
+                window.location = 'coursepage_teacher.php';
             }
         </script>
 </body>
