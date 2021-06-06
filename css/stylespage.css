@@ -16,8 +16,13 @@
 }
 
 .main-content {
-    margin-left: 345px;
-}
+    /* margin-left: 345px; */
+    width: 100%;
+    height: 100%;
+    padding: 0 1.5rem 1.5rem 1.5rem;
+    background: #f1f5f9;
+    display: flex;
+} 
 
 .header {
     display: flex;
@@ -85,6 +90,7 @@ main {
     min-height: calc(100vh - 90px);
 }
 
+
 .cards {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -102,7 +108,7 @@ main {
 
 
 .card-single div:last-child span {   
-    /* font-size: 3rem; */
+    /* font-size: 12px; */
     color: var(--main-color);
 }
 
@@ -199,3 +205,6 @@ tr td:last-child {
 .status.orange {
     background: orangered;
 }
+
+/**********************************************************************/
+

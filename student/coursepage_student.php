@@ -24,22 +24,14 @@
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     <link rel="stylesheet" href="../css/stylespage.css">
     <link rel="stylesheet" href="../css/navstyle.css">
-    <link rel="stylesheet" href="../css/sidebar.css">
-    <!-- <link rel="stylesheet" href="../css/page2.css">     -->
 </head>    
 <body>
 
-    <nav class="navbar">
+    <nav>
         <div class="left_div">
                 <a href="#" class="hamberg"><i class="fas fa-bars"></i></a>
                 <a href="#" class="logo_url"><img src="../images/logo.png" alt="logo" class="logo"></a>
                 <h1 class="h1">True Academy</h1>
-
-
-                <div class="navbar-menu" style="display:flex; justify-content:center; margin:40px">
-                    <a style="color:#38d39f; padding:5px; border-radius:50px" href="examdashboard.php?">Exam</a>
-                    <a style="color:#38d39f; padding:5px; border-radius:50px"href="#">Assignment</a>
-                </div>
         </div>
         <div class="right_div">
             <a href="#" class="profile"><i class="fas fa-user"></i></a>
@@ -55,23 +47,8 @@
    
 
     <div class="main-content">
-
-        <!-- sidebar -->
-        <div class="leftdiv">
-                <div class="sidebar">
-                    <center>
-                        <img src="\images\book.png" class="profile_image" alt="">
-                        <h4 style="font-size: 12px; margin-bottom:5px"><?php echo $_SESSION['email']?></h4>
-                        <h6 style="color: #ccc; margin-bottom:15px">Teacher</h6>
-                    </center>
-                    <a href="examdashboard.php?classcode=<?php echo $_GET['classcode']?>"><i class="fas fa-desktop"></i><span>Exam Conduction</span></a>
-                    <a href="#"><i class="fas fa-th"></i><span>Assignment Section</span></a>
-                </div>
-        </div>
-        <!--sidebar end-->
-
-
-        <main class="rightdiv">
+        
+        <main>
             <?php
                 include("../includes/dbconfig.php");
 
@@ -90,10 +67,11 @@
 
 
                         <div class="cards">
+
                                 <div class="card-single">
                                     <div>
-                                        <h1><?php echo $classkey['totalExamConducted']?></h1>
-                                        <span>Total Exam Conducted</span>
+                                        <h1><?php echo $classkey['totalAssignmemtGiven']?></h1>
+                                        <span>Total Exam Attended</span>
                                     </div>
                                 </div>
 
@@ -101,14 +79,14 @@
                                 <div class="card-single">
                                     <div>
                                         <h1><?php echo $classkey['totalAssignmemtGiven']?></h1>
-                                        <span>Total Assignment</span>
+                                        <span>Total Assignment completed</span>
                                     </div>
                                 </div>
 
                                 <div class="card-single">
                                     <div>
-                                        <h1><?php echo $classkey['totalJoined']?></h1>
-                                        <span>Total Student Joined</span>
+                                        <h1 style="font-size: 16px; margin-top:20px"><?php echo $classkey['classowner']?></h1>
+                                        <span>Teacher</span>
                                     </div>
                                 </div>
                          </div>
@@ -120,8 +98,7 @@
                             <div class="projects">
                                 <div class="card">
                                     <div class="card-header">
-                                        <h3>List Of Student Joined</h3>
-                                            </h3>
+                                        <h3>List Of Student In Class</h3>
                                     </div>
                                     <div class="card-body">
                                         <div class="table-responsive">
@@ -130,7 +107,6 @@
                                                     <tr>
                                                         <td>First Name</td>
                                                         <td>Last Name</td>
-                                                        <td>Email</td>
                                                     </tr>
                                                 </thead>
                                                     <?php
@@ -154,7 +130,6 @@
                                                                     <tr>
                                                                         <td><?php echo $tempkey['firstname']?></td>
                                                                         <td><?php echo $tempkey['lastname'] ?></td>
-                                                                        <td><?php echo $tempkey['email'] ?></td>
                                                                     </tr>         
                                                                 </tbody>
                                               

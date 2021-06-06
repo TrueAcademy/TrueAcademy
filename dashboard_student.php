@@ -109,7 +109,7 @@
 
 
                                         
-                                                    <div class="card">
+                                                    <div class="card" onclick="window.location.href='student/coursepage_student.php?classcode=<?php echo $classkey['classcode'] ?> '">
                                                         <div class="top_div top_div_1">
                                                             <h3 class="h3"><?php echo $classkey['classname'] ?></h3>
                                                             <img src="images/card_acc.jpg" alt="">
