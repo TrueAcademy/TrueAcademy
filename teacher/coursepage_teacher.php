@@ -121,7 +121,6 @@
                                 <div class="card">
                                     <div class="card-header">
                                         <h3>List Of Student Joined</h3>
-                                            </h3>
                                     </div>
                                     <div class="card-body">
                                         <div class="table-responsive">
@@ -133,42 +132,61 @@
                                                         <td>Email</td>
                                                     </tr>
                                                 </thead>
+                                                <tbody>
                                                     <?php
                                                     
                                                         $joinedclasstoken = $collection.$classtoken."/JoinedStudent";
                                                         $innercollection = $database->getReference($joinedclasstoken)->getvalue();
 
-                                                        foreach($innercollection as $intertoken => $innerkey){
+                                                        if($innercollection == null ){
 
-                                                            // var_dump($innerkey);
-
-                                                            $temp = $database->getReference('studentTable')
-                                                            ->orderByChild('email')
-                                                            ->equalTo($innerkey['studentemail'])
-                                                            ->getvalue();
-
-                                                            foreach($temp as $temptoken => $tempkey){
-
-                                                            ?>                    
-                                                                <tbody>
-                                                                    <tr>
-                                                                        <td><?php echo $tempkey['firstname']?></td>
-                                                                        <td><?php echo $tempkey['lastname'] ?></td>
-                                                                        <td><?php echo $tempkey['email'] ?></td>
-                                                                    </tr>         
-                                                                </tbody>
-                                              
-
-
+                                                            ?>
+                                                            <tr><td></td> <td> No One Joined Yet! </td> <td></td></tr>          
                                                             <?php
 
+                                                        }
+                                                        else{
+                                                        
+                                                            foreach($innercollection as $intertoken => $innerkey){
+
+                                                                // var_dump($innerkey);
+
+                                                                $temp = $database->getReference('studentTable')
+                                                                ->orderByChild('email')
+                                                                ->equalTo($innerkey['studentemail'])
+                                                                ->getvalue();
+
+                                                                if($temp == null){
+                                                                    ?>
+                                                                        <tr><td> No One Joined Yet! </td></tr>          
+                                                                    <?php
+                                                                }
+                                                                else{
+
+                                                                    foreach($temp as $temptoken => $tempkey){
+
+                                                                    ?>                    
+                                                                        
+                                                                            <tr>
+                                                                                <td><?php echo $tempkey['firstname']?></td>
+                                                                                <td><?php echo $tempkey['lastname'] ?></td>
+                                                                                <td><?php echo $tempkey['email'] ?></td>
+                                                                            </tr>         
+                                                                        <
+                                                    
+
+
+                                                                    <?php
+                                                                }
+
+                                                            }
 
                                                         }
                                                         
                                                     }
 
                                                     ?>
-
+                                                    </tbody>
                                                  </table>
                                             </div>    
                                         </div>

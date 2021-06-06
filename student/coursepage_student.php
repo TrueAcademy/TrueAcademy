@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     <link rel="stylesheet" href="../css/stylespage.css">
     <link rel="stylesheet" href="../css/navstyle.css">
+    <link rel="stylesheet" href="../css/sidebar.css">
 </head>    
 <body>
 
@@ -47,8 +48,23 @@
    
 
     <div class="main-content">
+
+
+        <!-- sidebar -->
+        <div class="leftdiv">
+                <div class="sidebar">
+                    <center>
+                        <img src="\images\book.png" class="profile_image" alt="">
+                        <h4 style="font-size: 12px; margin-bottom:5px"><?php echo $_SESSION['email']?></h4>
+                        <h6 style="color: #ccc; margin-bottom:15px">student</h6>
+                    </center>
+                    <a href=""><i class="fas fa-desktop"></i><span>Exam Conduction</span></a>
+                    <a href="#"><i class="fas fa-th"></i><span>Assignment Section</span></a>
+                </div>
+        </div>
+        <!--sidebar end-->
         
-        <main>
+        <main class="rightdiv">
             <?php
                 include("../includes/dbconfig.php");
 
@@ -109,34 +125,45 @@
                                                         <td>Last Name</td>
                                                     </tr>
                                                 </thead>
+                                                <tbody>
                                                     <?php
                                                     
                                                         $joinedclasstoken = $collection.$classtoken."/JoinedStudent";
                                                         $innercollection = $database->getReference($joinedclasstoken)->getvalue();
 
-                                                        foreach($innercollection as $intertoken => $innerkey){
 
-                                                            // var_dump($innerkey);
+                                                        if($innercollection == null){
 
-                                                            $temp = $database->getReference('studentTable')
-                                                            ->orderByChild('email')
-                                                            ->equalTo($innerkey['studentemail'])
-                                                            ->getvalue();
-
-                                                            foreach($temp as $temptoken => $tempkey){
-
-                                                            ?>                    
-                                                                <tbody>
-                                                                    <tr>
-                                                                        <td><?php echo $tempkey['firstname']?></td>
-                                                                        <td><?php echo $tempkey['lastname'] ?></td>
-                                                                    </tr>         
-                                                                </tbody>
-                                              
-
-
+                                                            ?> 
+                                                                <tr><td> Something went wrong! </td></tr>
                                                             <?php
 
+                                                        }
+                                                        else{    
+
+
+                                                            foreach($innercollection as $intertoken => $innerkey){
+
+                                                                // var_dump($innerkey);
+
+                                                                $temp = $database->getReference('studentTable')
+                                                                ->orderByChild('email')
+                                                                ->equalTo($innerkey['studentemail'])
+                                                                ->getvalue();
+
+                                                                foreach($temp as $temptoken => $tempkey){
+
+                                                                ?>                    
+                                                                    
+                                                                        <tr>
+                                                                            <td><?php echo $tempkey['firstname']?></td>
+                                                                            <td><?php echo $tempkey['lastname'] ?></td>
+                                                                        </tr>     
+                                                                            
+                                                              <?php
+
+
+                                                            }
 
                                                         }
                                                         
@@ -144,6 +171,7 @@
 
                                                     ?>
 
+                                                 </tbody>
                                                  </table>
                                             </div>    
                                         </div>
