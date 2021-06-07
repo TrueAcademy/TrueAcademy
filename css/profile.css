@@ -1,0 +1,253 @@
+.profile
+{
+    margin-left: 75px;
+}
+.main_div2
+{
+    width: 100%;
+    height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.center_div
+{
+    width: 60%;
+    height: 580px;
+    background-color: white;
+    filter: drop-shadow(2px 2px 10px gray);
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+    -webkit-filter: drop-shadow(2px 2px 10px gray);
+}
+.left_div2
+{
+    width: 70%;
+    height:500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-left: 30%;
+    height: 580px;
+    margin-right: 100px;
+}
+.input_divone_one {
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: space-around;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: gray;
+    margin-top: 10px;
+  }
+  .input_divone_one h4
+  {
+    font-size: 18px;
+  }
+  .first
+  {
+    margin-right: 10px; 
+  }
+  .last
+  {
+    margin-left: 10px;
+  }
+  .input_f{
+    width:290px;
+    height:35px;
+    margin-top: 5px;
+    padding-left: 5px;
+    border: 2px solid lightgray;
+    border-radius: 3px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    color: gray;
+    outline:none;
+    margin-right: 10px;
+  }
+  .input_l{
+    width:290px;
+    height:35px;
+    margin-top: 5px;
+    padding-left: 5px;
+    border: 2px solid lightgray;
+    border-radius: 3px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    color: gray;
+    outline: none;
+    margin-left: 10px;
+  }
+  .input_divtwo_two{
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: space-around;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    color: gray
+  }
+  .input_divtwo_two h4
+  {
+    font-size: 18px;
+  }
+  .input_u{
+    width:605px;
+    height:35px;
+    margin-top: 5px;
+    padding-left: 5px;
+    border: 2px solid lightgray;
+    border-radius: 3px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    color: gray;
+    outline:none;
+  }
+  
+  .input_divthree_three{
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: space-around;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    color: gray
+  }
+  .input_divthree_three h4
+  {
+    font-size: 18px;
+  }
+  
+  .input_e{
+    width:605px;
+    height:35px;
+    margin-top: 5px;
+    padding-left: 5px;
+    border: 2px solid lightgray;
+    border-radius: 3px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    color: gray;
+    outline:none;
+    outline:none;
+  }
+  
+  .input_divfour_four{
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: space-around;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    color: gray
+  }
+  .input_divfour_four h4
+  {
+    font-size: 18px;
+  }
+  
+  .input_m{
+    width:605px;
+    height:35px;
+    margin-top: 5px;
+    padding-left: 5px;
+    border: 2px solid lightgray;
+    border-radius: 3px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    color: gray;
+    outline:none;
+      outline:none;
+  }
+  
+  .input_divfive_five{
+    display: flex;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    color: gray;
+    margin-left: 12px;
+    padding-left: 11px;
+  }
+  .input_divfive_five
+  {
+    font-size: 18px;
+  }
+  #male
+  {
+    padding-left: 20px;
+  }
+  #female
+  {
+    padding-left: 20px;
+  }
+  .input_divsix_six{
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: space-around;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    color: gray
+  }
+  .input_divsix_six h4
+  {
+    font-size: 18px;
+  }
+  .input_p{
+    width:605px;
+    height:35px;
+    padding-left: 5px;
+    border: 2px solid lightgray;
+    border-radius: 3px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    color: gray;
+    outline:none;
+    margin-top: 5px;
+  }
+  
+  .btn_update{
+    width: 30vw;
+    height: 8vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 10px;
+  }
+  .btn_p_save
+  {
+    width:100px;
+    height:35px;
+    border-radius: 3px;
+    border:none;
+    background: #2fb39a;
+    font-size:18px;
+    color: white;
+    outline: none;
+    cursor: pointer;
+    margin-right: 10px;
+  }
+  .btn_p_reset
+  {
+    width:100px;
+    height:35px;
+    border-radius: 3px;
+    border:none;
+    background: #2fb39a;
+    font-size:18px;
+    color: white;
+    outline: none;
+    cursor: pointer;
+    margin-left: 10px;
+  }
+  .left_div2 h2
+  {
+    font-size: 30px;
+    color: gray;
+    margin-top: 15px;
+  }

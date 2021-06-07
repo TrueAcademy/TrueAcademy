@@ -105,11 +105,11 @@ nav
     width: 280px;
     height: 300px;
     background-color: white;
-    border-radius: 30px;
-    -webkit-border-radius: 30px;
-    -moz-border-radius: 30px;
-    -ms-border-radius: 30px;
-    -o-border-radius: 30px;
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
     margin: 40px 10px;
     position: relative;
     display: flex;
@@ -125,8 +125,8 @@ nav
     width: 100%;
     height: 100px;
     background: #38d39f;
-    border-top-left-radius: 30px;
-    border-top-right-radius: 30px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
 }
 .h3
 {
@@ -179,7 +179,21 @@ nav
 {
   background: #fff;
   width: 350px;
-  height: 280px;
+  height: 320px;
+  font-family: 'Poppins', sans-serif;
+  border-radius: 10px;
+  position: absolute;
+  margin: auto;
+  top:0;
+  bottom: 0;
+  left:0;
+  right:0;
+}
+.mainformdiv_student
+{
+  background: #fff;
+  width: 350px;
+  height: 220px;
   font-family: 'Poppins', sans-serif;
   border-radius: 10px;
   position: absolute;
@@ -196,7 +210,7 @@ nav
   padding-top: 10px;
   padding-bottom: 10px;
   color: gray;
-  margin-top: 20px;
+  margin-top: 10px;
 }
 .input_divone h4
 {
@@ -227,6 +241,18 @@ nav
 {
   font-size: 18px;
 }
+.input_divtwo_student{
+  display: flex;
+  justify-content: space-around;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  color: gray;
+  margin-top:10px;
+}
+.input_divtwo_student h4
+{
+  font-size: 18px;
+}
 .input_CC{
   width:280px;
   height:35px;
@@ -241,19 +267,39 @@ nav
 }
 
 .btn_Create_class{
-  width: 30vw;
-  height: 8vh;
-  padding-left: 10vw;
+  width: 80px;
+  height: 50px;
+  padding-left: 175px;
 }
-.btn
+.btn_Create_class_student
 {
-  width:155px;
-  height:40px;
+  width: 80px;
+  height: 50px;
+  padding-left: 175px;
+}
+.btn_student
+{
+  width:130px;
+  height:35px;
   border-radius: 3px;
   border:none;
   margin-top: 15px;
   background: #2fb39a;
-  font-size:20px;
+  font-size:18px;
+  color: white;
+  outline: none;
+  cursor: pointer;
+  margin-left: 8px;
+}
+.btn
+{
+  width:130px;
+  height:35px;
+  border-radius: 3px;
+  border:none;
+  margin-top: 15px;
+  background: #2fb39a;
+  font-size:18px;
   color: white;
   outline: none;
   cursor: pointer;
@@ -368,5 +414,11 @@ nav
   -ms-transform: translateY(0px);
   -o-transform: translateY(0px);
 }
-
+.Join
+{
+  text-align: center;
+  margin-top: 10px;
+  color: #38d39f;
+  font-size: 30px;
+}
 
