@@ -38,14 +38,18 @@
 
         }else{
 
+            $endtime = new DateTime($starttime);
+            $endtime->add(new DateInterval("PT".$timeduration."S"));
 
             $data = [
+                "examiner" => $examiner,
                 "examtitle" => $examtitle,
                 "course" => $course,
                 "classcode" => $classcode,
                 "timeduration" => $timeduration,
                 "examdate" => $examdate,
                 "starttime" => $starttime,
+                "endtime" => $endtime->format("H:i"),
                 "examtype" => $examtype,
                 "status" => $status 
             ];
@@ -80,28 +84,32 @@
                 $subcollection = $collection.$token."/classjoined";
                 $classdata1 = $database->getReference($subcollection)->getvalue();
     
-                foreach($classdata1 as $classtoken => $classkey ){
-    
-                    // echo $classkey['classcode']."\n";
-    
-                    if($classkey['classcode'] == $classcode){
+                if($classdata1 != null){
+
+                    foreach($classdata1 as $classtoken => $classkey){
     
                         // echo $classkey['classcode']."\n";
-    
-                        // var_dump($key['email']);
-    
-    
-                        $studentToken = $collection.$token."/assignedExam"; 
-                        $examdata = [
-                            'examtitle' => $examtitle,
-                            'examdate' => $examdate,
-                            'examiner' => $examiner,
-                            'classcode' => $classcode
-                        ];
-                        $database->getReference($studentToken)->push($examdata); 
-    
+        
+                        if($classkey['classcode'] == $classcode){
+        
+                            // echo $classkey['classcode']."\n";
+        
+                            // var_dump($key['email']);
+        
+        
+                            $studentToken = $collection.$token."/assignedExam"; 
+                            $examdata = [
+                                'examtitle' => $examtitle,
+                                'examdate' => $examdate,
+                                'examiner' => $examiner,
+                                'classcode' => $classcode
+                            ];
+                            $database->getReference($studentToken)->push($examdata); 
+        
+                        }
+        
                     }
-    
+
                 }
     
             }
