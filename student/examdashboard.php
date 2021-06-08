@@ -59,8 +59,8 @@
                         <h6 style="color: #ccc; margin-bottom:15px">student</h6>
                     </center>
                     <a href="attendExam.php?classcode=<?php echo $_GET['classcode'] ?>"><i class="fas fa-desktop"></i><span>Attend Exam</span></a>
-                    <a href="#"><i class=""></i><span>View Exam</span></a>
-                    <a href="#"><i class="fas fa-table"></i><span>View Result</span></a>
+                    <a href="viewexam.php?classcode=<?php echo $_GET['classcode']?>"><i class="far fa-eye"></i><span>View Exam</span></a>
+                    <a href="viewresult.php?classcode=<?php echo $_GET['classcode']?>"><i class="fas fa-table"></i><span>View Result</span></a>
                 </div>
         </div>
         <!--sidebar end-->

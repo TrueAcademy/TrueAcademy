@@ -88,7 +88,7 @@
                                                         <td>Start Date</td>
                                                         <td>Start Time</td>
                                                         <td>End Time</td>
-                                                        <td></td>
+                                                        <td>status</td>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -111,8 +111,7 @@
 
                                                         foreach($exam as $examtoken => $examkey){
     
-                                                            if($examkey['status'] == "Not Held" ){
-
+                                                            
                                                                 
                                                                 ?>
                                                                     
@@ -121,20 +120,27 @@
                                                                             <td><?php echo $examkey['examtitle']?></td>
                                                                             <input type="hidden" name="examtitle" value="<?php echo $examkey['examtitle']?>">
                                                                             <input type="hidden" name="classcode" value="<?php echo $examkey['classcode']?>">
+
                                                                             <td><?php echo $examkey['examdate']?></td>
                                                                             <input type="hidden" name="examdate" value="<?php echo $examkey['examdate']?>">
+
                                                                             <td><?php echo $examkey['starttime']?></td>
                                                                             <input type="hidden" name="starttime" value="<?php echo $examkey['starttime']?>">
+
                                                                             <td><?php echo $examkey['endtime']?></td>
                                                                             <input type="hidden" name="endtime" value="<?php echo $examkey['endtime']?>">
-                                                                            <td><button type="submit" name="startexam">Attend</button></td>
+                                                                            
+                                                                            <td><?php echo $examkey['status']?></td>
+
+                                                                        
+
                                                                         </tr>
                                                                     </form>
 
                                                                     <?php
 
                                                                 }
-                                                            }
+                                                            
                                                         }
                                                     
                                                     ?>
@@ -155,68 +161,3 @@
 
 </body>
 </html>
-
-<?php
-
-    date_default_timezone_set("Asia/Calcutta");
-
-    if(isset($_POST['startexam'])){
-
-        $examtitle = $_POST['examtitle'];
-        $classcode = $_POST['classcode'];
-
-        $examdate = new DateTime($_POST['examdate']);
-        $starttimeObj = new DateTime($_POST['starttime'],new DateTimeZone("Asia/Calcutta"));
-        $endtime = new DateTime($_POST['endtime']);
-
-        
-        $currentdate = new DateTime(date("Y-m-d"),new DateTimeZone('Asia/Calcutta'));
-        
-        $currenttime = new DateTime(date("H:i"));
-        // // echo "</br> Current Time = ". $currenttime->format("H:i");
-        
-        // echo "</br> Current time : ". $currenttime->format("H:i");
-        // echo "</br> Start time : ". $starttimeObj->format("H:i");
-        // echo "</br> End time : ". $endtime->format("H:i");    
-    
-        
-        if( $examdate->diff($currentdate)->format("%d") == 0 ){
-
-            
-            if($currenttime >= $starttimeObj){
-
-                if($currenttime <= $endtime){
-                    
-                    ?>
-
-                        <meta http-equiv = "refresh" content = "1; url = giveExam.php?classcode=<?php echo $classcode?>&examtitle=<?php echo $examtitle?>" />
-
-                    <?php
-                }
-                else{
-                    echo "<script type='text/javascript'>alert('Your Exam is Ended Already!')</script>";
-                }
-
-
-            }
-            else{
-                echo "<script type='text/javascript'>alert('Your Exam is due!')</script>";
-            }
-            
-
-            
-        }
-        else if($examdate->diff($currentdate)->format("%d") < 0){
-
-            echo "<script type='text/javascript'>alert('Your Exam is Ended Already!')</script>";            
-
-        }
-        else if($examdate->diff($currentdate)->format("%d") > 0){
-            echo "<script type='text/javascript'>alert('Your Exam is Due!')</script>";
-        }
-
-
-    }
-
-
-?>
