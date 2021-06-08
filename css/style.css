@@ -258,7 +258,7 @@ body{
 
 .for_teacher
 {
-  width: 100vw;
+  width: 90%;
   height: 500px;
   display: flex;
   justify-content: center;
@@ -266,12 +266,14 @@ body{
   top: 0;
   bottom: 0;
   text-align: center;
+  background-color: #c9e2fa65;
+  margin-left: 5%;
+  margin-bottom: 30px;
 }
 .for_teacher2
 {
   width: 500px;
   height: 320px;
-  background-color: green;
   display: flex;
   margin-right: 40px;
 }
@@ -285,6 +287,10 @@ body{
   width: 600px;
   height: 320px;
   display: inline-block;
+  font-size: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .details_teacher h3
 {
@@ -294,6 +300,10 @@ body{
   margin-bottom: 30px;
   /*abc xyz*/
 }
+.teacher_p
+{
+  padding: 0px 35px;
+}
 
 
 
@@ -301,7 +311,7 @@ body{
 
 .for_student
 {
-  width: 100vw;
+  width: 90%;
   height: 500px;
   display: flex;
   justify-content: center;
@@ -309,14 +319,15 @@ body{
   top: 0;
   bottom: 0;
   text-align: center;
+  background-color: #c9e2fa65;
+  margin-left: 5%;
 }
 .for_student2
 {
   width: 500px;
   height: 320px;
-  background-color: green;
   display: flex;
-  margin-right: 40px;
+  margin-left: 40px;
 }
 .for_student2 img
 {
@@ -328,6 +339,10 @@ body{
   width: 600px;
   height: 320px;
   display: inline-block;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 .details_student h3
 {
@@ -335,6 +350,10 @@ body{
   text-align: center;
   font-size: 30px;
   margin-bottom: 30px;
+}
+.student_p
+{
+  padding: 0px 30px;
 }
 
 
@@ -448,11 +467,17 @@ ul{
 
 .main_card
 {
+  width: 90%;
   height: 600px;
   display: flex;
   align-items: center;
   text-align: center;
   justify-content: space-around;
+  background-color: #c9e2fa65;
+  margin-left: 5%;
+  margin-top: 30px;
+  margin-bottom: 30px;
+
   
 }
 
@@ -465,7 +490,6 @@ ul{
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  box-shadow: 0 3rem 6rem rgba(0, 0, 0, 0.1);
   cursor: pointer;
   transition: 0.2s;
   background-color: #fff;
@@ -473,23 +497,54 @@ ul{
 }
 .card_1:hover{
   transform: translateY(-0.5%);
-  box-shadow: 0 4rem 8rem rgba(0, 0, 0, 0.5);
+  filter: drop-shadow(4px 4px 20px gray);
+  -webkit-filter: drop-shadow(4px 4px 20px gray);
 }
 .card_1 h4
 {
   color: black;
-  font-size: 18px;
+  font-size: 23px;
   font-weight: 500px;
+  margin-top: 20px;
 }
 .card_1 p
 {
   color: gray;
-  font-size: 8px;
+  font-size: 14px;
   margin-top: 10px;
-  bottom: 10px;
   padding: 10px;
-  margin-bottom: 110px;
+  margin-top: 30px;
 }
+.card_img1
+{
+  height: 50px;
+}
+.card_img2
+{
+  height: 50px;
+}
+.card_img3
+{
+  height: 50px;
+}
+.card_1_1
+{
+  width: auto;
+  height: 350px;
+}
+.card_2_2
+{
+  width: auto;
+  height: 350px;
+}
+
+.card_3_3
+{
+  width: auto;
+  height: 350px;
+}
+
+
 .card_2
 {
   height: 430px;
@@ -498,16 +553,14 @@ ul{
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow:0px 4px 3px gray;
   overflow: hidden;
-  box-shadow: 0 3rem 6rem rgba(0, 0, 0, 0.1);
   cursor: pointer;
   transition: 0.2s;
   background-color: #fff;
 }
 .card_2:hover{
   transform: translateY(-0.5%);
-  box-shadow: 0 4rem 8rem rgba(0, 0, 0, 0.5);
+  filter: drop-shadow(4px 4px 20px gray);
 }
 
 .card_img2
@@ -517,16 +570,18 @@ ul{
 .card_2 h4
 {
   color: black;
-  font-size: 18px;
+  font-size: 23px;
   font-weight: 500px;
+  margin-top: 20px;
 }
 .card_2 p
 {
   color: gray;
-  font-size: 6px;
+  font-size: 14px;
   margin-top: 10px;
   bottom: 10px;
   padding: 10px;
+  margin-top: 30px;
 }
 .card_3
 {
@@ -536,9 +591,7 @@ ul{
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow:0px 4px 3px gray;
   overflow: hidden;
-  box-shadow: 0 3rem 6rem rgba(0, 0, 0, 0.1);
   cursor: pointer;
   transition: 0.2s;
   background-color: #fff;
@@ -546,22 +599,24 @@ ul{
 }
 .card_3:hover{
   transform: translateY(-0.5%);
-  box-shadow: 0 4rem 8rem rgba(0, 0, 0, 0.5);
+  filter: drop-shadow(4px 4px 20px gray);
 }
 .card_3 h4
 {
   color: black;
-  font-size: 18px;
+  font-size: 23px;
   font-weight: 500px;
+  margin-top: 20px;
 }
 .card_3 p
 {
   color: gray;
-  font-size: 6px;
+  font-size: 14px;
   margin-top: 10px;
   bottom: 10px;
   padding:10px;
   margin-bottom: 80px;
+  margin-top: 30px;
 }
 
 
@@ -822,6 +877,103 @@ ul{
     margin-bottom: 10px;
     margin-left: 10px;
   }
+
+
+.for_teacher
+{
+  width: 95%;
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: #c9e2fa65;
+  flex-direction: column;
+  margin-left: 2.5%;
+}
+.for_teacher2
+{
+  width: 300px;
+  height: 220px;
+  display: flex;
+  margin-left: 40px;
+}
+.for_teacher2 img
+{
+  width:300px;
+  height: 200px;
+}
+.details_teacher
+{
+  width: 330px;
+  height: 180px;
+  display: inline-block;
+  font-size: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.details_teacher h3
+{
+  align-items: center;
+  text-align: center;
+  font-size: 20px;
+  margin-top: 20px;
+}
+.teacher_p
+{
+  padding: 0px 10px;
+}
+
+
+
+
+
+.for_student
+{
+  width: 95%;
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: #c9e2fa65;
+  margin-left: 2.5%;
+}
+.for_student2
+{
+  width: 500px;
+  height: 320px;
+  display: flex;
+}
+.for_student2 img
+{
+  width: 500px;
+  height: 320px;
+}
+.details_student
+{
+  width: 600px;
+  height: 320px;
+  display: inline-block;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.details_student h3
+{
+  align-items: center;
+  text-align: center;
+  font-size: 30px;
+  margin-bottom: 30px;
+}
+.student_p
+{
+  padding: 0px 10px;
+}
+
+
 }
 
 

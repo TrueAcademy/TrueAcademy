@@ -1,4 +1,25 @@
+<<<<<<< HEAD:dashboard_student.html
 <!DOCTYPE html>
+=======
+<?php
+
+    session_start();
+
+    if( $_SESSION['email'] == null ){
+
+        echo "<script type='text/javascript'>alert('Cant open user is not authorized!')</script>";
+        header("Location:index.html"); 
+
+    }else{
+        // echo "Session is running !! ";
+        // echo "Email : ". $_SESSION['email'];
+    }
+?>
+
+
+
+<!DOCTYPE html> 
+>>>>>>> cae4f89ec23ce7894deceb3d59e53080cddd67ca:dashboard_teacher.php
 <html lang="en">
 
 <head>
@@ -26,95 +47,103 @@
                 <a href="#" class="profile"><i class="fas fa-user"></i></a>
                 <div class="profile_li">
                     <a href="#" class="PROFILE">Profile</a>
-                    <a href="#" class="LOGOUT">Logout</a>
+                    <a href="logout.php" class="LOGOUT">Logout</a>  
                 </div>
+
             </div>
         </nav>
 
-        <div class="sub_card">
-            <div class="center_div">
-                <div class="card">
-                    <div class="top_div top_div_1">
-                        <h3 class="h3">Rushikesh</h3>
-                        <img src="images/card_acc.jpg" alt="">
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="top_div top_div_2">
-                        <h3 class="h3">Rushikesh</h3>
-                        <img src="images/card_acc.jpg" alt="">
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="top_div top_div_3">
-                        <h3 class="h3">Rushikesh</h3>
-                        <img src="images/card_acc.jpg" alt="">
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="top_div top_div_4">
-                        <h3 class="h3">Rushikesh</h3>
-                        <img src="images/card_acc.jpg" alt="">
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="top_div top_div_5">
-                        <h3 class="h3">Rushikesh</h3>
-                        <img src="images/card_acc.jpg" alt="">
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="top_div top_div_6">
-                        <h3 class="h3">Rushikesh</h3>
-                        <img src="images/card_acc.jpg" alt="">
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="top_div top_div_7">
-                        <h3 class="h3">Rushikesh</h3>
-                        <img src="images/card_acc.jpg" alt="">
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="top_div top_div_8">
-                        <h3 class="h3">Rushikesh</h3>
-                        <img src="images/card_acc.jpg" alt="">
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="top_div top_div_9">
-                        <h3 class="h3">Rushikesh</h3>
-                        <img src="images/card_acc.jpg" alt="">
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="top_div top_div_10">
-                        <h3 class="h3">Rushikesh</h3>
-                        <img src="images/card_acc.jpg" alt="">
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="top_div top_div_11">
-                        <h3 class="h3">Rushikesh</h3>
-                        <img src="images/card_acc.jpg" alt="">
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="top_div top_div_12">
-                        <h3 class="h3">Rushikesh</h3>
-                        <img src="images/card_acc.jpg" alt="">
-                    </div>
-                </div>
+        <!-- <label for="loginer">Demo</label> -->
 
 
+        <?php
+        
+            include("includes/dbconfig.php");
 
-            </div>
-        </div>
+            $teachercollection = "teacherTable/";
+            $teacherRef = $database->getReference($teachercollection)
+            ->orderByChild('email')  
+            ->equalTo($_SESSION['email'])
+            ->getValue();
+
+            foreach($teacherRef as $token => $key ){
+
+
+                 if($key['email'] == $_SESSION['email']){
+
+                    $teacherToken = $teachercollection.$token."/classcreated";
+                    $createdclass = $database->getReference($teacherToken)->getvalue();
+
+                    $classcollection = "classes/";
+                   
+                    ?>
+                    
+                    <div class="sub_card" id="sub_card">
+                                <div class="center_div">
+                    
+                    <?php
+
+                    if($createdclass == null ){
+
+                        echo "No class created Yet!";
+
+                    }
+                    else{
+
+                    
+
+                        foreach($createdclass as $row => $key ){
+
+
+                            $classdata = $database->getReference($classcollection)
+                            ->orderByChild('classcode')
+                            ->equalTo($key['classcode'])
+                            ->getvalue();
+
+                            // var_dump($classdata);
+
+                            foreach($classdata as $row1 => $classkey){
+
+
+                                // echo $classkey['classname'];
+
+                                // echo "\n\n";
+
+                                ?>
+
+
+                            
+                                        <div class="card" id="card" onclick="window.location.href='teacher/coursepage_teacher.php?classcode=<?php echo $classkey['classcode'] ?> '" >
+                                            <div class="top_div top_div_1">
+                                                <h3 class="h3"><?php echo $classkey['classname'] ?></h3>
+                                                <img src="images/card_acc.jpg" alt="">
+                                            </div>
+                                        </div>
+                                
+
+
+                                <?php
+
+                            }
+
+
+                        }
+
+                    }
+
+                }   
+
+
+            }
+        
+        ?>
+
+                        </div>
+                    </div>
+
+
+        
+       
     </div>
 
     </div>
@@ -125,25 +154,48 @@
 
 
     <div class="create_class_form" id="myForm">
+<<<<<<< HEAD:dashboard_student.html
         <form action="" class="mainformdiv_student">
+=======
+        <form action="createclass.php" class="mainformdiv" method="POST">
+>>>>>>> cae4f89ec23ce7894deceb3d59e53080cddd67ca:dashboard_teacher.php
 
             <div class="close_button">
                 <a href="#" onclick="closeForm()" id="close_btn"><i id="close" class="far fa-times-circle"></i></a>
             </div>
 
+<<<<<<< HEAD:dashboard_student.html
+=======
+            <div class="input_divone">
+                <div>
+                    <h4>Class Name</h4>
+                    <input class="input_CN" type="text" name="classname">
+                </div>
+            </div>
+
+>>>>>>> cae4f89ec23ce7894deceb3d59e53080cddd67ca:dashboard_teacher.php
 
             <h2 class="Join">Join Class</h2>
 
             <div class="input_divtwo_student">
                 <div>
                     <h4>Class Code</h4>
+<<<<<<< HEAD:dashboard_student.html
                     <input class="input_CC" type="text" name="Class_Code" placeholder="Enter Class Code">
+=======
+                    <input class="input_CC" type="text" name="classcode">
+>>>>>>> cae4f89ec23ce7894deceb3d59e53080cddd67ca:dashboard_teacher.php
                 </div>
             </div>
 
 
+<<<<<<< HEAD:dashboard_student.html
             <div class="btn_Create_class_student">
                 <input type="Submit" class="btn_student" value="Join Class" name="done">
+=======
+            <div class="btn_Create_class">
+                <input type="Submit" class="btn" value="createclass" name="createclass">
+>>>>>>> cae4f89ec23ce7894deceb3d59e53080cddd67ca:dashboard_teacher.php
             </div>
         </form>
 
@@ -154,6 +206,12 @@
 
             function closeForm() {
                 document.getElementById("myForm").style.display = "none";
+            }
+
+            document.getElementById('card,').addEventListener("click", openNextPage);
+
+            function openNextPage() {
+                window.location = 'coursepage_teacher.php';
             }
         </script>
 </body>
