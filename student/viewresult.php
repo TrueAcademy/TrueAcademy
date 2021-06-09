@@ -133,7 +133,7 @@
 
                                                                             ?>
                                                                                 
-                                                                                <form action="attendExam.php?classcode=<?php echo $_GET['classcode']?>" method="POST">
+                                                                                <form action="" method="POST">
                                                                                     <tr>
                                                                                         <td><?php echo $examkey['examtitle']?></td>
                                                                                         <input type="hidden" name="examtitle" value="<?php echo $examkey['examtitle']?>">

@@ -102,7 +102,8 @@
                                 'examtitle' => $examtitle,
                                 'examdate' => $examdate,
                                 'examiner' => $examiner,
-                                'classcode' => $classcode
+                                'classcode' => $classcode,
+                                'attandance' => "No attended"
                             ];
                             $database->getReference($studentToken)->push($examdata); 
         

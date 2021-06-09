@@ -200,7 +200,7 @@
 
             }
             else{
-                echo "<script type='text/javascript'>alert('Your Exam is due!')</script>";
+                echo "<script type='text/javascript'>alert('Your Exam time is due!')</script>";
             }
             
 
