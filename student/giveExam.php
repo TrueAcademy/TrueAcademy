@@ -12,10 +12,12 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/exam_question.css" />
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="../css/exam_question.css">
     <link rel="stylesheet" href="../css/navstyle.css">
+    <link rel="stylesheet" href="../css/TimeCircles.css">
     <script src="https://kit.fontawesome.com/a81368914c.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title>exam</title>
 </head>
 
@@ -40,13 +42,17 @@ session_start();
 
     <div class="main_container">
         
-            <div class="main_left_div">
+        <div class="center_div">
+
+            <div class="main_left_div" style="margin-bottom:-500px;">
                 <?php
 
                     
 
                     $examtitle = $_GET['examtitle'];
                     $classcode = $_GET['classcode'];
+
+                    // echo "exam title = ". $examtitle;
 
                     $examdata = $database->getReference("Exam/")
                     ->orderByChild("classcode")
@@ -84,11 +90,12 @@ session_start();
                             foreach($examassign as $examassigntoken => $examassignkey){
 
                                 if(strcmp($examassignkey['examtitle'],$examtitle) == 0){
+                                    
                                     $update = [
                                         'attendance' => "attended"
                                     ];
                                     try{
-                                        $database->getReference("studentTable/".$studenttoken."/assignedExam".$examassigntoken)->update($update);
+                                        $database->getReference("studentTable/".$studenttoken."/assignedExam/".$examassigntoken)->update($update);
                                     }
                                     catch(Exception $e){
 
@@ -103,72 +110,122 @@ session_start();
                     }
                 
                 ?>
-                <div class="top">
-                    <div class="ques">
-                        <h4>This is question no 1?This is question no 1?This is question no 1?This is question no 1?This
-                            is question no 1?This is question no 1?This is question no 1?This is question no 1?This is
-                            question no 1?This is question no 1?</h4>
-                    </div>
+                <div class = "topdiv" id="single_question_area">
+                        
+               
                 </div>
 
-
-                <div class="center">
-                    <div class="question_left">
-                        <li><input type="radio">A].Option A</li>
-                        <li><input type="radio">C].Option C</li>
-                    </div>
-                    <div class="question_right">
-                        <li><input type="radio">B].Option B</li>
-                        <li><input type="radio">D].Option D</li>
-                    </div>
-                </div>
-
-                <div class="center2">
-                    <a href="#" class="previous">Previous</a>
-                    <a href="#" class="next">Next</a>
-                </div>
-
-                <div class="bottom">
-                    <span>1</span>
-                    <span>2</span>
-                    <span>3</span>
-                    <span>4</span>
-                    <span>5</span>
-                    <span>6</span>
-                    <span>7</span>
-                    <span>8</span>
-                    <span>9</span>
-                    <span>10</span>
+                <div class="bottom" id="question_navigation_area">
+                    
                 </div>
             </div>
 
 
-            <div class="main_right_div">
+            <div class="main_right_div" >
                 <div class="time_bar">
                     <video autoplay="true" id="videoElement" >
-	
                     </video>
+                    <h4 style="text-align:center;"> Yash Sahane </h4>
+                    
                 </div>
                 <div class="question_bar">
-                    <figure class="clock">
-                        <div class="mins">0</div>
-                        <div>:</div>
-                        <div class="secs">00</div>
-                        <audio src="http://soundbible.com/mp3/service-bell_daniel_simion.mp3"></audio>
-                        <svg class="progress-ring" height="120" width="120">
-                            <circle class="progress-ring__circle" stroke-width="8" fill="transparent" r="50" cx="60"
-                                cy="60" />
-                        </svg>
-                    </figure>
+                    <div id="exam_timer" data-timer="<?php echo $remaingingtime; ?>" ></div>
+                    
+                    <h4 style="margin-top:85px; text-align:center;"> Remaining Time </h4>
                 </div>
             </div>
+
+        </div>
         
 
     </div>
 
-    <script src="../js/settings.js"></script>
-    <script src="../js/timer.js"></script>
-    <script src="../js/progress.js"></script>
+
+    <script>
+
+       
+        $(document).ready(function(){
+
+           
+
+            var examtitle = "<?php echo $examtitle ?>";
+            var classcode = "<?php echo $classcode?>";    
+
+	        load_question();
+            question_navigation();
+	
+
+
+	        function load_question(question_id = '')
+	        {
+                $.ajax({
+                    url:"user_ajax_action.php",
+                    method:"POST",
+                    data:{examtitle:examtitle, classcode:classcode, question_id:question_id, page:'giveExam', action:'load_question'},
+                    success:function(data)
+                    {
+                        $('#single_question_area').html(data);
+                    }
+                })
+            }
+
+            $(document).on('click', '.next', function(){
+                console.log("in fun");
+                var question_id = $(this).attr('id');
+                load_question(question_id);
+            });
+
+            $(document).on('click', '.previous', function(){
+                var question_id = $(this).attr('id');
+                load_question(question_id);
+            });
+
+
+            function question_navigation()
+            {
+                $.ajax({
+                    url:"user_ajax_action.php",
+                    method:"POST",
+                    data:{examtitle:examtitle,classcode:classcode, page:'giveExam', action:'question_navigation'},
+                    success:function(data)
+                    {
+                        $('#question_navigation_area').html(data);
+                    }
+                })
+            }
+
+            $(document).on('click', '.question_navigation', function(){
+                console.log("in fun");
+                var question_id = $(this).data('question_id');
+                load_question(question_id);
+            });
+
+            $("#exam_timer").TimeCircles({ 
+                time:{
+                    Days:{
+                        show: false
+                    },
+                    Hours:{
+                        show: false
+                    }
+                }
+            });
+
+            setInterval(function(){
+                var remaining_second = $("#exam_timer").TimeCircles().getTime();
+                if(remaining_second < 1)
+                {
+                    alert('Exam time over');
+                    location.href("attendExam.php?<?php echo $classcode?>");
+                }
+            }, 1000);
+
+
+        });
+
+    </script>
+
+    <script src="../js/TimeCircles.js"></script>
     <script src="../js/camera.js"></script>
 
 </body>

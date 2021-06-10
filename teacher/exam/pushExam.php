@@ -49,6 +49,7 @@
                 "timeduration" => $timeduration,
                 "examdate" => $examdate,
                 "starttime" => $starttime,
+                "questionno" => $questionno,
                 "endtime" => $endtime->format("H:i"),
                 "examtype" => $examtype,
                 "status" => $status 

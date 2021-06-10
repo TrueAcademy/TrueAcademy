@@ -18,7 +18,7 @@
             //    echo "file upload done!";
             $quesfile = fopen($file,'r');
             
-            $i=0;
+            $i=1;
 
             while(($getData = fgetcsv($quesfile, 10000, ",")) !== FALSE){
 

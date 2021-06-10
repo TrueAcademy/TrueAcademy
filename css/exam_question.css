@@ -12,40 +12,44 @@
     list-style-type: none;
     text-decoration: none;
     font-family: 'Poppins', sans-serif;
+    /* cursor: pointer; */
 }
 
 .main_container
 {
-    width: 100%;
-    height: 621px;
+    width: 100vw;
+    height: 100vh;
     background-color: #f1f5f9;
     /* border: 1px solid black; */
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
+
+
 .center_div
 {
     width: 90%;
     height: 90%;
-    background-color: white;
+    background-color: #f1f5f9;
     display: flex;
 }
 .main_left_div
 {
     width: 70%;
-    height: 700px;
-    margin-top: 100px;
-    margin-bottom: -200px;
-    margin-left: 20px;
-    background-color: red;
+    height: 100%;
+    margin-top: 30px;
+    /* margin-bottom: -200px; */
+    /* margin-left: 20px; */
+    /* background-color: red; */
     /* background-color: white; */
 }
 .top
 {   
     width: 100%;
     height: 20%;
-    /* margin-top: 30dp; */
+    /* margin-top: 20px; */
     justify-content: center;
     /* border: 1px solid black; */
     /* margin-bottom: 10px; */
@@ -56,14 +60,15 @@
     /* margin-top: 50px; */
     margin-left: 20px;
     margin-right: 20px;
-    padding-top: 40px;
-    padding-bottom: 20dp;
+    /* padding-top: 40px; */
+    /* padding-bottom: 20dp; */
 }
 
-.top h3
+.ques h4
 {
     padding-left: 25px;
     padding-top: 25px;
+    padding-bottom: 25px;
 }
 .center
 {
@@ -73,7 +78,8 @@
     /* border-left: 1px solid black;
     border-right: 1px solid black; */
     background-color: white;
-    margin-top: 20px;
+    margin-top: 10px;
+    padding-bottom: 30px;
 
 }
 .question_left
@@ -116,6 +122,7 @@
     height: 15%;
     display: flex;
     align-items: center;
+    /* padding-top: 40px; */
     /* border-left: 1px solid black;
     border-right: 1px solid black;
     border-bottom: 1px solid black; */
@@ -147,7 +154,7 @@
     align-items: center;
     justify-content: space-around;
     width: 100%;
-    margin-top: 20px;
+    margin-top: 10px;
     /* border-left: 1px solid black;
     border-right: 1px solid black;
     border-bottom: 1px solid black; */
@@ -167,11 +174,11 @@
 }
 .main_right_div
 {
-    width: 30%;
+    width: 29%;
     height: 90%;
     display: flex;
     flex-direction: column;
-    /* margin-top: 5px; */
+    /* margin-top: 20px; */
     /* margin-bottom: 25px; */
     justify-content: space-around;
     align-items: center;
@@ -179,24 +186,24 @@
 .time_bar
 {
     width: 85%;
-    height: 40%;
+    height: 45%;
     background-color: white;
 }
 #videoElement {
-    width: 100%;
-    height: 100%;
-    /* margin-top : 15px;
-    margin-left: 25px; */
+    width: 80%;
+    height: 80%;
+    margin-left: 10%;
+    margin-top: 3%;
 }
 .question_bar
 {
     width: 85%;
-    height: 40%;
+    height: 45%;
+    padding: 50px 0px 50px 0px ;
     background-color: white;
-    display: flex;
+    /* display: flex; */
     justify-content: center;
     align-items: center;
-
 }
 .clock 
 {
