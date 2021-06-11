@@ -333,6 +333,8 @@
 
 												for($question_id=1; $question_id<=10; $question_id++){
 
+
+
 													// echo $answersheet[$question_id]
 													if($answersheet[$question_id] == ''){
 
@@ -345,7 +347,8 @@
 
 														}
 
-													}elseif( strcmp( $answersheet[$question_id], $answer[$question_id]['answer'] ) == 0  ){
+													}elseif( strcmp( $answersheet[$question_id], $answerkey[$question_id]['answer'] ) == 0  ){
+
 														$totalcorrect = $totalcorrect + 1;
 													}
 
@@ -355,6 +358,8 @@
 													'marks' => $totalcorrect,
 													'totalcorrect' => $totalcorrect
 												];
+
+												var_dump($update);
 
 												try{
 													$database->getReference("studentTable/".$studentToken."/assignedExam/".$examtoken."/results")->update($update);
