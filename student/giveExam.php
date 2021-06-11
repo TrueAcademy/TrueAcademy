@@ -70,7 +70,13 @@ session_start();
                             $starttime = $examkey['starttime'];
                             $timeduration = $examkey['timeduration'];
                             $endtime = $examkey['endtime'];
+                            $questionno = $examkey['questionno'];
                             $remaingingtime = strtotime($endtime) - time();
+
+                            $update = [
+                                "status" => "Helded"
+                            ];
+                            $database->getReference("Exam/".$examtoken)->update($update);
 
                         }
 
@@ -90,12 +96,23 @@ session_start();
                             foreach($examassign as $examassigntoken => $examassignkey){
 
                                 if(strcmp($examassignkey['examtitle'],$examtitle) == 0){
+
+                                    for($i = 1; $i<=10; $i++){
+                                        $answersheet[$i] = "";
+                                    }
                                     
                                     $update = [
-                                        'attendance' => "attended"
+                                        'attandance' => "attended"
                                     ];
+                                    $update1 = [
+                                        'answersheet' => $answersheet,
+                                        'marks' => 0,
+                                        'totalcorrect' => 0
+                                    ];
+
                                     try{
                                         $database->getReference("studentTable/".$studenttoken."/assignedExam/".$examassigntoken)->update($update);
+                                        $database->getReference("studentTable/".$studenttoken."/assignedExam/".$examassigntoken."/results")->update($update1);
                                     }
                                     catch(Exception $e){
 
@@ -118,7 +135,15 @@ session_start();
                 <div class="bottom" id="question_navigation_area">
                     
                 </div>
+                   
+
+                <div style="margin-top: 25%;">
+                    <button style="padding: 8px 20px; font-size: 20px;color: #fff; background-color: #007bff; border-color: #007bff; border: 1px solid transparent; border-radius: 5px;" type="button" name="submitexam" class="submitexam" id="submitexam">submit</button>
+                </div> 
+
             </div>
+
+           
 
 
             <div class="main_right_div" >
@@ -129,12 +154,15 @@ session_start();
                     
                 </div>
                 <div class="question_bar">
-                    <div id="exam_timer" data-timer="<?php echo $remaingingtime; ?>" ></div>
+                    <!-- <div id="exam_timer" data-timer="<?php echo $remaingingtime; ?>" ></div> -->
                     
                     <h4 style="margin-top:85px; text-align:center;"> Remaining Time </h4>
                 </div>
             </div>
 
+        </div>
+
+        <div id="testing_area">
         </div>
         
 
@@ -170,7 +198,6 @@ session_start();
             }
 
             $(document).on('click', '.next', function(){
-                console.log("in fun");
                 var question_id = $(this).attr('id');
                 load_question(question_id);
             });
@@ -195,7 +222,6 @@ session_start();
             }
 
             $(document).on('click', '.question_navigation', function(){
-                console.log("in fun");
                 var question_id = $(this).data('question_id');
                 load_question(question_id);
             });
@@ -216,9 +242,47 @@ session_start();
                 if(remaining_second < 1)
                 {
                     alert('Exam time over');
-                    location.href("attendExam.php?<?php echo $classcode?>");
+                    $(document).on('click','.submitexam', function(){
+                        $.ajax({
+                            url:"user_ajax_action.php",
+                            method:"POST",
+                            data:{examtitle:examtitle, classcode:classcode, page:"giveExam", action:"submitexam"},
+                            success:function(data){
+                                $('#testing_area').html(data);
+                            }
+                        })
+                    });
                 }
             }, 1000);
+
+
+            $(document).on('click','.answer_option', function(){
+                console.log("in fun");
+                var question_id = $(this).data('question_id');
+		        var answer_option = $(this).data('ans_id');
+		        $.ajax({
+			        url:"user_ajax_action.php",
+                    method:"POST",
+                    data:{examtitle:examtitle, classcode:classcode, question_id:question_id, answer_option:answer_option, page:'giveExam', action:'answer'},
+                    success:function(data)
+                    {
+                        // $('#testing_area').html(data);
+			        }
+		        })
+            });
+
+            $(document).on('click','.submitexam', function(){
+                $.ajax({
+                    url:"user_ajax_action.php",
+                    method:"POST",
+                    data:{examtitle:examtitle, classcode:classcode, page:"giveExam", action:"submitexam"},
+                    success:function(data){
+                        $('#testing_area').html(data);
+                    }
+                })
+            });
+
+
 
 
         });

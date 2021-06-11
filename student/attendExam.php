@@ -111,7 +111,7 @@
 
                                                         foreach($exam as $examtoken => $examkey){
     
-                                                            if($examkey['status'] == "Not Held" ){
+                                                            
 
                                                                 
                                                                 ?>
@@ -134,7 +134,8 @@
                                                                     <?php
 
                                                                 }
-                                                            }
+                                                            
+
                                                         }
                                                     
                                                     ?>

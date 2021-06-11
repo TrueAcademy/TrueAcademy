@@ -127,7 +127,7 @@
     border-right: 1px solid black;
     border-bottom: 1px solid black; */
     background-color: white;
-    /* margin-bottom: 20px; */
+    margin-bottom: 20px;
 
 }
 .center2 .next
@@ -135,18 +135,18 @@
     text-decoration: none;
     padding: 8px 20px;
     font-size: 20px;
-    margin-left: 320px;
+    margin-left: 20px;
     color: white;
-    background-color: blueviolet;
+    /* background-color: blueviolet; */
 }
 .center2 .previous
 {
     text-decoration: none;
     padding: 8px 20px;
     font-size: 20px;
-    margin-left: 120px;
+    margin-left: 300px;
     color: white;
-    background-color: blueviolet;
+    /* background-color: blueviolet; */
 }
 .bottom
 {
@@ -155,13 +155,14 @@
     justify-content: space-around;
     width: 100%;
     margin-top: 10px;
+    
     /* border-left: 1px solid black;
     border-right: 1px solid black;
     border-bottom: 1px solid black; */
     background-color: white;
     margin-bottom: -200px;
 }
-.bottom span
+.bottom button
 {
     width: 30px;
     height: 30px;
@@ -171,7 +172,9 @@
     margin-bottom: 30px;
     color: black;
     border:1px solid black;
+    padding: 20px 0px;
 }
+
 .main_right_div
 {
     width: 29%;
