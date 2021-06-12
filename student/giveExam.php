@@ -154,7 +154,7 @@ session_start();
                     
                 </div>
                 <div class="question_bar">
-                    <!-- <div id="exam_timer" data-timer="<?php echo $remaingingtime; ?>" ></div> -->
+                    <div id="exam_timer" data-timer="<?php echo $remaingingtime; ?>" ></div>
                     
                     <h4 style="margin-top:85px; text-align:center;"> Remaining Time </h4>
                 </div>
@@ -248,7 +248,8 @@ session_start();
                             method:"POST",
                             data:{examtitle:examtitle, classcode:classcode, page:"giveExam", action:"submitexam"},
                             success:function(data){
-                                $('#testing_area').html(data);
+                                // $('#testing_area').html(data);
+                                window.location.href="attendExam.php?classcode="+$classcode;
                             }
                         })
                     });
@@ -277,7 +278,8 @@ session_start();
                     method:"POST",
                     data:{examtitle:examtitle, classcode:classcode, page:"giveExam", action:"submitexam"},
                     success:function(data){
-                        $('#testing_area').html(data);
+                        // $('#testing_area').html(data);
+                        window.location.href="attendExam.php?classcode="+$classcode;
                     }
                 })
             });
