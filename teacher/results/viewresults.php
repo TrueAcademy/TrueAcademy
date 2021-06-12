@@ -22,17 +22,18 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
-    <link rel="stylesheet" href="../css/stylespage.css">
-    <link rel="stylesheet" href="../css/navstyle.css">
-    <link rel="stylesheet" href="../css/sidebar.css">
+    <link rel="stylesheet" href="../../css/stylespage.css">
+    <link rel="stylesheet" href="../../css/navstyle.css">
+    <link rel="stylesheet" href="../../css/sidebar.css">
     <!-- <link rel="stylesheet" href="../css/page2.css">     -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>    
 <body>
 
     <nav class="navbar">
         <div class="left_div">
                 <a href="#" class="hamberg"><i class="fas fa-bars"></i></a>
-                <a href="#" class="logo_url"><img src="../images/logo.png" alt="logo" class="logo"></a>
+                <a href="#" class="logo_url"><img src="../../images/logo.png" alt="logo" class="logo"></a>
                 <h1 class="h1">True Academy</h1>
         </div>
         <div class="right_div">
@@ -60,7 +61,7 @@
                     </center>
                     <a href="exam/createExam.php?classcode=<?php echo $_GET['classcode']?>"><i class="fas fa-desktop"></i><span>Create Exam</span></a>
                     <a href="#"><i class="fas fa-cogs"></i><span>Manage Exam</span></a>
-                    <a href="results/viewresults.php?classcode=<?php echo $_GET['classcode']?>"><i class="fas fa-table"></i><span>View Result</span></a>
+                    <a href="#"><i class="fas fa-table"></i><span>View Result</span></a>
                     <a href="#"><i class="fas fa-th"></i><span>Delete Exam</span></a>
                 </div>
         </div>
@@ -71,7 +72,7 @@
             <div class="cards">
                 <?php 
                 
-                    include('../includes/dbconfig.php');
+                    include('../../includes/dbconfig.php');
                     $collection = "classes/";
                     $classdata = $database->getReference($collection)
                     ->orderByChild('classcode')
@@ -109,7 +110,7 @@
                             <div class="projects">
                                 <div class="card">
                                     <div class="card-header">
-                                        <h3>Upcoming Exams</h3>
+                                        <h3>Results are available for following</h3>
                                     </div>
                                     <div class="card-body">
                                         <div class="table-responsive">
@@ -119,6 +120,8 @@
                                                         <td>Exam Title</td>
                                                         <td>Start Date</td>
                                                         <td>Time</td>
+                                                        <td></td>
+                                                        <td></td>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -131,15 +134,18 @@
 
                                                     if($exam == null){
                                                          ?>
-                                                            <tr> <td> No Exam is Upcoming </td> <tr>
+                                                            <tr> <td> No Exam is Done </td> <tr>
                                                          <?php
 
                                                     }
                                                     else{
 
                                                         foreach($exam as $examtoken => $examkey){
- 
-                                                            if($examkey['status'] == "Not Held" ){
+                                                            
+                                                            // $examtitle = $examkey['examtitle'];
+                                                            $classcode = $_GET['classcode'];
+
+                                                            if($examkey['status'] == "Helded" ){
 
                                                             
                                                                 ?>
@@ -148,6 +154,8 @@
                                                                     <td><?php echo $examkey['examtitle']?></td>
                                                                     <td><?php echo $examkey['examdate']?></td>
                                                                     <td><?php echo $examkey['starttime']?></td>
+                                                                    <td><button class="view" name="view" data-examtitle="<?php echo $examkey['examtitle']?>" >View</button></td>
+                                                                    <td><button class="decleared" name="decleared" data-examtitle="<?php echo $examkey['examtitle'] ?>" >publish</button></td> 
                                                                 </tr>
 
                                                                 <?php
@@ -157,7 +165,10 @@
                                                     }
                                                 
                                                 ?>
-                                            
+                                                
+
+                                                <div id="testing">
+                                                </div>
                                                 
                                                     
                                                 </tbody>
@@ -171,6 +182,24 @@
 
         </main>
     </div>
+
+    <script>
+
+        $(document).ready(function(){
+
+
+            var classcode = "<?php echo $classcode ?>";
+
+            $(document).on('click','.view', function(){
+                console.log("in fun");
+                var examtitle = $(this).data('examtitle');
+                window.location.href = 'results.php?examtitle='+examtitle+"&classcode="+classcode;
+            });
+
+
+        });
+
+    </script>
 
 </body>
 </html>
