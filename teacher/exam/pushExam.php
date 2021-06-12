@@ -52,7 +52,8 @@
                 "questionno" => $questionno,
                 "endtime" => $endtime->format("H:i"),
                 "examtype" => $examtype,
-                "status" => $status 
+                "status" => $status,
+                "resultdecleared" => "false" 
             ];
             
             $createExam = $database->getReference($collection)->push($data);

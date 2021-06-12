@@ -112,7 +112,7 @@
                                     <div class="card-header">
                                         <h3>Results are available for following</h3>
                                     </div>
-                                    <div class="card-body">
+                                    <div class="card-body" id="testing">
                                         <div class="table-responsive">
                                             <table width="100%">
                                                 <thead>
@@ -155,7 +155,7 @@
                                                                     <td><?php echo $examkey['examdate']?></td>
                                                                     <td><?php echo $examkey['starttime']?></td>
                                                                     <td><button class="view" name="view" data-examtitle="<?php echo $examkey['examtitle']?>" >View</button></td>
-                                                                    <td><button class="decleared" name="decleared" data-examtitle="<?php echo $examkey['examtitle'] ?>" >publish</button></td> 
+                                                                    <td><button class="publish" name="publish" data-examtitle="<?php echo $examkey['examtitle'] ?>" >publish</button></td> 
                                                                 </tr>
 
                                                                 <?php
@@ -167,8 +167,7 @@
                                                 ?>
                                                 
 
-                                                <div id="testing">
-                                                </div>
+                                                
                                                 
                                                     
                                                 </tbody>
@@ -191,9 +190,27 @@
             var classcode = "<?php echo $classcode ?>";
 
             $(document).on('click','.view', function(){
-                console.log("in fun");
+                // console.log("in fun");
                 var examtitle = $(this).data('examtitle');
                 window.location.href = 'results.php?examtitle='+examtitle+"&classcode="+classcode;
+            });
+
+            $(document).on('click','.publish',function(){
+                console.log("in fun");
+                var examtitle = $(this).data('examtitle');
+                $.ajax({
+                    url:'admin_ajax_action.php',
+                    method:"POST",
+                    data:{examtitle:examtitle,classcode:classcode,page:"viewresults",action:"publishresults"},
+                    success:function(data){
+                        // $('#testing').html(data);
+                        alert("Results Published successfully!");
+                    },
+                    error:function(jqXHR, textStatus, errorThrown) {
+                        console.log(textStatus, errorThrown);
+                        alert("Something went wrong");
+                    }
+                })
             });
 
 

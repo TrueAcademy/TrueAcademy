@@ -28,6 +28,7 @@
     <link rel="stylesheet" href="../css/navstyle.css">
     <link rel="stylesheet" href="../css/sidebar.css">
     <!-- <link rel="stylesheet" href="../css/page2.css">     -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>    
 <body>
 
@@ -71,7 +72,7 @@
         <main class="rightdiv" >
             <div class="cards" style="margin-top: -50px; width: 100%">
                            
-                        </div>
+            </div>
                         <div class="recent-grid" style="width:100%; heigth:100%">
                             <!-- List of student joined -->
                             <div class="projects">
@@ -106,63 +107,81 @@
                                                     }
                                                     else{
 
-                                                        foreach($exam as $examtoken => $examkey){
-    
-                                                                $resultcollection = "Exam/".$examtoken."/results";
-                                                                $result = $database->getReference($resultcollection)->getvalue();
+                                                       foreach($exam as $examtoken => $examkey){
 
-                                                                if($result == null){
-                                                                    ?>
+                                                            $studentTabledata = $database->getReference('studentTable/')
+                                                            ->orderByChild('email')
+                                                            ->equalTo($_SESSION['email'])
+                                                            ->getvalue();
 
-                                                                        <tr> 
-                                                                            <td><?php echo $examkey['examtitle']?></td>
-                                                                            <td><?php echo $examkey['examdate']?></td> 
-                                                                            <td><?php echo $examkey['starttime']?>
-                                                                            <td><?php echo $examkey['endtime']?></td>
-                                                                            <td> No Results is decleared </td> 
-                                                                        <tr>
-                                                                    <?php
+                                                            foreach($studentTabledata as $studenttoken => $studentkey){
 
-                                                                }
-                                                                else{
+                                                                if(strcmp($_SESSION['email'],$studentkey['email']) == 0){
 
-                                                                    foreach($result as $result => $resultkey){
+                                                                    $studentexamdata = $database->getReference('studentTable/'.$studenttoken.'/assignedExam')->getvalue();
 
-                                                                        if($resultkey['email'] == $_SESSION['email'] )     
-                                                                        {
+                                                                    if($studentexamdata == null){
+                                                                        echo "error in student data";
+                                                                    }
+                                                                    else{
 
-                                                                            ?>
-                                                                                
-                                                                                <form action="" method="POST">
+                                                                        foreach($studentexamdata as $studentexamtoken => $studentexamkey){
+
+                                                                            if( strcmp($studentexamkey['examtitle'],$examkey['examtitle']) == 0 ){
+
+                                                                                if( strcmp($examkey['resultdecleared'],"false") == 0 ){
+
+                                                                                    ?>
+
+                                                                                        <tr> 
+                                                                                            <td><?php echo $examkey['examtitle']?></td>
+                                                                                            <td><?php echo $examkey['examdate']?></td> 
+                                                                                            <td><?php echo $examkey['starttime'] ?></td>
+                                                                                            <td><?php echo $examkey['endtime']?></td>
+                                                                                            <td><?php echo $examkey['status']?></td>
+                                                                                            <td>No decleared</td>
+                                                                                        <tr>
+
+
+                                                                                    <?php
+
+                                                                                }
+                                                                                else{
+
+
+                                                                                    ?>
                                                                                     <tr>
                                                                                         <td><?php echo $examkey['examtitle']?></td>
-                                                                                        <input type="hidden" name="examtitle" value="<?php echo $examkey['examtitle']?>">
-                                                                                        <input type="hidden" name="classcode" value="<?php echo $examkey['classcode']?>">
-
                                                                                         <td><?php echo $examkey['examdate']?></td>
                                                                                         <td><?php echo $examkey['starttime']?></td>
                                                                                         <td><?php echo $examkey['endtime']?></td>
-                                                                                       
-                                                                                        
                                                                                         <td><?php echo $examkey['status']?></td>
+                                                                                        <td>Decleared</td>
 
-                                                                                        <td><button type="submit" name="showresult">View</button>  </td>
-
-                                                                                    
-
+                                                                                        <td><button name="showresult" class="showresult" data-examtitle="<?php echo $examkey['examtitle']?>" >View</button> </td>
                                                                                     </tr>
-                                                                                </form>
+                                                                                    <?php
 
-                                                                            
-                                                                            
-                                                                            <?php
+
+                                                                                }
+
+
+                                                                            }  
+
 
                                                                         }
+
 
                                                                     }
 
                                                                 }
-                                                        }
+
+                                                            }
+
+
+
+                                                       }
+
 
                                                     }
                                                         
@@ -178,10 +197,28 @@
                                 </div>
                             </div>
                         </div>
+            </div>
 
 
         </main>
     </div>
+
+    <script>
+    
+        $(document).ready(function(){
+
+            var classcode = '<?php echo $_GET['classcode']?>';
+
+            $(document).on('click','.showresult',function(){
+                console.log("in fun");
+                var examtitle = $(this).data('examtitle');
+                window.location.href='studentresult.php?classcode='+classcode+"&examtitle="+examtitle;                
+            });
+
+
+        });
+
+    </script>
 
 </body>
 </html>
