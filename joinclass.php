@@ -49,7 +49,7 @@
                             'classcode' => $classcode
                         ];
 
-                         $database->getReference($studentToken)->push($joinedclass);
+                        $database->getReference($studentToken)->push($joinedclass);
  
                             
 
@@ -74,14 +74,44 @@
                                 
                                 $database->getReference('classes/'.$classtoken)->update($updateField);
                             
-                                echo "<script type='text/javascript'>alert('class joined successfully!')</script>";
-
+                               
                             }
                              catch(Exception $e){
                                 echo "<script type='text/javascript'>alert('something went wrong! please try again ... ')</script>";
                             }
-                            finally{
-                                header("Location:dashboard_student.php");
+                            
+                        }
+
+                        $examdata = $database->getReference('Exam/')
+                        ->orderByChild('classcode')
+                        ->equalTo($classcode)
+                        ->getvalue();
+
+                        foreach($examdata as $examtoken => $examkey){
+
+                            if($examkey['classcode'] == $classcode and new Datetime($examkey['examdate']) >= new DateTime(date("Y-m-d"),new DateTimeZone('Asia/Calcutta')) ){
+                                // echo "push data";
+                                $data = [
+                                    'examtitle' => $examkey['examtitle'],
+                                    'examdate' => $examkey['examdate'],
+                                    'examiner' => $examkey['examiner'],
+                                    'classcode' => $classcode,
+                                    'attandance' => "No attended"
+                                ];
+
+                                try{
+                                    $database->getReference('studentTable/'.$token.'/assignedExam')->push($data);
+                                    echo "<script type='text/javascript'>alert('class joined successfully!')</script>";
+
+                                }
+                                catch(Exception $e){
+                                    echo "<script type='text/javascript'>alert('something went wrong! please try again ... ')</script>";
+                                }
+                                finally{
+                                    header("Location:dashboard_student.php");
+                                }
+    
+
                             }
 
                         }
