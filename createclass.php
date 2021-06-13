@@ -24,6 +24,7 @@
         $totalJoined = 0;
         $totalExamCoducted = 0;
         $totalAssignmentGiven = 0;
+        $totalstudymaterial = 0;
 
         $data = [
             'classowner' => $email,
@@ -31,7 +32,8 @@
             'classname' => $classname,
             'totalJoined' => $totalJoined,
             'totalExamConducted' => $totalExamCoducted,
-            'totalAssignmemtGiven' => $totalAssignmentGiven
+            'totalAssignmentGiven' => $totalAssignmentGiven,
+            'totalstudymaterial' => $totalstudymaterial
         ];
 
         try {
