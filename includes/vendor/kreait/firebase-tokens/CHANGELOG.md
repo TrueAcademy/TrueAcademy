@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 1.15.0 - 2021-04-19
+
+- Use fallback cache duration (defaults to 1 hour) when fetching public keys from Google and
+  the response doesn't contain cache headers.
+- Add additional URL to fetch Google's public keys. 
+
 ## 1.14.0 - 2020-12-09
 
 - Drop the `V3` suffix from handlers using `lcobucci/jwt`
