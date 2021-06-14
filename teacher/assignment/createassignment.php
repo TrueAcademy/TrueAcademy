@@ -259,7 +259,8 @@ session_start();
             'description' => $description,
             'totalmarks' => $totalmarks,
             'teacher' => $_SESSION['email'],
-            'totalsubmission' => 0
+            'totalsubmission' => 0,
+            'classcode' => $_GET['classcode']
         ];
 
         $database->getReference('assignments/')->push($assignmentdata);
@@ -286,7 +287,8 @@ session_start();
                     'assignmenttitle' => $assignmentitle,
                     'classcode' => $_GET['classcode'],
                     'enddate' => $enddate,
-                    'marksobtain' => 0
+                    'marksobtain' => 0,
+                    'submission' => "false"
                 ];
 
                 foreach($joindata as $joindatatoken => $joindatakey){

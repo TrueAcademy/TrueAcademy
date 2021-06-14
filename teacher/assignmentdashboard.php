@@ -39,7 +39,7 @@
                   <h4>True Academy</h4>
                 </center>
                 <a href="assignment/createassignment.php?classcode=<?php echo $_GET['classcode']?>"><i class="fas fa-desktop"></i><span>Assign Homework</span></a>
-                <a href="#"><i class="fas fa-cogs"></i><span>View Homework</span></a>
+                <a href="assignment/viewassignment.php?classcode=<?php echo $_GET['classcode'] ?>"><i class="fas fa-cogs"></i><span>View Homework</span></a>
                 <a href="#"><i class="fas fa-table"></i><span>Delete Homework</span></a>
                 <a href="#"><i class="fas fa-th"></i><span>Share Material</span></a>
               </div>
@@ -66,7 +66,7 @@
                 <div class="cards">
                     <div class="card-single">
                         <div>
-                            <h1></h1>
+                            <h1><?php echo $classkey['totalJoined']?></h1>
                             <span>Total Students</span>
                         </div>
                     </div>
