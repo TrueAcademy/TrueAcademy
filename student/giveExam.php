@@ -52,6 +52,8 @@ session_start();
                     $examtitle = $_GET['examtitle'];
                     $classcode = $_GET['classcode'];
 
+                    // echo "title = ". $examtitle;
+
                     // echo "exam title = ". $examtitle;
 
                     $examdata = $database->getReference("Exam/")
@@ -61,8 +63,13 @@ session_start();
 
                     foreach($examdata as $examtoken => $examkey){
 
+                        // echo "databae title = ". $examkey['examtitle'];
+
+                    //    var_dump(strcmp($examkey['examtitle'] , $examtitle ) == 0);
+
                         if(strcmp($examkey['examtitle'] , $examtitle ) == 0 ){
 
+                            // var_dump($examkey);
                             // $questiondata = $database->getReference("Exam/".$examtoken."/questions")->getvalue();
                             // var_dump($questiondata);
 
@@ -115,7 +122,7 @@ session_start();
                                         $database->getReference("studentTable/".$studenttoken."/assignedExam/".$examassigntoken."/results")->update($update1);
                                     }
                                     catch(Exception $e){
-
+                                       
                                     }
                                     
                                 }
@@ -186,12 +193,14 @@ session_start();
 
 	        function load_question(question_id = '')
 	        {
+                console.log("in fun");
                 $.ajax({
                     url:"user_ajax_action.php",
                     method:"POST",
                     data:{examtitle:examtitle, classcode:classcode, question_id:question_id, page:'giveExam', action:'load_question'},
                     success:function(data)
-                    {
+                    {   
+                        console.log('in console');
                         $('#single_question_area').html(data);
                     }
                 })

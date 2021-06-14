@@ -86,7 +86,7 @@
 
                                 <div class="card-single">
                                     <div>
-                                        <h1><?php echo $classkey['totalAssignmemtGiven']?></h1>
+                                        <h1><?php echo $classkey['totalExamConducted']?></h1>
                                         <span>Total Exam Attended</span>
                                     </div>
                                 </div>
@@ -94,8 +94,8 @@
 
                                 <div class="card-single">
                                     <div>
-                                        <h1><?php echo $classkey['totalAssignmemtGiven']?></h1>
-                                        <span>Total Assignment completed</span>
+                                        <h1><?php echo $classkey['totalAssignmentGiven']?></h1>
+                                        <span>Total Assignment assigned</span>
                                     </div>
                                 </div>
 

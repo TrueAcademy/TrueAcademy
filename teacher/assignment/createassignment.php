@@ -1,3 +1,9 @@
+<?php 
+
+session_start();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -59,12 +65,11 @@
                 <div style="margin-left:60px; margin-top:40px ">
 
                     <form action="" method="POST">
-
                         <table>
 
                             <tr>
                                 <td><label>Homework Title</label></td>
-                                <td><input type="text" name="assignmenttitle" placeholder=""/></td>
+                                <td><input type="text" name="assignmenttitle" id="assignmenttitle" placeholder=""/></td>
                             </tr>
 
                             <tr>
@@ -82,6 +87,7 @@
                                 <td><textarea id="text" name="description" placeholder="Write something.." style="height:100px"></textarea></td>
                             </tr>
 
+                            
                             <tr>
                                 <td><label>Total Marks</label></td>
                                 <td><input type="number" name="totalmarks" placeholder=""/></td>
@@ -89,16 +95,30 @@
                         
                    
                         </table>
-
+                   
                         <button type="submit" name="createassignment" style="margin-left: 15px; padding: 5px 10px; margin-top:10px">Assign</button>
                         <button type="reset" style="padding: 5px 10px; margin-left: 40px;">clear</button>
+                    
                     </form>
+
+                       
+                            <!-- <td><label for="file">Upload Question file</lable></td> -->
+                            <table>
+                                <tr>
+                                    <td><button id="upload">Upload Question</button></td>
+                                    <td><label id="showProgress"></label></td>
+                                    <td><button id="submit" style="margin-left: 15px; padding: 5px 10px; margin-top:10px">Upload</button></td>
+                                </tr>
+                                <tr>
+                               
+                                <tr>
+                            </table>
 
 
 
                         
                        
-                    </div>
+                </div>
 
             </div>
 
@@ -107,15 +127,116 @@
 
     </div>
 
+    <!-- <span id="result">Show</span> -->
+
+    <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-storage.js"></script>
+
+    <script id="MainScript">
+
+        
+
+        // Configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyBhBIN6KmoYCje575Ls5ybl4uKxXntVF-k",
+            authDomain: "trueacademy-13962.firebaseapp.com",
+            databaseURL: "https://trueacademy-13962-default-rtdb.firebaseio.com/",
+            projectId: "trueacademy-13962",
+            storageBucket: "gs://trueacademy-13962.appspot.com",
+            messagingSenderId: "32348987090",
+            appId: "1:32348987090:web:2bb2808f8f99e28c02570b",
+            measurementId: "G-8QZCS8BSE0"
+        };
+        firebase.initializeApp(firebaseConfig);
+       
+        var FileName, FileURL;
+        var files = [];
+        var reader = new FileReader();
+        var classcode = "<?php echo $_GET['classcode'] ?>";
+        var owner = "<?php echo $_SESSION['email']?>";
+
+
+
+        document.getElementById('upload').onclick = function(e){
+
+            console.log('in fun');
+
+            var input = document.createElement('input');
+            input.type='file';
+        
+            input.onchange = e =>{
+                files = e.target.files;
+                reader = new FileReader();
+                reader.onload = function(){
+
+                }
+                reader.readAsDataURL(files[0]);
+            }
+            input.click();
+
+            document.getElementById('showProgress').innerHTML = "<?php echo $_POST['assignmenttitle']?>";
+            
+        }
+
+
+        // Upload file to storage
+        document.getElementById('submit').onclick = function(e){
+
+            FileName = "<?php echo $_POST['assignmenttitle']?>";
+            var uploadTask = firebase.storage().ref('assignmentDocument/'+classcode+"/"+FileName+"/question/"+FileName+".pdf").put(files[0]);
+
+            // document.getElementById('showProgress').innerHTML = files[0];
+
+            uploadTask.on('state_changed', function(snapshot){
+
+               var progress = (snapshot.bytesTranferred / snapshot.totalBytes) * 100;
+
+                document.getElementById('showProgress').innerHTML = '('+progress+') uploading ... ';
+
+            },
+            function(error){
+                alert('Something went wrong! cant able to upload file ... ');
+            },
+            function(){
+                uploadTask.snapshot.ref.getDownloadURL().then(function(url){
+                    FileURL = url;
+               
+
+                    firebase.database().ref("AssignmentDocument/"+classcode+"/"+FileName).set({
+                        Assignmenttitle: FileName,
+                        classcode: classcode,
+                        teacher: owner,
+                        link: FileURL
+                    });
+
+                    alert("File Uploaded Successfully!");
+
+
+                });
+
+
+            });
+            
+
+        }
+
+
+    </script>
+
 </body>
 
 </html>
 
+
 <?php
 
-    include("../../includes/dbconfig.php");
+    echo "<script>document.getElementById('upload').style.visibility = 'hidden'</script>";
+    echo "<script>document.getElementById('submit').style.visibility = 'hidden'</script>";
 
-    session_start();
+    include("../../includes/dbconfig.php");
+    
 
     if(isset($_POST['createassignment'])){
 
@@ -126,7 +247,10 @@
         $description = $_POST['description'];
         $totalmarks = $_POST['totalmarks'];
 
-        // echo $assignmenttile." ".$assignmenttopic." ".$enddate." ".$description." ".$totalmarks;
+       
+        // echo $assignmentitle." ".$assignmenttopic." ".$enddate." ".$description." ".$totalmarks;
+
+        
 
         $assignmentdata = [
             'assignmenttitle' => $assignmentitle,
@@ -149,7 +273,14 @@
 
             if($classkey['classcode'] == $_GET['classcode']){
 
-                $joindata = $database->getReference('classes/'.$classtoken.'/JoinedStudent')->geetvalue();
+                $data = [
+                    'assignmenttitle' => $assignmentitle,
+                    'enddate' => $enddate,
+                ];
+
+                $database->getReference('classes/'.$classtoken.'/AssignmentForClass')->push($data);
+
+                $joindata = $database->getReference('classes/'.$classtoken.'/JoinedStudent')->getvalue();
 
                 $data = [
                     'assignmenttitle' => $assignmentitle,
@@ -205,6 +336,9 @@
                 try{
                     $database->getReference('classes/'.$classtoken)->update($update);
                     echo "<script type='text/javascript'>alert('assignment created successfully!')</script>";
+                    echo "<script>document.getElementById('upload').style.visibility = 'visible';</script>";
+                    echo "<script>document.getElementById('submit').style.visibility = 'visible';</script>";
+
                 }
                 catch(Exception $e){
                     echo "<script type='text/javascript'>alert('something went wrong!')</script>";

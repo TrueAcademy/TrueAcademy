@@ -20,6 +20,7 @@
 					if($_POST['question_id'] == '' ){
 
 						$question_id = 1;
+						// echo 'question id = '. $question_id;
 
 						$examdata = $database->getReference("Exam/")
 						->orderByChild("classcode")
@@ -43,7 +44,7 @@
 									// var_dump ($examkey[1]["question"] );
 
 
-									// var_dump($examkey);
+									// var_dump($queskey);
 									$output .= '
 										<div class="top">
 											<div class="ques">
@@ -100,7 +101,7 @@
 						
 						
 						$question_id = $_POST['question_id'];
-						// echo 'question id = '. $question_id;
+						echo 'question id = '. $question_id;
 
 						$examdata = $database->getReference("Exam/")
 						->orderByChild("classcode")
