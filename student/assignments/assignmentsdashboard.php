@@ -1,3 +1,18 @@
+<?php
+
+    session_start();
+
+
+    
+    if( $_SESSION['email'] == null ){
+
+        echo "<script type='text/javascript'>alert('Cant open! user is not authorized...')</script>";
+        header("Location:index.html"); 
+
+    }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,7 +26,6 @@
     <link rel="stylesheet" href="../../css/sidebar.css">
     <link rel="stylesheet" href="../../css/navstyle.css">
     <link rel="stylesheet" href="../../css/stylespage.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
 <body>  
@@ -26,7 +40,7 @@
             <a href="#" class="profile"><i class="fas fa-user"></i></a>
             <div class="profile_li">
                 <a href="#" class="PROFILE">Profile</a>
-                <a href="../logout.php" class="LOGOUT">Logout</a>
+                <a href="logout.php" class="LOGOUT">Logout</a>
             </div>
             <div>
     </nav>
@@ -39,25 +53,57 @@
                   <img src="\images\logo.png" class="profile_image" alt="">
                   <h4>True Academy</h4>
                 </center>
-                <a href="assignment/createassignment.php?classcode=<?php echo $_GET['classcode']?>"><i class="fas fa-desktop"></i><span>Assign Homework</span></a>
-                <a href="#"><i class="fas fa-cogs"></i><span>View Homework</span></a>
-                <a href="#"><i class="fas fa-table"></i><span>Delete Homework</span></a>
+                <a href="viewassignments.php?classcode=<?php echo $_GET['classcode'] ?>"><i class="fas fa-cogs"></i><span>View Homework</span></a>
                 <a href="#"><i class="fas fa-th"></i><span>Share Material</span></a>
               </div>
         </div>
         <main class="min-page">
             
             <!--sidebar end-->
+            <?php
+
+                include("../../includes/dbconfig.php");
+            
+                $classdata = $database->getReference('classes/')
+                ->orderByChild('classcode')
+                ->equalTo($_GET['classcode'])
+                ->getvalue();
+
+                foreach($classdata as $classtoken => $classkey){
+
+                }
+            
+            ?>
+
             <div class="rightdiv">
-                
+                <div class="cards">
+                    <div class="card-single">
+                        <div>
+                            <h1><?php echo $classkey['totalJoined']?></h1>
+                            <span>Total Students</span>
+                        </div>
+                    </div>
+                    <div class="card-single">
+                        <div>
+                            <h1><?php echo $classkey['totalAssignmentGiven']?></h1>
+                            <span>Homework Assigned</span>
+                        </div>
+                    </div>
+                    <div class="card-single">
+                        <div>
+                            <h1><?php echo $classkey['totalstudymaterial']?></h1>
+                            <span>Study Material</span>
+                        </div>
+                    </div>
+                </div>
                 <div class="recent-grid">
                     <!-- List of student joined -->
                     <div class="projects">
                         <div class="card">
                             <div class="card-header">
-                                <h3>List of assign homework</h3>
-                                
+                                <h3>List of Upcoming Asignments</h3>
                             </div>
+
                             <div class="card-body">
                                 <div class="table-responsive">
                                     <table width="100%">
@@ -65,41 +111,44 @@
                                             <tr>
                                                 <td>SR.NO</td>
                                                 <td>Homework Title</td>
-                                                <td>Submission End Date</td>  
-                                                <td>Submission Till yet</td>
-                                                <td></td>                       
+                                                <td>Date OF Assignment</td>                                               
                                             </tr>
                                         </thead>
                                         <tbody>
                                         <?php
-
-                                            include("../../includes/dbconfig.php");
                                         
                                             $assignmentdata = $database->getReference('assignments/')
                                             ->orderByChild('classcode')
                                             ->equalTo($_GET['classcode'])
                                             ->getvalue();
 
-                                            $count = 1;
-                                            foreach($assignmentdata as $assignmenttoken => $assignmentkey){
+                                            if($assignmentdata == null ){
 
-                                                ?>
-     
-                                                    <tr>
-                                                        <td><?php echo $count?></td>
-                                                        <td><?php echo $assignmentkey['assignmenttitle']?></td>
-                                                        <td><?php echo $assignmentkey['enddate']?></td>
-                                                        <td><?php echo $assignmentkey['totalsubmission']?>
-                                                        <td><button name="viewassignment" class='viewassignment' data-assignmenttitle="<?php echo $assignmentkey['assignmenttitle']?>" > view </button></td>
-                                                    </tr>
-
-                                                <?php 
+                                               echo "<tr><td colspan='3'>No work assigned till yet</td></tr>";
 
                                             }
-                                            
+                                            else{
+                                                $count=1;
+                                                foreach($assignmentdata as $assignmenttoken => $assignmentkey){
+
+                                                    if(new DateTime($assignmentkey['enddate']) > new DateTime(date("Y-m-d"),new DateTimeZone('Asia/Calcutta')) ){
+
+                                                        ?>
+                                                            <tr>
+                                                                <td><?php echo $count?></td>
+                                                                <td><?php echo $assignmentkey['assignmenttitle']?></td>
+                                                                <td><?php echo $assignmentkey['enddate']?></td>
+                                                            </tr>
+                                                        <?php
+                                                        $count = $count+1;
+
+                                                    }
+                                                }
+
+                                            }
                                         
                                         ?>
-
+                                            
                                         </tbody>
                                     </table>
                                 </div>
@@ -110,26 +159,6 @@
             </div>
         </main>
     </div>
-
-    <script>
-
-        $(document).ready(function(){
-
-            var classcode = "<?php echo $_GET['classcode']?>";
-
-            $(document).on('click','.viewassignment',function(){
-
-                // console.log('In fun');
-
-                var assignmenttitle = $(this).data('assignmenttitle');
-                console.log('title='+assignmenttitle);
-                window.location.href = "assignments.php?classcode="+classcode+"&assignmenttitle="+assignmenttitle;
-
-            });
-
-        });
-
-    </script>
 
 </body>
 

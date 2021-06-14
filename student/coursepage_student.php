@@ -59,7 +59,7 @@
                         <h6 style="color: #ccc; margin-bottom:15px">student</h6>
                     </center>
                     <a href="examdashboard.php?classcode=<?php echo $_GET['classcode']?>"><i class="fas fa-desktop"></i><span>Exam Conduction</span></a>
-                    <a href="#"><i class="fas fa-th"></i><span>Assignment Section</span></a>
+                    <a href="assignments/assignmentsdashboard.php?classcode=<?php echo $_GET['classcode'] ?>"><i class="fas fa-th"></i><span>Assignment Section</span></a>
                 </div>
         </div>
         <!--sidebar end-->
@@ -87,7 +87,7 @@
                                 <div class="card-single">
                                     <div>
                                         <h1><?php echo $classkey['totalExamConducted']?></h1>
-                                        <span>Total Exam Attended</span>
+                                        <span>Total Exam Conducted</span>
                                     </div>
                                 </div>
 
