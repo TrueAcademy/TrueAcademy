@@ -41,7 +41,7 @@
            
             <div class="profile_li">
                 <a href="#" class="PROFILE">Profile</a>
-                <a href="../logout.php" class="LOGOUT">Logout</a>  
+                <a href="../../logout.php" class="LOGOUT">Logout</a>  
             </div>
             <h4 class="login_name"> <?php echo $_SESSION['email']?> </h4>
         <div>
