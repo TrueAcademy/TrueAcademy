@@ -11,7 +11,7 @@ session_start();
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Accusoft admin</title>
+    <title>assignments</title>
     <script src="https://use.fontawesome.com/releases/v5.15.2/js/all.js" data-auto-replace-svg="nest"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
@@ -49,7 +49,7 @@ session_start();
                   <h4>True Academy</h4>
                 </center>
                 <a href="assignment/createassignment.php?classcode="<?php echo $_GET['classcode']?>"><i class="fas fa-desktop"></i><span>Assign Homework</span></a>
-                <a href="#"><i class="fas fa-cogs"></i><span>View Homework</span></a>
+                <a href="viewassignment.php?classcode=<?php echo $_GET['classcode'] ?>"><i class="fas fa-cogs"></i><span>View Homework</span></a>
                 <a href="#"><i class="fas fa-table"></i><span>Delete Homework</span></a>
                 <a href="#"><i class="fas fa-th"></i><span>Share Material</span></a>
               </div>

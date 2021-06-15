@@ -56,7 +56,7 @@
                   <img src="\images\logo.png" class="profile_image" alt="">
                   <h4>True Academy</h4>
                 </center>
-                <a href="#"><i class="fas fa-cogs"></i><span>View Homework</span></a>
+                <a href="viewassignments.php?<?php echo $_GET['classcode'] ?>"><i class="fas fa-cogs"></i><span>View Homework</span></a>
                 <a href="#"><i class="fas fa-th"></i><span>Share Material</span></a>
               </div>
         </div>
@@ -64,6 +64,8 @@
             
             <!--sidebar end-->
             <div class="rightdiv">
+
+            <?php ?>
                 
                 <div class="recent-grid">
                     <!-- List of student joined -->
@@ -100,6 +102,8 @@
                                             ->equalTo($_GET['classcode'])
                                             ->getvalue();
 
+                                            $studentname = "";
+
                                             $count = 1;
                                             foreach($assignmentdata as $assignmenttoken => $assignmentkey){
 
@@ -111,6 +115,8 @@
                                                 foreach($studentdata as $studenttoken => $studentkey){
 
                                                     if($studentkey['email'] == $_SESSION['email'] ){
+
+                                                        $studentname = $studentkey['firstname']." ".$studentkey['lastname'];
 
                                                         $studentassignmentdata = $database->getReference('studentTable/'.$studenttoken.'/assignedHomework')->getvalue();
 
@@ -134,7 +140,7 @@
                                                                             <td><button id="downloadques" class="downloadques" data-assignmenttitle="<?php echo $assignmentkey['assignmenttitle']?>">Downlaod</button></td>
                                                                             <td>Not submitted</td>
                                                                             <td>Unmarked</td>    
-                                                                            <td><button id="upload" class="upload">upload</button></td>                       
+                                                                            <td><button id="upload" class="upload" data-assignmenttitle="<?php echo $assignmentkey['assignmenttitle']?>">upload</button></td>                       
                                                                         </tr>
 
 
@@ -151,7 +157,7 @@
                                                                             <td><?php echo $assignmentkey['description']?></td>
                                                                             <td><?php echo $assignmentkey['enddate']?></td>  
                                                                             <td><?php echo $assignmentkey['totalmarks']?><td>
-                                                                            <td><button id="downloadques" class="downloadques">Downlaod</button></td>
+                                                                            <td><button id="downloadques" class="downloadques" data-assignmenttitle="<?php echo $assignmentkey['assignmenttitle']?>">Downlaod</button></td>
                                                                             <td>submitted</td>
                                                                             <?
                                                                                 if($studentassignmentkey['status'] == "unmarked"){
@@ -188,10 +194,15 @@
                                     </table>
                                 </div>
                             </div>
+                            <div id="testing">Testing</div>
                         </div>
                     </div>
                 </div>
             </div>
+
+           
+
+
         </main>
     </div>
 
@@ -220,6 +231,7 @@
         $(document).ready(function(){   
 
             var classcode = "<?php echo $_GET['classcode']?>";
+            var email = "<?php echo $_SESSION['email'] ?>";
 
             $(document).on('click','.downloadques',function(){
                 console.log('in fun')
@@ -228,13 +240,13 @@
                 firebase.database().ref("AssignmentDocument/"+classcode+"/"+assignmenttitle).on('value', function(snapshot){
                     console.log('in ref = '+snapshot.val().link);
                     // document.getElementById('downloadques').src = snapshot.val().link;
-                    DownloadFile(snapshot.val().link);
+                    DownloadFile(snapshot.val().link,assignmenttitle);
                 });
 
 
             });
 
-            function DownloadFile(url) {
+            function DownloadFile(url,fileName) {
                 //Set the File URL.
                 // var url = "Files/" + fileName;
     
@@ -263,6 +275,80 @@
                 };
                 req.send();
             };
+
+            var files = [];
+            var studentname = "<?php echo $studentname?>";
+
+
+            $(document).on('click','.upload',function(){
+
+                console.log('in fun');
+
+                var assignmenttitle = $(this).data('assignmenttitle');
+
+                console.log("assignment title = "+ assignmenttitle);
+
+                var input = document.createElement('input');
+                input.type='file';
+            
+                input.onchange = e =>{
+                    files = e.target.files;
+                    reader = new FileReader();
+                    reader.onload = function(){
+                    }
+                    reader.readAsDataURL(files[0]);
+                }
+                input.click();
+
+                // Uploading file to firebase storage
+                var uploadTask = firebase.storage().ref('assignmentDocument/'+classcode+"/"+assignmenttitle+"/submission/"+ studentname +".pdf").put(files[0]);
+
+
+                uploadTask.on('state_changed', function(snapshot){
+
+                    var progress = (snapshot.bytesTranferred / snapshot.totalBytes) * 100;
+                    console.log('('+progress+') uploading ... ');
+
+                },
+                function(error){
+                    alert('Something went wrong! cant able to upload file ... ');
+                },
+                function(){
+                    uploadTask.snapshot.ref.getDownloadURL().then(function(url){
+                        FileURL = url;
+
+
+                        firebase.database().ref("AssignmentDocument/"+classcode+"/"+assignmenttitle+"/submissions/"+studentname).set({
+                            Assignmenttitle: assignmenttitle,
+                            classcode: classcode,
+                            submitBy: email,
+                            link: FileURL
+                        });
+
+                        $.ajax({
+
+                            url:"assignment_ajax.php",
+                            method:"POST",
+                            data:{assignmenttitle:assignmenttitle,classcode:classcode,email:email,page:"viewassignments",action:"submitassignment"},
+                            success:function(data){
+                                $('#testing').html(data);
+                                alert("Successfully Uploaded Successfully!");
+                            }
+
+                        })
+
+                        
+
+
+                    });
+
+
+                });
+
+
+            });
+
+            
 
         });
 
