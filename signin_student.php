@@ -19,46 +19,47 @@
                 
             // }
 
-            if ($auth->verifyPassword($email, $password)) {
+            try{
 
-                $collection = "studentTable/";
-                $studentData = $database->getReference($collection)
-                ->orderByChild('email')
-                ->equalTo($email)
-                ->getvalue();
+                if ($auth->verifyPassword($email, $password)) {
 
-                if($studentData == null ){
-
-                    echo "<script type='text/javascript'>alert('Sorry! Teacher can't be signin as student ... ')</script>";
-                    //header("Location:index.html");
-                    echo "<meta http-equiv='refresh' content='2; URL=index.html' />";
-                    
+                    $collection = "studentTable/";
+                    $studentData = $database->getReference($collection)
+                    ->orderByChild('email')
+                    ->equalTo($email)
+                    ->getvalue();
+    
+                    if($studentData == null ){
+    
+                        echo "<script type='text/javascript'>alert('Sorry! Teacher can't be signin as student ... ')</script>";
+                        //header("Location:index.html");
+                        echo "<meta http-equiv='refresh' content='1; URL=index.html' />";
+                        
+                    }
+                    else{
+    
+                        
+                        session_start();
+                
+                        //$_SESSION['firebase_user_id']=$user->id;
+                        $_SESSION['email'] = $email; 
+    
+                        //var_dump($email);
+    
+                        header("Location:dashboard_student.php");
+                        exit;    
+    
+    
+                    }
                 }
-                else{
+                
+                
 
-                    
-                    session_start();
-            
-                    //$_SESSION['firebase_user_id']=$user->id;
-                    $_SESSION['email'] = $email; 
-
-                    //var_dump($email);
-
-                    header("Location:dashboard_student.php");
-                    exit;    
-
-
-                }
             }
-            else{
-
+            catch(Exception $e){
                 echo "<script type='text/javascript'>alert('Login Failed!')</script>";
-                //header("Location:index.html");
                 echo "<meta http-equiv='refresh' content='2; URL=index.html' />";
-
-
             }
-            
 
     }
 

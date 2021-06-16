@@ -159,7 +159,7 @@
                                                                             <td><?php echo $assignmentkey['totalmarks']?><td>
                                                                             <td><button id="downloadques" class="downloadques" data-assignmenttitle="<?php echo $assignmentkey['assignmenttitle']?>">Downlaod</button></td>
                                                                             <td>submitted</td>
-                                                                            <?
+                                                                            <?php
                                                                                 if($studentassignmentkey['status'] == "unmarked"){
                                                                                     echo "<td>unmarked</td>";
                                                                                 }
@@ -194,7 +194,7 @@
                                     </table>
                                 </div>
                             </div>
-                            <div id="testing">Testing</div>
+                            <!-- <div id="testing">Testing</div> -->
                         </div>
                     </div>
                 </div>

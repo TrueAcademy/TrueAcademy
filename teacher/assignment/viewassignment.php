@@ -19,7 +19,7 @@
     <nav>
         <div class="left_div">
             <a href="#" class="hamberg"><i class="fas fa-bars"></i></a>
-            <a href="#" class="logo_url"><img src="../images/logo.png" alt="logo" class="logo"></a>
+            <a href="#" class="logo_url"><img src="../../images/logo.png" alt="logo" class="logo"></a>
             <h1 class="h1">True Academy</h1>
         </div>
         <div class="right_div">

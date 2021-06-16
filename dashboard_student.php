@@ -72,7 +72,7 @@
                     $studentToken = $studentcollection.$token."/classjoined";
                     $joinedclass = $database->getReference($studentToken)->getvalue();
 
-                    $classcollection = "classes";
+                    $classcollection = "classes";   
                    
                     ?>
                     

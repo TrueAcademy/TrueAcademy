@@ -87,33 +87,38 @@
                         ->equalTo($classcode)
                         ->getvalue();
 
-                        foreach($examdata as $examtoken => $examkey){
+                        if($examdata == null){
+                            header("Location:dashboard_student.php");
+                        }
+                        else{
+                            foreach($examdata as $examtoken => $examkey){
 
-                            if($examkey['classcode'] == $classcode and new Datetime($examkey['examdate']) >= new DateTime(date("Y-m-d"),new DateTimeZone('Asia/Calcutta')) ){
-                                // echo "push data";
-                                $data = [
-                                    'examtitle' => $examkey['examtitle'],
-                                    'examdate' => $examkey['examdate'],
-                                    'examiner' => $examkey['examiner'],
-                                    'classcode' => $classcode,
-                                    'attandance' => "No attended"
-                                ];
-
-                                try{
-                                    $database->getReference('studentTable/'.$token.'/assignedExam')->push($data);
-                                    echo "<script type='text/javascript'>alert('class joined successfully!')</script>";
-
-                                }
-                                catch(Exception $e){
-                                    echo "<script type='text/javascript'>alert('something went wrong! please try again ... ')</script>";
-                                }
-                                finally{
-                                    header("Location:dashboard_student.php");
+                                if($examkey['classcode'] == $classcode and new Datetime($examkey['examdate']) >= new DateTime(date("Y-m-d"),new DateTimeZone('Asia/Calcutta')) ){
+                                    // echo "push data";
+                                    $data = [
+                                        'examtitle' => $examkey['examtitle'],
+                                        'examdate' => $examkey['examdate'],
+                                        'examiner' => $examkey['examiner'],
+                                        'classcode' => $classcode,
+                                        'attandance' => "No attended"
+                                    ];
+    
+                                    try{
+                                        $database->getReference('studentTable/'.$token.'/assignedExam')->push($data);
+                                        echo "<script type='text/javascript'>alert('class joined successfully!')</script>";
+    
+                                    }
+                                    catch(Exception $e){
+                                        echo "<script type='text/javascript'>alert('something went wrong! please try again ... ')</script>";
+                                    }
+                                    finally{
+                                        header("Location:dashboard_student.php");
+                                    }
+        
+    
                                 }
     
-
                             }
-
                         }
 
                         

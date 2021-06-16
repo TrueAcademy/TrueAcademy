@@ -288,7 +288,8 @@ session_start();
                     'classcode' => $_GET['classcode'],
                     'enddate' => $enddate,
                     'marksobtain' => 0,
-                    'submission' => "false"
+                    'submission' => "false",
+                    'status' => 'unmarked'
                 ];
 
                 foreach($joindata as $joindatatoken => $joindatakey){
