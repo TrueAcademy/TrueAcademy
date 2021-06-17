@@ -17,7 +17,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Accusoft admin</title>
+    <title>Coursepage Teacher</title>
     <script src="https://use.fontawesome.com/releases/v5.15.2/js/all.js" data-auto-replace-svg="nest"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
@@ -60,12 +60,12 @@
         <div class="leftdiv">
                 <div class="sidebar">
                     <center>
-                        <img src="\images\book.png" class="profile_image" alt="">
+                        <img src="../images/person.png" class="profile_image" alt="">
                         <h4 style="font-size: 12px; margin-bottom:5px"><?php echo $_SESSION['email']?></h4>
                         <h6 style="color: #ccc; margin-bottom:15px">Teacher</h6>
                     </center>
                     <a href="examdashboard.php?classcode=<?php echo $_GET['classcode']?>"><i class="fas fa-desktop"></i><span>Exam Conduction</span></a>
-                    <a href="#"><i class="fas fa-th"></i><span>Assignment Section</span></a>
+                    <a href="assignmentdashboard.php?classcode=<?php echo $_GET['classcode']?>"><i class="fas fa-th"></i><span>Assignment Section</span></a>
                 </div>
         </div>
         <!--sidebar end-->
@@ -100,7 +100,7 @@
 
                                 <div class="card-single">
                                     <div>
-                                        <h1><?php echo $classkey['totalAssignmemtGiven']?></h1>
+                                        <h1><?php echo $classkey['totalAssignmentGiven']?></h1>
                                         <span>Total Assignment</span>
                                     </div>
                                 </div>
@@ -172,7 +172,7 @@
                                                                                 <td><?php echo $tempkey['lastname'] ?></td>
                                                                                 <td><?php echo $tempkey['email'] ?></td>
                                                                             </tr>         
-                                                                        <
+                                                                        
                                                     
 
 

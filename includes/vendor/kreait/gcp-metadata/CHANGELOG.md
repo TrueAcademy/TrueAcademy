@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## 1.2.0 - 2021-05-26
+
+* Added support for Guzzle 7
+* Raised minimum required Guzzle 6 version from 6.0 to 6.3.3
+* Added support for PHP 8
+* Dropped support for PHP <7.2
+
 ## 1.1.0 - 2020-03-19
 
 * Use IP address instead of hostname for the Google Metadata service to avoid slow requests when not on Compute Engine

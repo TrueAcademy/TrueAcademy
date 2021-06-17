@@ -19,7 +19,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Accusoft admin</title>
+    <title>Attend Exam</title>
     <script src="https://use.fontawesome.com/releases/v5.15.2/js/all.js" data-auto-replace-svg="nest"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
@@ -111,7 +111,7 @@
 
                                                         foreach($exam as $examtoken => $examkey){
     
-                                                            if($examkey['status'] == "Not Held" ){
+                                                            
 
                                                                 
                                                                 ?>
@@ -134,7 +134,8 @@
                                                                     <?php
 
                                                                 }
-                                                            }
+                                                            
+
                                                         }
                                                     
                                                     ?>
@@ -200,7 +201,7 @@
 
             }
             else{
-                echo "<script type='text/javascript'>alert('Your Exam is due!')</script>";
+                echo "<script type='text/javascript'>alert('Your Exam time is due!')</script>";
             }
             
 

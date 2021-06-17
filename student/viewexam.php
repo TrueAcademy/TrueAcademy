@@ -19,7 +19,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Accusoft admin</title>
+    <title>view exam</title>
     <script src="https://use.fontawesome.com/releases/v5.15.2/js/all.js" data-auto-replace-svg="nest"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
@@ -115,8 +115,7 @@
                                                                 
                                                                 ?>
                                                                     
-                                                                    <form action="attendExam.php?classcode=<?php echo $_GET['classcode']?>" method="POST">
-                                                                        <tr>
+                                                                       <tr>
                                                                             <td><?php echo $examkey['examtitle']?></td>
                                                                             <input type="hidden" name="examtitle" value="<?php echo $examkey['examtitle']?>">
                                                                             <input type="hidden" name="classcode" value="<?php echo $examkey['classcode']?>">
@@ -135,7 +134,7 @@
                                                                         
 
                                                                         </tr>
-                                                                    </form>
+                                                                    
 
                                                                     <?php
 

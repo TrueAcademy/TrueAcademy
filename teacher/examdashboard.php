@@ -17,7 +17,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Accusoft admin</title>
+    <title>Exam teacher</title>
     <script src="https://use.fontawesome.com/releases/v5.15.2/js/all.js" data-auto-replace-svg="nest"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
@@ -60,7 +60,7 @@
                     </center>
                     <a href="exam/createExam.php?classcode=<?php echo $_GET['classcode']?>"><i class="fas fa-desktop"></i><span>Create Exam</span></a>
                     <a href="#"><i class="fas fa-cogs"></i><span>Manage Exam</span></a>
-                    <a href="#"><i class="fas fa-table"></i><span>View Result</span></a>
+                    <a href="results/viewresults.php?classcode=<?php echo $_GET['classcode']?>"><i class="fas fa-table"></i><span>View Result</span></a>
                     <a href="#"><i class="fas fa-th"></i><span>Delete Exam</span></a>
                 </div>
         </div>

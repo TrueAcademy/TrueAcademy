@@ -190,7 +190,7 @@ td .status {
 }
 
 tr td:last-child {
-    display: flex;
+    /* display: flex; */
     align-items: center;
 }
 
