@@ -42,7 +42,7 @@
             </div>
             <div class="right_div">
                 <a href="#" class="add" onclick="openForm()"><i class="fas fa-plus-circle"></i></a>
-                <div class="create_class_hover">Create Class</div>
+                <div class="create_class_hover">Join Class</div>
                 <a href="#" class="profile"><i class="fas fa-user"></i></a>
                 <div class="profile_li">
                     <a href="#" class="PROFILE">Profile</a>
@@ -72,7 +72,7 @@
                     $studentToken = $studentcollection.$token."/classjoined";
                     $joinedclass = $database->getReference($studentToken)->getvalue();
 
-                    $classcollection = "classes";   
+                    $classcollection = "classes";
                    
                     ?>
                     
@@ -159,28 +159,11 @@
                 <a href="#" onclick="closeForm()" id="close_btn"><i id="close" class="far fa-times-circle"></i></a>
             </div>
 
-<<<<<<< HEAD:dashboard_teacher.html
-            <h2 class="Join">Create Class</h2>
-
-            <div class="input_divone">
-                <div>
-                    <h4>Class Name</h4>
-                    <input class="input_CN" type="text" name="Class_Name" placeholder="Enter Class Name">
-                </div>
-            </div>
-
-
-=======
->>>>>>> cae4f89ec23ce7894deceb3d59e53080cddd67ca:dashboard_student.php
 
             <div class="input_divtwo">
                 <div>
                     <h4>Class Code</h4>
-<<<<<<< HEAD:dashboard_teacher.html
-                    <input class="input_CC" type="text" name="Class_Code" placeholder="Enter Class Code">
-=======
                     <input class="input_CC" type="text" name="classcode">
->>>>>>> cae4f89ec23ce7894deceb3d59e53080cddd67ca:dashboard_student.php
                 </div>
             </div>
 

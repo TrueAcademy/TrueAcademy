@@ -1,6 +1,3 @@
-<<<<<<< HEAD:dashboard_student.html
-<!DOCTYPE html>
-=======
 <?php
 
     session_start();
@@ -19,7 +16,6 @@
 
 
 <!DOCTYPE html> 
->>>>>>> cae4f89ec23ce7894deceb3d59e53080cddd67ca:dashboard_teacher.php
 <html lang="en">
 
 <head>
@@ -43,7 +39,7 @@
             </div>
             <div class="right_div">
                 <a href="#" class="add" onclick="openForm()"><i class="fas fa-plus-circle"></i></a>
-                <div class="create_class_hover">Join Class</div>
+                <div class="create_class_hover">Create Class</div>
                 <a href="#" class="profile"><i class="fas fa-user"></i></a>
                 <div class="profile_li">
                     <a href="#" class="PROFILE">Profile</a>
@@ -154,18 +150,12 @@
 
 
     <div class="create_class_form" id="myForm">
-<<<<<<< HEAD:dashboard_student.html
-        <form action="" class="mainformdiv_student">
-=======
         <form action="createclass.php" class="mainformdiv" method="POST">
->>>>>>> cae4f89ec23ce7894deceb3d59e53080cddd67ca:dashboard_teacher.php
 
             <div class="close_button">
                 <a href="#" onclick="closeForm()" id="close_btn"><i id="close" class="far fa-times-circle"></i></a>
             </div>
 
-<<<<<<< HEAD:dashboard_student.html
-=======
             <div class="input_divone">
                 <div>
                     <h4>Class Name</h4>
@@ -173,29 +163,18 @@
                 </div>
             </div>
 
->>>>>>> cae4f89ec23ce7894deceb3d59e53080cddd67ca:dashboard_teacher.php
 
-            <h2 class="Join">Join Class</h2>
 
-            <div class="input_divtwo_student">
+            <div class="input_divtwo">
                 <div>
                     <h4>Class Code</h4>
-<<<<<<< HEAD:dashboard_student.html
-                    <input class="input_CC" type="text" name="Class_Code" placeholder="Enter Class Code">
-=======
                     <input class="input_CC" type="text" name="classcode">
->>>>>>> cae4f89ec23ce7894deceb3d59e53080cddd67ca:dashboard_teacher.php
                 </div>
             </div>
 
 
-<<<<<<< HEAD:dashboard_student.html
-            <div class="btn_Create_class_student">
-                <input type="Submit" class="btn_student" value="Join Class" name="done">
-=======
             <div class="btn_Create_class">
                 <input type="Submit" class="btn" value="createclass" name="createclass">
->>>>>>> cae4f89ec23ce7894deceb3d59e53080cddd67ca:dashboard_teacher.php
             </div>
         </form>
 
@@ -214,6 +193,6 @@
                 window.location = 'coursepage_teacher.php';
             }
         </script>
-</body>
+    </body>
 
 </html>

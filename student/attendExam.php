@@ -190,7 +190,7 @@
                     
                     ?>
 
-                        <meta http-equiv = "refresh" content = "1; url = giveExam.php?classcode=<?php echo $classcode?>&examtitle=<?php echo $examtitle?>" />
+                        <meta http-equiv = "refresh" content = "1; url = preExam.php?classcode=<?php echo $classcode?>&examtitle=<?php echo $examtitle?>" />
 
                     <?php
                 }
