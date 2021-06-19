@@ -89,49 +89,7 @@ session_start();
 
                     }
 
-                    $studentdata = $database->getReference("studentTable/")
-                    ->orderByChild("email")
-                    ->equalTo($_SESSION['email'])
-                    ->getvalue();
-
-                    foreach($studentdata as $studenttoken => $studentkey){
-
-                        if($studentkey['email'] == $_SESSION['email'] ){
-
-                            $examassign = $database->getReference("studentTable/".$studenttoken."/assignedExam")->getvalue();
-
-                            foreach($examassign as $examassigntoken => $examassignkey){
-
-                                if(strcmp($examassignkey['examtitle'],$examtitle) == 0){
-
-                                    for($i = 1; $i<=10; $i++){
-                                        $answersheet[$i] = "";
-                                    }
-                                    
-                                    $update = [
-                                        'attandance' => "attended"
-                                    ];
-                                    $update1 = [
-                                        'answersheet' => $answersheet,
-                                        'marks' => 0,
-                                        'totalcorrect' => 0
-                                    ];
-
-                                    try{
-                                        $database->getReference("studentTable/".$studenttoken."/assignedExam/".$examassigntoken)->update($update);
-                                        $database->getReference("studentTable/".$studenttoken."/assignedExam/".$examassigntoken."/results")->update($update1);
-                                    }
-                                    catch(Exception $e){
-                                       
-                                    }
-                                    
-                                }
-
-                            }    
-
-                        }
-
-                    }
+                    
                 
                 ?>
                 <div class = "topdiv" id="single_question_area">
@@ -190,6 +148,10 @@ session_start();
             question_navigation();
 	
 
+            function chBackcolor() {
+                console.log('in color');
+                document.body.style.background = 'red';
+            }
 
 	        function load_question(question_id = '')
 	        {
@@ -207,7 +169,7 @@ session_start();
             }
 
             $(document).on('click', '.next', function(){
-                var question_id = $(this).attr('id');
+                var question_id = $(this).attr('id');     
                 load_question(question_id);
             });
 
@@ -231,9 +193,47 @@ session_start();
             }
 
             $(document).on('click', '.question_navigation', function(){
+                // console.log("in nav");
                 var question_id = $(this).data('question_id');
                 load_question(question_id);
             });
+
+            
+            $(document).on('click','.answer_option', function(){
+                console.log("in answer fun");
+                var question_id = $(this).data('question_id');
+		        var answer_option = $(this).data('ans_id');
+		        $.ajax({
+			        url:"user_ajax_action.php",
+                    method:"POST",
+                    data:{examtitle:examtitle, classcode:classcode, question_id:question_id, answer_option:answer_option, page:'giveExam', action:'answer'},
+                    success:function(data)
+                    {
+                        $('#testing_area').html(data);
+			        }
+		        })
+            });
+
+            
+            $(document).on('click','.submitexam', function(){
+                console.log('in func');
+                
+                if(confirm("Your exam will be submitted!\nAre you sure?")){
+
+                    $.ajax({
+                        url:"user_ajax_action.php",
+                        method:"POST",
+                        data:{examtitle:examtitle, classcode:classcode, page:"giveExam", action:"submitexam"},
+                        success:function(data){
+                            // $('#testing_area').html(data);
+                            window.location.href="attendExam.php?classcode="+classcode;
+                        }
+                    })
+
+                }
+
+            });
+
 
             $("#exam_timer").TimeCircles({ 
                 time:{
@@ -246,52 +246,31 @@ session_start();
                 }
             });
 
-            setInterval(function(){
+            var interval = setInterval(function(){
                 var remaining_second = $("#exam_timer").TimeCircles().getTime();
                 if(remaining_second < 1)
                 {
-                    alert('Exam time over');
-                    $(document).on('click','.submitexam', function(){
-                        $.ajax({
-                            url:"user_ajax_action.php",
-                            method:"POST",
-                            data:{examtitle:examtitle, classcode:classcode, page:"giveExam", action:"submitexam"},
-                            success:function(data){
-                                // $('#testing_area').html(data);
-                                window.location.href="attendExam.php?classcode="+$classcode;
-                            }
-                        })
-                    });
+                    endexam();
                 }
             }, 1000);
 
-
-            $(document).on('click','.answer_option', function(){
-                console.log("in fun");
-                var question_id = $(this).data('question_id');
-		        var answer_option = $(this).data('ans_id');
-		        $.ajax({
-			        url:"user_ajax_action.php",
-                    method:"POST",
-                    data:{examtitle:examtitle, classcode:classcode, question_id:question_id, answer_option:answer_option, page:'giveExam', action:'answer'},
-                    success:function(data)
-                    {
-                        // $('#testing_area').html(data);
-			        }
-		        })
-            });
-
-            $(document).on('click','.submitexam', function(){
+            function endexam(){
+                clearInterval(interval);
+                alert('Exam time over');
+                window.location.href="attendExam.php?classcode="+classcode;
                 $.ajax({
                     url:"user_ajax_action.php",
                     method:"POST",
                     data:{examtitle:examtitle, classcode:classcode, page:"giveExam", action:"submitexam"},
                     success:function(data){
                         // $('#testing_area').html(data);
-                        window.location.href="attendExam.php?classcode="+$classcode;
+                        
                     }
                 })
-            });
+                
+            };
+
+
 
 
 

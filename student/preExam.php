@@ -24,11 +24,11 @@
     <script src="https://use.fontawesome.com/releases/v5.15.2/js/all.js" data-auto-replace-svg="nest"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
-    <link rel="stylesheet"
-        href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     <link rel="stylesheet" href="../css/stylespage.css">
     <link rel="stylesheet" href="../css/navstyle.css">
     <link rel="stylesheet" href="../css/sidebar.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- <link rel="stylesheet" href="../css/page2.css">     -->
 </head>
 
@@ -93,10 +93,12 @@
                     </div>
 
                     <div class=" bottomdiv"">
-                            <button class="startexam" id="startexam" style="width: 400px;height:50px;
+                            <button class="startexam" id="startexam" onclick="confirmproceed()" style="width: 400px;height:50px;
                             background-color:lightgreen;outline: none;font-size: 18px;border: none;cursor: pointer;">
                         Proceed</button>
                     </div>
+
+                    <div id="testing">testing</div>
 
 
 
@@ -108,6 +110,72 @@
     </div>
 
     <script src="../js/camera.js"></script>
+
+    <script>
+
+        var sessionemail = "<?php echo $_SESSION['email'] ?>";
+        var classcode = "<?php echo $_GET['classcode'] ?>";
+        var examtitle = "<?php echo $_GET['examtitle'] ?>";
+    
+        function confirmproceed(){
+
+            if(confirm('You are sure to proceed ??')){
+
+                console.log('OK');
+                var Email = prompt("\n Marking your attendance ... \nPlease enter email to confrim:", "Harry Potter");
+                if (Email == null || Email == "") {
+
+                   console.log("User cancelled the prompt ...");
+
+                } else {
+                    console.log("email = "+ Email);
+
+                    if(Email.localeCompare(sessionemail) == 0 ){
+
+                        $.ajax({
+                            url:'user_ajax_action.php',
+                            method:'POST',
+                            data:{examtitle:examtitle,classcode:classcode,page:'preExam',action:'makeattendance'},
+                            success:function(data)
+                            {
+                                // $('#testing').html(data);
+
+                                if(confirm("Attendance is marked!\nYour exam is starting .... ")){
+
+                                    window.location.href = "giveExam.php?classcode="+classcode+"&examtitle="+examtitle;    
+
+                                }
+                                else{
+                                    alert("You can't cancel now!\nRedirecting to Exam page ... ");
+                                    window.location.href = "giveExam.php?classcode="+classcode+"&examtitle="+examtitle;
+                                }
+
+
+                            },
+                            error:function()
+                            {
+                                alert('Something went wrong! Try again ... ');
+                            }
+                        })
+
+                    }
+                    else{
+                        alert("Your email doesnt matched! try again ... ");
+                        confirmproceed();
+                    }
+
+
+                }
+
+            }
+            else{
+                console.log('Cancel');
+            }
+
+        }
+    
+    
+    </script>
 
 </body>
 

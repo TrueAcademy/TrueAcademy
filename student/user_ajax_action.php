@@ -3,12 +3,73 @@
 	session_start();
 	include("../includes/dbconfig.php");
 
-		if(isset($_POST['page']))
-		{
-			// echo "page set";
 
-			if($_POST['page'] == 'giveExam')
-			{
+
+	if(isset($_POST['page']))
+	{
+		// echo "page set";
+
+		if($_POST['page'] == 'preExam' ){
+
+			if($_POST['action'] == 'makeattendance' ){
+
+				// echo "In action";
+		
+				$studentdata = $database->getReference("studentTable/")
+				->orderByChild("email")
+				->equalTo($_SESSION['email'])
+				->getvalue();
+
+				foreach($studentdata as $studenttoken => $studentkey){
+
+					if($studentkey['email'] == $_SESSION['email'] ){
+
+						$examassign = $database->getReference("studentTable/".$studenttoken."/assignedExam")->getvalue();
+
+						foreach($examassign as $examassigntoken => $examassignkey){
+
+							if($examassignkey['examtitle'] == $_POST['examtitle'] and $examassignkey['classcode'] == $_POST['classcode'] ){
+
+								for($i = 1; $i<=10; $i++){
+									$answersheet[$i] = "";
+								}
+										
+								$update = [
+									'attandance' => "attended"
+								];
+								$update1 = [
+									'answersheet' => $answersheet,
+									'marks' => 0,
+									'totalcorrect' => 0
+								];
+
+								try{
+									$database->getReference("studentTable/".$studenttoken."/assignedExam/".$examassigntoken)->update($update);
+									$database->getReference("studentTable/".$studenttoken."/assignedExam/".$examassigntoken."/results")->update($update1);
+								}
+								catch(Exception $e){
+										
+								}
+										
+							}
+
+						}    
+
+					}
+
+				}
+
+
+			}
+					
+
+
+		}
+
+	
+		
+		if($_POST['page'] == 'giveExam')
+		{
 				if($_POST['action'] == 'load_question')
 				{
 					$output = '';
@@ -38,13 +99,7 @@
 
 								foreach($questionsdata as $questoken => $queskey) {
 
-									// // 1st question
-									// echo "in foreach";
-									// // var_dump($examkey);
-									// var_dump ($examkey[1]["question"] );
-
-
-									// var_dump($queskey);
+								
 									$output .= '
 										<div class="top">
 											<div class="ques">
@@ -101,7 +156,7 @@
 						
 						
 						$question_id = $_POST['question_id'];
-						echo 'question id = '. $question_id;
+						// echo 'question id = '. $question_id;
 
 						$examdata = $database->getReference("Exam/")
 						->orderByChild("classcode")
@@ -172,33 +227,37 @@
 								// echo $next_id;
 
 
+
+
+
 							}
+
+
 
 						}
 
 
 					}
 
-					$if_previous_disable = '';
-					$if_next_disable = '';
-
-					if($previous_id == ""){
-						$if_previous_disable = 'disabled';
-					}
 					
-					if($next_id == ""){
-						$if_next_disable = 'disabled';
-					}
-
 					$output .= '
 					
 						<div class="center2">
-							<button style="color: black; background-color: #ffc107; border-color: #007bff; border: 1px solid transparent; border-radius: 5px; margin-bottom : 20px"  type="button" name="previous" class="previous" id="'.$previous_id.'" '.$if_previous_disable.'>Previous</button>
-							<button style="color: #fff; background-color: #007bff; border-color: #007bff; border: 1px solid transparent; border-radius: 5px; margin-bottom: 20px" type="button" name="next" class="next" id="'.$next_id.'" '.$if_next_disable.'>Next</button>
-					
+							<button style="color: black; background-color: #ffc107; border-color: #007bff; border: 1px solid transparent; border-radius: 5px; margin-bottom : 20px"  type="button" name="previous"  class="previous" id="'.$previous_id.'" >Previous</button>
+							<button style="color: #fff; background-color: #007bff; border-color: #007bff; border: 1px solid transparent; border-radius: 5px; margin-bottom: 20px" type="button" name="next" class="next" id="'.$next_id.'" >Next</button>
 					';
 
 
+				
+
+					// <script>
+					// 	document.getElementById($question_id).style.backgroundColor = 'Red'; 
+					// </script>
+
+				
+
+
+					// var_dump($solvedques);
 					echo $output;
 
 				}
@@ -236,8 +295,11 @@
 
 					echo $output;
 
+
 				}
+
 				
+				 
 				if($_POST['action'] == 'answer')
 				{
 					$examtitle = $_POST['examtitle'];
@@ -245,6 +307,11 @@
 					$answer_option = $_POST['answer_option'];
 					$question_id = $_POST['question_id'];
 
+					// $solvedques[$question_id] = $answer_option;
+					// // $solvedques = array_push($solvedques,array($question_id => $answer_option));
+
+					// print_r($solvedques);
+					// // var_dump($solvedques);
 
 					// echo "question id = ". $question_id;
 
@@ -276,6 +343,7 @@
 
 										try{
 											$database->getReference("studentTable/".$studentToken."/assignedExam/".$examtoken."/results/answersheet" )->update($update);
+											echo "<script type='text/javascript'>document.getElementById(".$question_id.").style.backgroundColor='Red'; </script>";
 										}catch(Exception $e){
 											// echo "error ";
 										}
@@ -392,8 +460,8 @@
 				}
 
 
-			}
-			
 		}
+			
+	}
 
 ?>
