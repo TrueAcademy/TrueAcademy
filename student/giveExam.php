@@ -119,7 +119,7 @@ session_start();
                     
                 </div>
                 <div class="question_bar">
-                    <div id="exam_timer" data-timer="<?php echo $remaingingtime; ?>" ></div>
+                    <!-- <div id="exam_timer" data-timer="<?php echo $remaingingtime; ?>" ></div> -->
                     
                     <h4 style="margin-top:85px; text-align:center;"> Remaining Time </h4>
                 </div>
@@ -148,11 +148,6 @@ session_start();
             question_navigation();
 	
 
-            function chBackcolor() {
-                console.log('in color');
-                document.body.style.background = 'red';
-            }
-
 	        function load_question(question_id = '')
 	        {
                 console.log("in fun");
@@ -162,7 +157,7 @@ session_start();
                     data:{examtitle:examtitle, classcode:classcode, question_id:question_id, page:'giveExam', action:'load_question'},
                     success:function(data)
                     {   
-                        console.log('in console');
+                        // console.log('in console');
                         $('#single_question_area').html(data);
                     }
                 })

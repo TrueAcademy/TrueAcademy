@@ -111,12 +111,12 @@
 										<div class="center">
 											
 												<div class="question_left">
-													<li style="padding-bottom:30px;"><input type="radio" name="option" class="answer_option" data-question_id="1" data-ans_id="'.$queskey[1]["option 1"].'" />A].'.$queskey[1]["option 1"].'</li>
-													<li style="padding-bottom:30px;"><input type="radio" name="option" class="answer_option" data-question_id="1" data-ans_id="'.$queskey[1]["option 3"].'" />C].'.$queskey[1]["option 3"].'</li>
+													<li style="padding-bottom:30px;"><input type="radio" name="option" class="answer_option" onclick="document.getElementById(\'option_1\').style.color=\'green\' " data-question_id="1" data-ans_id="'.$queskey[1]["option 1"].'" /><label id="option_1">A].'.$queskey[1]["option 1"].'</label></li>
+													<li style="padding-bottom:30px;"><input type="radio" name="option" class="answer_option" id="option_3"  data-question_id="1" data-ans_id="'.$queskey[1]["option 3"].'" />C].'.$queskey[1]["option 3"].'</li>
 												</div>
 												<div class="question_right">
-													<li style="padding-bottom:30px;"><input type="radio" name="option" class="answer_option" data-question_id="1" data-ans_id="'.$queskey[1]["option 2"].'" />B].'.$queskey[1]["option 2"].'</li>
-													<li style="padding-bottom:30px;"><input type="radio" name="option" class="answer_option" data-question_id="1" data-ans_id="'.$queskey[1]["option 4"].'" />D].'.$queskey[1]["option 4"].'</li>
+													<li style="padding-bottom:30px;"><input type="radio" name="option" class="answer_option" id="option_2"  data-question_id="1" data-ans_id="'.$queskey[1]["option 2"].'" />B].'.$queskey[1]["option 2"].'</li>
+													<li style="padding-bottom:30px;"><input type="radio" name="option" class="answer_option" id="option_4"  data-question_id="1" data-ans_id="'.$queskey[1]["option 4"].'" />D].'.$queskey[1]["option 4"].'</li>
 												</div>
 										
 										</div>
@@ -189,12 +189,12 @@
 										<div class="center">
 											
 												<div class="question_left">
-													<li><input type="radio" name="option" class="answer_option" data-question_id="'.$question_id.'"  data-ans_id="'.$queskey[$question_id]["option 1"].'" />A].'.$queskey[$question_id]["option 1"].'</li>
-													<li><input type="radio" name="option" class="answer_option" data-question_id="'.$question_id.'"  data-ans_id="'.$queskey[$question_id]["option 3"].'" />C].'.$queskey[$question_id]["option 3"].'</li>
+													<li><input type="radio" name="option" class="answer_option" data-id="option_1" data-question_id="'.$question_id.'"  data-ans_id="'.$queskey[$question_id]["option 1"].'" /><label id="option_1" style="color:red;" >A].'.$queskey[$question_id]["option 1"].'</label></li>
+													<li><input type="radio" name="option" class="answer_option" id="option_3"  data-question_id="'.$question_id.'"  data-ans_id="'.$queskey[$question_id]["option 3"].'" />C].'.$queskey[$question_id]["option 3"].'</li>
 												</div>
 												<div class="question_right">
-													<li><input type="radio" name="option" class="answer_option" data-question_id="'.$question_id.'"  data-ans_id="'.$queskey[$question_id]["option 2"].'" />B].'.$queskey[$question_id]["option 2"].'</li>
-													<li><input type="radio" name="option" class="answer_option" data-question_id="'.$question_id.'"  data-ans_id="'.$queskey[$question_id]["option 4"].'" />D].'.$queskey[$question_id]["option 4"].'</li>
+													<li><input type="radio" name="option" class="answer_option" id="option_2"  data-question_id="'.$question_id.'"  data-ans_id="'.$queskey[$question_id]["option 2"].'" />B].'.$queskey[$question_id]["option 2"].'</li>
+													<li><input type="radio" name="option" class="answer_option" id="option_4"  data-question_id="'.$question_id.'"  data-ans_id="'.$queskey[$question_id]["option 4"].'" />D].'.$queskey[$question_id]["option 4"].'</li>
 												</div>
 										
 										</div>
@@ -281,7 +281,7 @@
 							while($count != $examkey['questionno']+1 ){
 
 								$output .= '
-								<button type="button" name="question_navigation" class="btn-lg question_navigation" data-question_id="'.$count.'"  id="'.$count.'"  style="padding: 0px 10px; margin: 20px 0px; color: #fff; background-color: #7C4DFF; border-color: #007bff; border: 1px solid transparent; border-radius: 5px;"  >'.$count.'</button>
+								<button type="button" name="question_navigation" class="btn-lg question_navigation" data-question_id="'.$count.'"  id="'.$count.'"  style="padding: 0px 10px; margin: 20px 0px; color: #fff; background-color: #7C4DFF; border-color: #007bff; border: 1px solid transparent; border-radius: 5px; display: flex; "  >'.$count.'</button>
 								';
 								
 								$count=$count+1;
@@ -344,6 +344,7 @@
 										try{
 											$database->getReference("studentTable/".$studentToken."/assignedExam/".$examtoken."/results/answersheet" )->update($update);
 											echo "<script type='text/javascript'>document.getElementById(".$question_id.").style.backgroundColor='Red'; </script>";
+											// echo "<script type='text/javascript'>document.getElementById('option_1').style.color='green'</script>";
 										}catch(Exception $e){
 											// echo "error ";
 										}
