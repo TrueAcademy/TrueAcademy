@@ -35,6 +35,7 @@
         if($examdate < date("Y-m-d") and $starttime <= time()){
 
             echo "Exam cant be created as time and date is over!";
+            echo "<script>window.location.href='../examdashboard.php?classcode=".$classcode."'</script>";
 
         }else{
 
@@ -56,104 +57,240 @@
                 "resultdecleared" => "false" 
             ];
             
-            $createExam = $database->getReference($collection)->push($data);
-    
-            // updating teacher data 
-            $collection = "teacherTable/";
-            $teacherData = $database->getReference($collection)
-            ->orderByChild('email')
-            ->equalTo($examiner)
+            $examtable = $database->getReference('Exam/')
+            ->orderByChild('examtitle')
+            ->equalTo($examtitle)
             ->getvalue();
-    
-            foreach($teacherData as $token => $key ){
-    
 
-                $teacherExamCollection = $collection.$token."/examcreated";
-                $data = [
-                    'examtitle' => $examtitle,
-                    'classcode' => $classcode
-                ];
-                $database->getReference($teacherExamCollection)->push($data);
-    
-            }
-    
-            // Updating student data
-            $collection = "studentTable/";
-            $studentData = $database->getReference($collection)->getvalue();
-    
-            foreach($studentData as $token => $key){
-    
-                $subcollection = $collection.$token."/classjoined";
-                $classdata1 = $database->getReference($subcollection)->getvalue();
-    
-                if($classdata1 != null){
+            if($examtable == null){
 
-                    foreach($classdata1 as $classtoken => $classkey){
-    
-                        // echo $classkey['classcode']."\n";
+                
+                $createExam = $database->getReference($collection)->push($data);
         
-                        if($classkey['classcode'] == $classcode){
+                // updating teacher data 
+                $collection = "teacherTable/";
+                $teacherData = $database->getReference($collection)
+                ->orderByChild('email')
+                ->equalTo($examiner)
+                ->getvalue();
+        
+                foreach($teacherData as $token => $key ){
+        
+
+                    $teacherExamCollection = $collection.$token."/examcreated";
+                    $data = [
+                        'examtitle' => $examtitle,
+                        'classcode' => $classcode
+                    ];
+                    $database->getReference($teacherExamCollection)->push($data);
+        
+                }
+        
+                // Updating student data
+                $collection = "studentTable/";
+                $studentData = $database->getReference($collection)->getvalue();
+        
+                foreach($studentData as $token => $key){
+        
+                    $subcollection = $collection.$token."/classjoined";
+                    $classdata1 = $database->getReference($subcollection)->getvalue();
+        
+                    if($classdata1 != null){
+
+                        foreach($classdata1 as $classtoken => $classkey){
         
                             // echo $classkey['classcode']."\n";
-        
-                            // var_dump($key['email']);
-        
-        
-                            $studentToken = $collection.$token."/assignedExam"; 
-                            $examdata = [
-                                'examtitle' => $examtitle,
-                                'examdate' => $examdate,
-                                'examiner' => $examiner,
-                                'classcode' => $classcode,
-                                'attandance' => "No attended"
-                            ];
-                            $database->getReference($studentToken)->push($examdata); 
-        
+            
+                            if($classkey['classcode'] == $classcode){
+            
+                                // echo $classkey['classcode']."\n";
+            
+                                // var_dump($key['email']);
+            
+            
+                                $studentToken = $collection.$token."/assignedExam"; 
+                                $examdata = [
+                                    'examtitle' => $examtitle,
+                                    'examdate' => $examdate,
+                                    'examiner' => $examiner,
+                                    'classcode' => $classcode,
+                                    'attandance' => "No attended",
+                                    'resultcalculated' => 'false'
+                                ];
+                                $database->getReference($studentToken)->push($examdata); 
+            
+                            }
+            
                         }
+
+                    }
         
+                }
+
+                // Adding info to classes
+                $collection = "classes/";
+                $classref = $database->getReference($collection)
+                ->orderByChild('classcode')
+                ->equalTo($classcode)
+                ->getvalue();
+
+                foreach($classref as $classreftoken => $classrefkey){
+
+                    $examdata = [
+                        'examtitle' => $examtitle,
+                        'examdate' => $examdate,
+                        'examiner' => $examiner
+                    ];
+
+                    
+                    $totalexam = [
+                        'totalExamConducted' => $classrefkey['totalExamConducted']+1
+                    ];
+
+                    // echo "<script type='text/javascript'>alert('class created successfully!')</script>";
+
+                    try{
+
+                        $database->getReference($collection.$classreftoken)->update($totalexam);
+
+                        $database->getReference($collection.$classreftoken."/ExamForClass")->push($data);
+
+
+                    }
+                    catch(Exception $e){
+
+                    }
+                    
+                }
+
+
+
+            }else{
+
+                $flag = "false";
+
+                foreach($examtable as $examtabletoken => $examtablekey){
+
+                    if($examtablekey['examtitle'] == $examtitle and $examtablekey['classcode'] == $classcode ){
+                        $flag = "true";
                     }
 
                 }
-    
-            }
 
-            // Adding info to classes
-            $collection = "classes/";
-            $classref = $database->getReference($collection)
-            ->orderByChild('classcode')
-            ->equalTo($classcode)
-            ->getvalue();
+                if($flag == "true"){
+                    echo "<script type='text/javascript'>alert('Exam title in exists!')</script>";
+                    echo "<script>window.location.href='../examdashboard.php?classcode=".$classcode."'</script>";
+                }
+                else{
 
-            foreach($classref as $classreftoken => $classrefkey){
+                    
+                     
+                    $createExam = $database->getReference($collection)->push($data);
+            
+                    // updating teacher data 
+                    $collection = "teacherTable/";
+                    $teacherData = $database->getReference($collection)
+                    ->orderByChild('email')
+                    ->equalTo($examiner)
+                    ->getvalue();
+            
+                    foreach($teacherData as $token => $key ){
+            
 
-                $examdata = [
-                    'examtitle' => $examtitle,
-                    'examdate' => $examdate,
-                    'examiner' => $examiner
-                ];
+                        $teacherExamCollection = $collection.$token."/examcreated";
+                        $data = [
+                            'examtitle' => $examtitle,
+                            'classcode' => $classcode
+                        ];
+                        $database->getReference($teacherExamCollection)->push($data);
+            
+                    }
+            
+                    // Updating student data
+                    $collection = "studentTable/";
+                    $studentData = $database->getReference($collection)->getvalue();
+            
+                    foreach($studentData as $token => $key){
+            
+                        $subcollection = $collection.$token."/classjoined";
+                        $classdata1 = $database->getReference($subcollection)->getvalue();
+            
+                        if($classdata1 != null){
 
+                            foreach($classdata1 as $classtoken => $classkey){
+            
+                                // echo $classkey['classcode']."\n";
                 
-                $totalexam = [
-                    'totalExamConducted' => $classrefkey['totalExamConducted']+1
-                ];
+                                if($classkey['classcode'] == $classcode){
+                
+                                    // echo $classkey['classcode']."\n";
+                
+                                    // var_dump($key['email']);
+                
+                
+                                    $studentToken = $collection.$token."/assignedExam"; 
+                                    $examdata = [
+                                        'examtitle' => $examtitle,
+                                        'examdate' => $examdate,
+                                        'examiner' => $examiner,
+                                        'classcode' => $classcode,
+                                        'attandance' => "No attended"
+                                    ];
+                                    $database->getReference($studentToken)->push($examdata); 
+                
+                                }
+                
+                            }
 
-                // echo "<script type='text/javascript'>alert('class created successfully!')</script>";
+                        }
+            
+                    }
 
-                try{
+                    // Adding info to classes
+                    $collection = "classes/";
+                    $classref = $database->getReference($collection)
+                    ->orderByChild('classcode')
+                    ->equalTo($classcode)
+                    ->getvalue();
 
-                    $database->getReference($collection.$classreftoken)->update($totalexam);
+                    foreach($classref as $classreftoken => $classrefkey){
 
-                    $database->getReference($collection.$classreftoken."/ExamForClass")->push($data);
+                        $examdata = [
+                            'examtitle' => $examtitle,
+                            'examdate' => $examdate,
+                            'examiner' => $examiner
+                        ];
 
+                        
+                        $totalexam = [
+                            'totalExamConducted' => $classrefkey['totalExamConducted']+1
+                        ];
+
+                        // echo "<script type='text/javascript'>alert('class created successfully!')</script>";
+
+                        try{
+
+                            $database->getReference($collection.$classreftoken)->update($totalexam);
+
+                            $database->getReference($collection.$classreftoken."/ExamForClass")->push($data);
+
+
+                        }
+                        catch(Exception $e){
+
+                        }
+                        
+                    }
 
                 }
-                catch(Exception $e){
 
-                }
+
+
+
                 
+
+
             }
-
-
 
         }
 
@@ -188,9 +325,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
-    <link rel="stylesheet" href="../../css/stylespage.css">
+    <link rel="stylesheet" href="../../css/stylespage_temp.css">
     <link rel="stylesheet" href="../../css/navstyle.css">
-    <link rel="stylesheet" href="../../css/sidebar.css">
+    <link rel="stylesheet" href="../../css/sidebar-temp.css">
     <!-- <link rel="stylesheet" href="../css/page2.css">     -->
 </head>    
 <body>
@@ -226,7 +363,7 @@
         <div class="leftdiv">
                 <div class="sidebar">
                     <center>
-                        <img src="\images\book.png" class="profile_image" alt="">
+                        <img src="../images/person.png" class="profile_image" alt="">
                         <h4 style="font-size: 12px; margin-bottom:5px"><?php echo $_SESSION['email']?></h4>
                         <h6 style="color: #ccc; margin-bottom:15px">Teacher</h6>
                     </center>
@@ -275,4 +412,3 @@
 
 </body>
 </html>
-

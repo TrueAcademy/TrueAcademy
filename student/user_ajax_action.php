@@ -35,7 +35,7 @@
 								}
 										
 								$update = [
-									'attandance' => "attended"
+									'attandance' => "attended",
 								];
 								$update1 = [
 									'answersheet' => $answersheet,
@@ -111,12 +111,12 @@
 										<div class="center">
 											
 												<div class="question_left">
-													<li style="padding-bottom:30px;"><input type="radio" name="option" class="answer_option" onclick="document.getElementById(\'option_1\').style.color=\'green\' " data-question_id="1" data-ans_id="'.$queskey[1]["option 1"].'" /><label id="option_1">A].'.$queskey[1]["option 1"].'</label></li>
-													<li style="padding-bottom:30px;"><input type="radio" name="option" class="answer_option" id="option_3"  data-question_id="1" data-ans_id="'.$queskey[1]["option 3"].'" />C].'.$queskey[1]["option 3"].'</li>
+													<li style="padding-bottom:30px;"><input type="radio" name="option" class="answer_option" data-question_id="1" data-ans_id="'.$queskey[1]["option 1"].'" data-option_id="option_1" /><label id="option_1">A].'.$queskey[1]["option 1"].'</label></li>
+													<li style="padding-bottom:30px;"><input type="radio" name="option" class="answer_option" data-question_id="1" data-ans_id="'.$queskey[1]["option 2"].'" data-option_id="option_2" /><label id="option_2">B].'.$queskey[1]["option 2"].'</label></li>
 												</div>
 												<div class="question_right">
-													<li style="padding-bottom:30px;"><input type="radio" name="option" class="answer_option" id="option_2"  data-question_id="1" data-ans_id="'.$queskey[1]["option 2"].'" />B].'.$queskey[1]["option 2"].'</li>
-													<li style="padding-bottom:30px;"><input type="radio" name="option" class="answer_option" id="option_4"  data-question_id="1" data-ans_id="'.$queskey[1]["option 4"].'" />D].'.$queskey[1]["option 4"].'</li>
+													<li style="padding-bottom:30px;"><input type="radio" name="option" class="answer_option" data-question_id="1" data-ans_id="'.$queskey[1]["option 3"].'" data-option_id="option_3" /><label id="option_3">C].'.$queskey[1]["option 3"].'</label></li>
+													<li style="padding-bottom:30px;"><input type="radio" name="option" class="answer_option" data-question_id="1" data-ans_id="'.$queskey[1]["option 4"].'" data-option_id="option_4" /><label id="option_4">D].'.$queskey[1]["option 4"].'</label></li>
 												</div>
 										
 										</div>
@@ -189,12 +189,12 @@
 										<div class="center">
 											
 												<div class="question_left">
-													<li><input type="radio" name="option" class="answer_option" data-id="option_1" data-question_id="'.$question_id.'"  data-ans_id="'.$queskey[$question_id]["option 1"].'" /><label id="option_1" style="color:red;" >A].'.$queskey[$question_id]["option 1"].'</label></li>
-													<li><input type="radio" name="option" class="answer_option" id="option_3"  data-question_id="'.$question_id.'"  data-ans_id="'.$queskey[$question_id]["option 3"].'" />C].'.$queskey[$question_id]["option 3"].'</li>
+													<li><input type="radio" name="option" class="answer_option" data-question_id="'.$question_id.'" data-ans_id="'.$queskey[$question_id]["option 1"].'" data-option_id="option_1" /><label id="option_1" >A].'.$queskey[$question_id]["option 1"].'</label></li>
+													<li><input type="radio" name="option" class="answer_option" data-question_id="'.$question_id.'" data-ans_id="'.$queskey[$question_id]["option 2"].'" data-option_id="option_2" /><label id="option_2" >B].'.$queskey[$question_id]["option 2"].'</label></li>
 												</div>
 												<div class="question_right">
-													<li><input type="radio" name="option" class="answer_option" id="option_2"  data-question_id="'.$question_id.'"  data-ans_id="'.$queskey[$question_id]["option 2"].'" />B].'.$queskey[$question_id]["option 2"].'</li>
-													<li><input type="radio" name="option" class="answer_option" id="option_4"  data-question_id="'.$question_id.'"  data-ans_id="'.$queskey[$question_id]["option 4"].'" />D].'.$queskey[$question_id]["option 4"].'</li>
+													<li><input type="radio" name="option" class="answer_option" data-question_id="'.$question_id.'" data-ans_id="'.$queskey[$question_id]["option 3"].'" data-option_id="option_3" /><label id="option_3" >C].'.$queskey[$question_id]["option 3"].'</label></li>
+													<li><input type="radio" name="option" class="answer_option" data-question_id="'.$question_id.'" data-ans_id="'.$queskey[$question_id]["option 4"].'" data-option_id="option_4" /><label id="option_4" >D].'.$queskey[$question_id]["option 4"].'</label></li>
 												</div>
 										
 										</div>
@@ -243,8 +243,8 @@
 					$output .= '
 					
 						<div class="center2">
-							<button style="color: black; background-color: #ffc107; border-color: #007bff; border: 1px solid transparent; border-radius: 5px; margin-bottom : 20px"  type="button" name="previous"  class="previous" id="'.$previous_id.'" >Previous</button>
-							<button style="color: #fff; background-color: #007bff; border-color: #007bff; border: 1px solid transparent; border-radius: 5px; margin-bottom: 20px" type="button" name="next" class="next" id="'.$next_id.'" >Next</button>
+							<button type="button" name="previous" class="previous" id="'.$previous_id.'" >Previous</button>
+							<button type="button" name="next" class="next" id="'.$next_id.'" >Next</button>
 					';
 
 
@@ -306,6 +306,7 @@
 					$classcode = $_POST['classcode'];
 					$answer_option = $_POST['answer_option'];
 					$question_id = $_POST['question_id'];
+					$option_id = $_POST['option_id'];
 
 					// $solvedques[$question_id] = $answer_option;
 					// // $solvedques = array_push($solvedques,array($question_id => $answer_option));
@@ -344,7 +345,8 @@
 										try{
 											$database->getReference("studentTable/".$studentToken."/assignedExam/".$examtoken."/results/answersheet" )->update($update);
 											echo "<script type='text/javascript'>document.getElementById(".$question_id.").style.backgroundColor='Red'; </script>";
-											// echo "<script type='text/javascript'>document.getElementById('option_1').style.color='green'</script>";
+											echo "option id == ". $option_id;
+											echo "<script type='text/javascript'>document.getElementById(".$option_id.").style.texColor='green'</script>";
 										}catch(Exception $e){
 											// echo "error ";
 										}
@@ -433,6 +435,11 @@
 
 												try{
 													$database->getReference("studentTable/".$studentToken."/assignedExam/".$examtoken."/results")->update($update);
+													$update1 = [
+														'resultcalculated' => 'true'
+													];
+													$database->getReference("studentTable/".$studenTabletoken."/assignedExam/".$studentexamtoken)->update($update);
+
 												}catch(Exception $e){
 
 												}

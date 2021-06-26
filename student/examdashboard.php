@@ -54,7 +54,7 @@
         <div class="leftdiv">
                 <div class="sidebar">
                     <center>
-                        <img src="\images\book.png" class="profile_image" alt="">
+                        <img src="../images/person.png" class="profile_image" alt="">
                         <h4 style="font-size: 12px; margin-bottom:5px"><?php echo $_SESSION['email']?></h4>
                         <h6 style="color: #ccc; margin-bottom:15px">student</h6>
                     </center>

@@ -203,7 +203,8 @@
                                                 'examdate' => $examkey['examdate'],
                                                 'examiner' => $examkey['examiner'],
                                                 'classcode' => $classcode,
-                                                'attandance' => "No attended"
+                                                'attandance' => "No attended",
+                                                'resultcalculated' => 'false'
                                             ];
                 
                                             try{
