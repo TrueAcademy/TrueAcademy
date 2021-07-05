@@ -70,9 +70,9 @@
                 if(strcmp($examkey['examtitle'],$examtitle) == 0) {
                     
                     echo "Inside";
-                    $examinnertoken = "Exam/".$examtoken. "/questions";
+                    $examinnertoken = "Exam/".$examtoken."/questions";
                     $database->getReference($examinnertoken)->push($maindata);
-    
+                    echo "<script>window.location.href='../examdashboard.php?classcode=".$classcode."'</script>";
                 }
     
             }

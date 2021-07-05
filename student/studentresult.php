@@ -2,74 +2,83 @@
 
     session_start();
 
-
-    
-    if( $_SESSION['email'] == null ){
-
-        echo "<script type='text/javascript'>alert('Cant open user is not authorized!')</script>";
-        header("Location:index.html"); 
-
-    }
-
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>results</title>
+    <title>Attend Exam</title>
     <script src="https://use.fontawesome.com/releases/v5.15.2/js/all.js" data-auto-replace-svg="nest"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
-    <link rel="stylesheet" href="../css/stylespage.css">
-    <link rel="stylesheet" href="../css/navstyle.css">
-    <link rel="stylesheet" href="../css/sidebar.css">
-</head>    
+    <link rel="stylesheet" href="css/sidebar.css"/>
+    <link rel="stylesheet" href="css/cards.css"/>
+    <link rel="stylesheet" href="../css/navbar.css"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+</head>
+
 <body>
 
-    <nav>
+    <div class="navbar">
         <div class="left_div">
-                <a href="#" class="hamberg"><i class="fas fa-bars"></i></a>
-                <a href="#" class="logo_url"><img src="../images/logo.png" alt="logo" class="logo"></a>
-                <h1 class="h1">True Academy</h1>
+
+            <button class="menu-toggler" onclick="showdiv()">
+                <span onclick="removediv()"></span>
+                <span></span>
+                <span onclick="removediv()"></span>
+            </button>
+
+            <a href="#" class="logo_url"><img src="../images/logo.png" alt="logo" class="logo"></a>
+            <h1 class="h1">True Academy</h1>
         </div>
         <div class="right_div">
             <a href="#" class="profile"><i class="fas fa-user"></i></a>
-           
+
             <div class="profile_li">
                 <a href="#" class="PROFILE">Profile</a>
-                <a href="../logout.php" class="LOGOUT">Logout</a>  
+                <a href="#" class="LOGOUT">Logout</a>
             </div>
-            <h4 class="login_name"> <?php echo $_SESSION['email']?> </h4>
-        <div>
-    </nav>
-    
-   
-
-    <div class="main-content">
-
-
-        <!-- sidebar -->
-        <div class="leftdiv">
-                <div class="sidebar">
-                    <center>
-                        <img src="\images\book.png" class="profile_image" alt="">
-                        <h4 style="font-size: 12px; margin-bottom:5px"><?php echo $_SESSION['email']?></h4>
-                        <h6 style="color: #ccc; margin-bottom:15px">student</h6>
-                    </center>
-                    <a href="attendExam.php?classcode=<?php echo $_GET['classcode'] ?>"><i class="fas fa-desktop"></i><span>Attend Exam</span></a>
-                    <a href="viewexam.php?classcode=<?php echo $_GET['classcode']?>"><i class="far fa-eye"></i><span>View Exam</span></a>
-                    <a href="viewresult.php?classcode=<?php echo $_GET['classcode']?>"><i class="fas fa-table"></i><span>View Result</span></a></div>
-                </div>
+            <h3 class="login_name"><?php echo $_SESSION['email'] ?></h3>
         </div>
-        <!--sidebar end-->
-        
-        <main class="rightdiv">
+    </div>
+
+    <div class="main_container">
+        <div class="left_div2" id="welcomediv">
+
+            <div class="close_button" onclick="removediv()">
+                <a href="#" class="close_btn_teacher" id="close_btn"><i id="close" class="far fa-times-circle"></i></a>
+            </div>
+
+            <div class="profile_name">
+                <div class="imagediv" >
+                    <img src="../images/logo.png"  alt="">
+                </div>
+                <h3><?php echo $_SESSION['email'] ?></h3>
+                <h6>student</h6>
+            </div>
+    
+            <div class="side_btn">
+                <a href="attendExam.php?classcode=<?php echo $_GET['classcode']?>"><i class="fas fa-desktop"></i><span>Attend Exam</span></a>
+                <a href="viewexam.php?classcode=<?php echo $_GET['classcode']?>"><i class="far fa-eye"></i><span>View Exam</span></a>
+                <a href="viewresult.php?classcode=<?php echo $_GET['classcode']?>"><i class="fas fa-table"></i><span>View Result</span></a>
+            </div>
+
+        </div>
+
+        <div class="right_div2">
+
             <?php   
 
                 include('../includes/dbconfig.php');
-                
+
                 $examdata = $database->getReference("Exam/")
                 ->orderbyChild('classcode')
                 ->equalTo($_GET['classcode'])
@@ -105,8 +114,8 @@
 
                                             ?>
 
-                                                <div class="cards">
-                                                    <div class="card-single">
+                                                <div class="cards" style="margin-left: 40px;">
+                                                    <div class="card-single" >
                                                         <div>
                                                             <h1><?php echo $examkey['questionno']?></h1>
                                                             <span>Total marks</span>
@@ -114,7 +123,7 @@
                                                     </div>
 
 
-                                                    <div class="card-single">
+                                                    <div class="card-single" >
                                                         <div>
                                                             <h1><?php echo $studentexamkey['results']['marks']?></h1>
                                                             <span>Total Marks Obtained</span>
@@ -122,70 +131,57 @@
                                                     </div>
                                                 </div>
 
-                                                <div class="recent-grid">
-                                                    <!-- List of student joined -->
+                                                <div class="white_div" style="margin-top: 200px; position:absolute">
+                                                    <h3>Your Exams</h3>
+                                                    <table>
+                                                        <thead>
+                                                            <tr>
+                                                                <td>Question</td>
+                                                                <td>Answer You Choice</td>
+                                                                <td>Correct Answer</td>
+                                                                <td>Marks Obtained</td>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
 
-                                                    <div class="projects">
-                                                        <div class="card">
-                                                            <div class="card-header">
-                                                                <h3>Your Answer Sheet</h3>
-                                                            </div>
-                                                            <div class="card-body">
-                                                                <div class="table-responsive">
-                                                                    <table width="100%">
-                                                                        <thead>
-                                                                            <tr>
-                                                                                <td>Question</td>
-                                                                                <td>Answer You Choice</td>
-                                                                                <td>Correct Answer</td>
-                                                                                <td>Marks Obtained</td>
-                                                                            </tr>
-                                                                        </thead>
+                                                            
+                                                        <?php
 
-                                                                            <tbody>
+                                                            // echo $studentexamkey['results']['answersheet'][2];
+                                                            for($question_id=1;$question_id<=10;$question_id++){
 
-                                                                                <?php
+                                                                ?>
+                                                                    <tr>
+                                                                        <td> <?php echo $quespaperkey[$question_id]['question'] ?> </td>
+                                                                        <td> <?php echo $studentexamkey['results']['answersheet'][$question_id] ?> </td>
+                                                                        <td> <?php echo $quespaperkey[$question_id]['answer']?></td>
+                                                                        <?php
+                                                                            if( strcmp($studentexamkey['results']['answersheet'][$question_id],$quespaperkey[$question_id]['answer']) == 0 ){
+                                                                                echo "<td>1</td>";
+                                                                            }
+                                                                            else{
+                                                                                echo "<td>0</td>";
+                                                                            }
+                                                                        ?> 
+                                                                    </tr>  
 
-                                                                                // echo $studentexamkey['results']['answersheet'][2];
-                                                                                for($question_id=1;$question_id<=10;$question_id++){
-
-                                                                                    ?>
-                                                                                        <tr>
-                                                                                            <td> <?php echo $quespaperkey[$question_id]['question'] ?> </td>
-                                                                                            <td> <?php echo $studentexamkey['results']['answersheet'][$question_id] ?> </td>
-                                                                                            <td> <?php echo $quespaperkey[$question_id]['answer']?></td>
-                                                                                            <?php
-                                                                                                if( strcmp($studentexamkey['results']['answersheet'][$question_id],$quespaperkey[$question_id]['answer']) == 0 ){
-                                                                                                    echo "<td>1</td>";
-                                                                                                }
-                                                                                                else{
-                                                                                                    echo "<td>0</td>";
-                                                                                                }
-                                                                                            ?> 
-                                                                                        </tr>  
-
-                                                                                    <?php
+                                                                <?php
 
 
-                                                                                }
+                                                            }
 
 
-                                                                                ?>
-                                                                            </tbody>
-                                                                          
-                                                                    </table>
-                                                                </div>    
-                                                            </div>
-                                                        </div>
-                                                    </div>  
+                                                        ?>
 
-                                                                                <?php
+                                                                                
+                                                        </tbody>
+                                                    </table>
+                                                </div>
 
+                                            <?php
 
                                         }
-
                                     }
-
 
                                 }
 
@@ -198,15 +194,26 @@
                 }
 
             ?>
-            
 
-            
 
-                
-            </div>
+           
+        </div>
 
-        </main>
     </div>
 
+    <script>
+        function showdiv() {
+            document.getElementById('welcomediv').style.display = "block";
+        }
+
+        function removediv() {
+            document.getElementById('welcomediv').style.display = "none";
+        }
+
+        
+    
+    </script>
 </body>
+
 </html>
+

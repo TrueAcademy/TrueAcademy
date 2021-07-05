@@ -1,0 +1,419 @@
+*
+{
+    padding:0px;
+    margin: 0px;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+.navbar
+{
+    width: 100vw;
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+    background-color: #272a29;
+}
+.left_div
+{
+    width: 430px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+}
+.logo
+{
+    width: 120px;
+    margin-right: 10px;
+    margin-left:30px
+}
+.h1
+{
+    font-size: 32px;
+    color: #38d39f;
+}
+.right_div
+{
+    width: 300px;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding-right:20px;
+}
+.profile
+{
+    width: 45px;
+    height: 45px;
+    color: #38d39f;
+    font-size: 1.7rem;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    border: 2px solid #38d39f;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* margin-bottom: 10px; */
+}
+.profile:focus + .profile_li
+{
+  opacity: 1;
+}
+
+.login_name {
+  color: white;
+  font-size: 12px;
+}
+
+
+.profile_li
+{
+  position:absolute;
+  margin-top: 130px;
+  width: 110px;
+  height: 70px;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
+  margin-left: 15px;
+  opacity: 0;
+}
+
+
+
+
+.PROFILE
+{
+ width: 110px;
+ text-decoration:none;
+ color: white;
+ background-color:#38d39f;
+ height: 32px;
+ text-align: center;
+ border-radius: 10px 10px 0px 0px;
+ -webkit-border-radius: 10px 10px 0px 0px;
+ -moz-border-radius: 10px 10px 0px 0px;
+ -ms-border-radius: 10px 10px 0px 0px;
+ -o-border-radius: 10px 10px 0px 0px;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+}
+.PROFILE:hover
+{
+  background-color:gray;
+}
+.LOGOUT
+{
+  width: 110px;
+  text-decoration:none;
+  color: white;
+  background-color:#38d39f;
+  height: 32px;
+  text-align: center;
+  border-radius: 0px 0px 10px 10px;
+  -webkit-border-radius: 0px 0px 10px 10px;
+  -moz-border-radius: 0px 0px 10px 10px;
+  -ms-border-radius: 0px 0px 10px 10px;
+  -o-border-radius: 0px 0px 10px 10px;
+  display: flex;
+ align-items: center;
+ justify-content: center;
+}
+.LOGOUT:hover
+{
+  background-color:gray;
+}
+.create_class_hover
+{
+  background-color: rgb(32, 31, 31);
+  color: white;
+  display: flex;
+  position: absolute;
+  text-align: center;
+  font-size: 12px;
+  padding-right: 3px;
+  padding-left: 3px;
+  padding-bottom: 2px;
+  padding-top: 2px;
+  border: 1px solid white;
+  margin-top: 60px;
+  margin-right: 100px;
+  opacity: 0;
+  transition: all 0.3s ease;
+  transform: translateY(-10px);
+  -webkit-transform: translateY(-10px);
+  -moz-transform: translateY(-10px);
+  -ms-transform: translateY(-10px);
+  -o-transform: translateY(-10px);
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+}
+.login_name 
+{
+    color: white;
+    font-size: 16px;
+}
+.menu-toggler{
+    margin-left: 35px;
+    background: none;
+    width: 30px;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    outline: none;
+    z-index: 999;
+    display: none;
+  }
+  
+  .menu-toggler span{
+    display: block;
+    height: 3px;
+    background-color: #38d39f;
+    margin: 6px 0;
+    position: relative;
+    transition: .3s linear;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media screen and (max-width: 812px)
+{
+    .navbar
+    {
+        width: 100vw;
+        height: 100px;
+        display: flex;
+        justify-content: space-between;
+        background-color: #272a29;
+    }
+    .left_div
+    {
+        width: 300px;
+        height: 100px;
+        display: flex;
+        align-items: center;
+    }
+    .logo
+    {
+        width: 50px;
+        margin-right: 10px;
+        margin-left:30px;
+        display: none;
+    }
+    .h1
+    {
+        width: 200px;
+        height: 100px;
+        align-items: center;
+        justify-content: center;
+        font-size: 27px;
+        margin-left: 30px;
+        color: #38d39f;
+        /* padding-left: 30px; */
+        padding-top: 10px;
+    }
+    .right_div
+    {
+        width: 100px;
+        height: 100px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        padding: 0px;
+    }
+    .profile
+    {
+        width: 45px;
+        height: 45px;
+        color: #38d39f;
+        font-size: 1.7rem;
+        border-radius: 50%;
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+        -ms-border-radius: 50%;
+        -o-border-radius: 50%;
+        border: 2px solid #38d39f;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .profile:focus + .profile_li
+    {
+    opacity: 1;
+    }
+
+    .login_name {
+    color: white;
+    font-size: 12px;
+    display: none;
+    }
+
+
+    .profile_li
+    {
+    position:absolute;
+    margin-top: 130px;
+    width: 110px;
+    height: 70px;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    z-index: 1;
+    margin-left: 15px;
+    margin-right: 38px;
+    opacity: 0;
+    }
+
+
+
+
+    .PROFILE
+    {
+    width: 110px;
+    text-decoration:none;
+    color: white;
+    background-color:#38d39f;
+    height: 32px;
+    text-align: center;
+    border-radius: 10px 10px 0px 0px;
+    -webkit-border-radius: 10px 10px 0px 0px;
+    -moz-border-radius: 10px 10px 0px 0px;
+    -ms-border-radius: 10px 10px 0px 0px;
+    -o-border-radius: 10px 10px 0px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    }
+    .PROFILE:hover
+    {
+    background-color:gray;
+    }
+    .LOGOUT
+    {
+    width: 110px;
+    text-decoration:none;
+    color: white;
+    background-color:#38d39f;
+    height: 32px;
+    text-align: center;
+    border-radius: 0px 0px 10px 10px;
+    -webkit-border-radius: 0px 0px 10px 10px;
+    -moz-border-radius: 0px 0px 10px 10px;
+    -ms-border-radius: 0px 0px 10px 10px;
+    -o-border-radius: 0px 0px 10px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    }
+    .LOGOUT:hover
+    {
+    background-color:gray;
+    }
+    .create_class_hover
+    {
+    background-color: rgb(32, 31, 31);
+    color: white;
+    display: flex;
+    position: absolute;
+    text-align: center;
+    font-size: 12px;
+    padding-right: 3px;
+    padding-left: 3px;
+    padding-bottom: 2px;
+    padding-top: 2px;
+    border: 1px solid white;
+    margin-top: 60px;
+    margin-right: 100px;
+    opacity: 0;
+    transition: all 0.3s ease;
+    transform: translateY(-10px);
+    -webkit-transform: translateY(-10px);
+    -moz-transform: translateY(-10px);
+    -ms-transform: translateY(-10px);
+    -o-transform: translateY(-10px);
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    }
+    .login_name {
+        color: white;
+        font-size: 16px;
+    }
+    .menu-toggler
+    {
+        display: block;
+    }
+    
+}

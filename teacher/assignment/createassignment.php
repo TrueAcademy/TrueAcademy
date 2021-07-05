@@ -17,9 +17,9 @@ session_start();
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     <!-- <link rel="stylesheet" href="page10.css"> -->
-    <link rel="stylesheet" href="../../css/sidebar.css">
+    <link rel="stylesheet" href="../../css/sidebar-temp.css">
     <link rel="stylesheet" href="../../css/navstyle.css">
-    <link rel="stylesheet" href="../../css/stylespage.css">
+    <link rel="stylesheet" href="../../css/stylespage_temp.css">
 </head>
 
 <body>  
@@ -45,7 +45,7 @@ session_start();
         <div class="leftdiv">
             <div class="sidebar">
                 <center>
-                  <img src="\images\logo.png" class="profile_image" alt="">
+                  <img src="../../images/person.png" class="profile_image" alt="">
                   <h4>True Academy</h4>
                 </center>
                 <a href="assignment/createassignment.php?classcode="<?php echo $_GET['classcode']?>"><i class="fas fa-desktop"></i><span>Assign Homework</span></a>

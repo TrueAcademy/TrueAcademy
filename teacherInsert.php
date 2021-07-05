@@ -23,31 +23,72 @@
         ];
 
         $collection = "teacherTable/";
-        $postdata = $database->getReference($collection)->push($data);
+        
+        $teacherdata = $database->getReference($collection)
+        ->orderByChild('email')
+        ->equalTo($email)
+        ->getvalue();
+
+        if($teacherdata == null){
+
+            $postdata = $database->getReference($collection)->push($data);
+            try{
+
+                $auth = $firebase->getAuth();
+                $user = $auth->createUserWithEmailAndPassword($email,$password);  
+
+                echo "<script type='text/javascript'>alert('submitted successfully!')</script>";
+                 
+
+            }
+            catch(exception $e){
+                echo "<script type='text/javascript'>alert('Something went wrong! ')</script>";
+            }
+            finally{
+                echo "<script>window.location.href='index.html'</script>";
+            }
+
+        }
+        else{
+
+            $flag = "false";
+            foreach($teacherdata as $teachertoken => $teacherkey){
+
+                if($teacherkey['email'] ==$email ){
+                    $flag = "true";
+                }
+
+            }
+
+            if($flag == "true"){
+                echo "<script type='text/javascript'>alert('Email already in use!')</script>";
+                echo "<script>window.location.href='index.html'</script>";
+            }
+            else{
+
+               
+                try{
+    
+                    $auth = $firebase->getAuth();
+                    $user = $auth->createUserWithEmailAndPassword($email,$password);  
+
+                    $postdata = $database->getReference($collection)->push($data);
+    
+                    echo "<script type='text/javascript'>alert('submitted successfully!')</script>";
+    
+                }
+                catch(exception $e){
+                    echo "<script type='text/javascript'>alert('Something went wrong! ')</script>";
+                }
+                finally{
+                    echo "<script>window.location.href='index.html'</script>";
+                }
+
+            }
+
+        }
 
         
-
-        try{
-
-            $auth = $firebase->getAuth();
-            $user = $auth->createUserWithEmailAndPassword($email,$password);  
-
-            echo "<script type='text/javascript'>alert('submitted successfully!')</script>";
-            header("Location : index.html"); 
-
-        }
-        catch(exception $e){
-            echo "<script type='text/javascript'>alert('Something went wrong! ')</script>";
-        }
-
-        // if($postdata!=null){
-        //     echo "<script type='text/javascript'>alert('submitted successfully!')</script>";
-        //     header("Location : index.html"); 
-        // }
-        // else{
-        //     echo "<script type='text/javascript'>alert('failed! try again .... ')</script>";
-        // }
-
 
 
     }
