@@ -19,7 +19,7 @@ body{
 }
 
 .inner-navbar{
-  max-width: 1400px;
+  max-width: 1500px;
   height: 70px; 
   margin: auto;
   padding: 0 40px;
@@ -43,6 +43,7 @@ body{
   font-size: 23px;
   color: white;
   text-decoration-color: white;
+  margin-right: 20px;
 }
 .inner-navbar h1
 {
@@ -740,10 +741,11 @@ ul{
   {
     padding-top: 0px;
     padding-bottom: 0px;
+    position: fixed;
   }
   .logo{
     width: 80px;
-    height: 67px;
+    height: 60px;
     background-image: url(../images/logo.png);
     background-size: 70px;
     background-repeat: no-repeat;
@@ -830,6 +832,7 @@ ul{
 .info p{
   color: gray;
   font-size: 18px;
+  padding: 10px;
 }
 #home .content h1{
   font-size: 40px;
@@ -862,20 +865,25 @@ ul{
   }
   .card_1
   {
-    margin-left: 10px;
+    margin-left: 14px;
     margin-right: 10px;
     margin-top: 10px;
+    width:310px;
+    height: 380px;
   }
   .card_2
   {
-    margin-left: 10px;
+    margin-left: 14px;
     margin-right: 10px;
+    width:310px;
+    height: 500px;
   }
   .card_3
   {
     margin-right: 10px;
     margin-bottom: 10px;
-    margin-left: 10px;
+    margin-left: 14px;
+    width:310px;
   }
 
 
@@ -932,8 +940,9 @@ ul{
 .for_student
 {
   width: 95%;
-  height: 500px;
+  height: 550px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
@@ -942,31 +951,36 @@ ul{
 }
 .for_student2
 {
-  width: 500px;
-  height: 320px;
+  width: 300px;
+  height: 200px;
   display: flex;
+  justify-content: center;
+  flex-direction: row;
+  background-color: green;
+  margin-top: 60px;
+  margin-right: 40px;
 }
 .for_student2 img
 {
-  width: 500px;
-  height: 320px;
+  width:300px;
+  height: 200px;
 }
 .details_student
 {
-  width: 600px;
-  height: 320px;
+  width: 330px;
+  height: 180px;
   display: inline-block;
-  font-size: 18px;
+  font-size: 15px;
   display: flex;
-  justify-content: center;
   flex-direction: column;
+  justify-content: center;
 }
 .details_student h3
 {
   align-items: center;
   text-align: center;
-  font-size: 30px;
-  margin-bottom: 30px;
+  font-size: 20px;
+  margin-top: 20px;
 }
 .student_p
 {
