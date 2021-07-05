@@ -425,3 +425,146 @@ nav
 
 =======
 >>>>>>> cae4f89ec23ce7894deceb3d59e53080cddd67ca
+
+/***********************************************************************************************************/
+@media screen and (max-width: 812px)
+{
+  .main_div
+  {
+      width: 100%;
+  }
+  nav
+  {
+      width: 100%;
+      height: 90px;
+      display: flex;
+      justify-content: space-between;
+      background-color: #272a29;
+  }
+  .left_div
+  {
+      width: 550px;
+      height: 100px;
+      display: flex;
+      justify-content: left;
+      align-items: center;
+  }
+  .hamberg
+  {
+      text-decoration: none;
+      font-size: 1.7rem;
+      padding-left: 40px;
+      padding-right: 20px;
+      color: #38d39f;
+      display:none;
+  }
+  .logo
+  {
+      width: 100px;
+      margin-right: 10px;
+  }
+  .h1
+  {
+      font-size: 1.7rem;
+      color: #38d39f;
+  }
+  .right_div
+  {
+      width: 200px;
+      height: 100px;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding-right:20px;
+  }
+  .add
+  {
+      color: #38d39f;
+      font-size: 1.7rem;
+      position: relative;
+  }  
+                                             
+  .profile
+  {
+      width: 45px;
+      height: 45px;
+      color: #38d39f;
+      font-size: 1.7rem;
+      border-radius: 50%;
+      -webkit-border-radius: 50%;
+      -moz-border-radius: 50%;
+      -ms-border-radius: 50%;
+      -o-border-radius: 50%;
+      border: 2px solid #38d39f;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+  .profile:focus + .profile_li
+  {
+    opacity: 1;
+  }
+  .sub_card
+  {
+      width: 100%;
+      height: auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+  .center_div
+  {
+      width: 90vw;
+      height: 100%;
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      margin-top: 20px;
+  }
+  .card
+  {
+      width: 280px;
+      height: 300px;
+      background-color: white;
+      border-radius: 15px;
+      -webkit-border-radius: 15px;
+      -moz-border-radius: 15px;
+      -ms-border-radius: 15px;
+      -o-border-radius: 15px;
+      margin: 40px 10px;
+      position: relative;
+      display: flex;
+      border: 1px solid gray;
+  }
+  .card:hover
+  {
+      filter: drop-shadow(4px 4px 15px gray);
+      -webkit-filter: drop-shadow(4px 4px 15px gray);
+  }
+  .top_div
+  {
+      width: 100%;
+      height: 100px;
+      background: #38d39f;
+      border-top-left-radius: 15px;
+      border-top-right-radius: 15px;
+  }
+  .h3
+  {
+      color: #fff;
+      padding-left: 20px;
+      padding-top: 30px;
+  }
+  .top_div img
+  {
+      width: 80px;
+      border-radius: 50%;
+      -webkit-border-radius: 50%;
+      -moz-border-radius: 50%;
+      -ms-border-radius: 50%;
+      -o-border-radius: 50%;
+      position: absolute;
+      left: 170px;
+  }
+  
+}
