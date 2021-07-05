@@ -6,7 +6,7 @@
     
     if( $_SESSION['email'] == null ){
 
-        echo "<script type='text/javascript'>alert('Cant open! user is not authorized...')</script>";
+        echo "<script type='text/javascript'>alert('Cant open user is not authorized!')</script>";
         header("Location:index.html"); 
 
     }
@@ -14,196 +14,253 @@
 ?>
 
 
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
+    <title>Exam Dashboard</title>
+    <script src="https://use.fontawesome.com/releases/v5.15.2/js/all.js" data-auto-replace-svg="nest"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <link rel="stylesheet" href="../../css/navbar.css">
+    <link rel="stylesheet" href="../../css/sidebar.css">
+    <link rel="stylesheet" href="../css/cards.css">
+    <link rel="stylesheet" href="../css/stylespage.css">
+    <!-- <link rel="stylesheet" href="coursepage_student.css"> -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Accusoft admin</title>
-    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
-    <!-- <link rel="stylesheet" href="page10.css"> -->
-    <link rel="stylesheet" href="../../css/sidebar.css">
-    <link rel="stylesheet" href="../../css/navstyle.css">
-    <link rel="stylesheet" href="../../css/stylespage.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+        @media screen and (max-width: 600px) {
+            .white_div {
+                width: 375px;
+                height: fit-content;
+                background-color: white;
+                margin-top: 100px;
+            }
+
+            .right_div2 {
+                width: 375px;
+                padding: 0px;
+                margin: 0px
+            }
+
+        }
+
+        @media screen and (max-width: 400px) {
+            .cards {
+                display: grid;
+                grid-template-columns: repeat(1, 1fr);
+                height: fit-content;
+                grid-gap: 3rem;
+                padding: 0px;
+                margin: 30px 40px 0px 0px;
+            }
+
+            .card-single {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                width: 100%;
+                background: #fff;
+                padding: 2rem;
+                border-radius: 2px;
+            }
+
+            .main_container {
+                width: 100vw;
+                padding: 0px;
+                margin: 0px;
+            }
+        }
+    </style>
 </head>
 
-<body>  
+<body>
 
-    <nav>
+    <div class="navbar">
         <div class="left_div">
-            <a href="#" class="hamberg"><i class="fas fa-bars"></i></a>
+
+            <button class="menu-toggler" onclick="showdiv()">
+                <span onclick="removediv()"></span>
+                <span></span>
+                <span onclick="removediv()"></span>
+            </button>
+
             <a href="#" class="logo_url"><img src="../images/logo.png" alt="logo" class="logo"></a>
             <h1 class="h1">True Academy</h1>
         </div>
         <div class="right_div">
             <a href="#" class="profile"><i class="fas fa-user"></i></a>
+
             <div class="profile_li">
                 <a href="#" class="PROFILE">Profile</a>
-                <a href="../../logout.php" class="LOGOUT">Logout</a>
+                <a href="#" class="LOGOUT">Logout</a>
             </div>
-            <div>
-    </nav>
-    <div class="main-content">
-
-        <!-- sidebar -->
-        <div class="leftdiv">
-            <div class="sidebar">
-                <center>
-                  <img src="\images\logo.png" class="profile_image" alt="">
-                  <h4>True Academy</h4>
-                </center>
-                <a href="viewassignments.php?<?php echo $_GET['classcode'] ?>"><i class="fas fa-cogs"></i><span>View Homework</span></a>
-                <a href="#"><i class="fas fa-th"></i><span>Share Material</span></a>
-              </div>
+            <h3 class="login_name"><?php echo $_SESSION['email']?></h3>
         </div>
-        <main class="min-page">
-            
-            <!--sidebar end-->
-            <div class="rightdiv">
+    </div>
 
-            <?php ?>
-                
-                <div class="recent-grid">
-                    <!-- List of student joined -->
-                    <div class="projects">
-                        <div class="card">
-                            <div class="card-header">
-                                <h3>List of assign homework</h3>
-                                
-                            </div>
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <table width="100%">
-                                        <thead>
-                                            <tr>
-                                                <td>SR.NO</td>
-                                                <td>Assignment Title</td>
-                                                <td>Assignment topic</td>
-                                                <td>Description</td>
-                                                <td>Submission End Date</td>  
-                                                <td>Total marks<td>
-                                                <td>Download Question</td>
-                                                <td>status</td>
-                                                <td>Marks You got</td> 
-                                                <td>upload your work</td>                       
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                        <?php
+    <div class="main_container" style="height:fit-content;">
 
-                                            include("../../includes/dbconfig.php");
-                                        
-                                            $assignmentdata = $database->getReference('assignments/')
-                                            ->orderByChild('classcode')
-                                            ->equalTo($_GET['classcode'])
-                                            ->getvalue();
+        <div class="left_div2" id="welcomediv" style="height: auto;">
 
-                                            $studentname = "";
+            <div class="close_button" onclick="removediv()">
+                <a href="#" class="close_btn_teacher" id="close_btn"><i id="close" class="far fa-times-circle"></i></a>
+            </div>
 
-                                            $count = 1;
-                                            foreach($assignmentdata as $assignmenttoken => $assignmentkey){
-
-                                                $studentdata = $database->getReference('studentTable/')
-                                                ->orderByChild('email')
-                                                ->equalTo($_SESSION['email'])
-                                                ->getvalue();
-
-                                                foreach($studentdata as $studenttoken => $studentkey){
-
-                                                    if($studentkey['email'] == $_SESSION['email'] ){
-
-                                                        $studentname = $studentkey['firstname']." ".$studentkey['lastname'];
-
-                                                        $studentassignmentdata = $database->getReference('studentTable/'.$studenttoken.'/assignedHomework')->getvalue();
+            <div class="profile_name">
+                <div class="imagediv">
+                    <img src="../images/person.png" alt="">
+                </div>
+                <h3>
+                    <?php echo $_SESSION['email']?>
+                </h3>
+                <h6>student</h6>
+            </div>
 
 
-                                                        $count = 1;
-                                                        foreach($studentassignmentdata as $studentassignmenttoken => $studentassignmentkey){
+            <div class="side_btn">
+            <a href="viewassignments.php?classcode=<?php echo $_GET['classcode'] ?>"><i class="fas fa-cogs"></i><span>View Homework</span></a>
+            <a href="#"><i class="fas fa-th"></i><span>Share Material</span></a>
+            </div>
 
-                                                            if($studentassignmentkey['assignmenttitle'] == $assignmentkey['assignmenttitle'] ){
+        </div>
 
-                                                                if($studentassignmentkey['submission'] == "false"){
+        
+        <div class="right_div2" style="display: flex;flex-direction: column;align-items: center;height: fit-content;">
 
-                                                                    ?>
-                 
-                                                                        <tr>
-                                                                            <td><?php echo $count?></td>
-                                                                            <td><?php echo $assignmentkey['assignmenttitle']?></td>
-                                                                            <td><?php echo $assignmentkey['assignmenttopic']?></td>
-                                                                            <td><?php echo $assignmentkey['description']?></td>
-                                                                            <td><?php echo $assignmentkey['enddate']?></td>  
-                                                                            <td><?php echo $assignmentkey['totalmarks']?><td>
-                                                                            <td><button id="downloadques" class="downloadques" data-assignmenttitle="<?php echo $assignmentkey['assignmenttitle']?>">Downlaod</button></td>
-                                                                            <td>Not submitted</td>
-                                                                            <td>Unmarked</td>    
-                                                                            <td><button id="upload" class="upload" data-assignmenttitle="<?php echo $assignmentkey['assignmenttitle']?>">upload</button></td>                       
-                                                                        </tr>
+            <div class="white_div" style="margin-bottom: 100px;">
+                <h3>Assignment list</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <td>SR.NO</td>
+                            <td>Assignment Title</td>
+                            <td>Assignment topic</td>
+                            <td>Description</td>
+                            <td>Submission End Date</td>  
+                            <td>Total marks<td>
+                            <td>Download Question</td>
+                            <td>status</td>
+                            <td>Marks You got</td> 
+                            <td style="display: flex;justify-content: left;">upload your work</td> 
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+
+                            include("../../includes/dbconfig.php");
+
+                            $assignmentdata = $database->getReference('assignments/')
+                            ->orderByChild('classcode')
+                            ->equalTo($_GET['classcode'])
+                            ->getvalue();
+
+                            $studentname = "";
+
+                            $count = 1;
+                            foreach($assignmentdata as $assignmenttoken => $assignmentkey){
+
+                                $studentdata = $database->getReference('studentTable/')
+                                ->orderByChild('email')
+                                ->equalTo($_SESSION['email'])
+                                ->getvalue();
+
+                                foreach($studentdata as $studenttoken => $studentkey){
+
+                                    if($studentkey['email'] == $_SESSION['email'] ){
+
+                                        $studentname = $studentkey['firstname']." ".$studentkey['lastname'];
+
+                                        $studentassignmentdata = $database->getReference('studentTable/'.$studenttoken.'/assignedHomework')->getvalue();
 
 
-                                                                    <?php
+                                        $count = 1;
+                                        foreach($studentassignmentdata as $studentassignmenttoken => $studentassignmentkey){
 
-                                                                }else{
+                                            if($studentassignmentkey['assignmenttitle'] == $assignmentkey['assignmenttitle'] ){
 
-                                                                    ?>
-                 
-                                                                        <tr>
-                                                                            <td><?php echo $count?></td>
-                                                                            <td><?php echo $assignmentkey['assignmenttitle']?></td>
-                                                                            <td><?php echo $assignmentkey['assignmenttopic']?></td>
-                                                                            <td><?php echo $assignmentkey['description']?></td>
-                                                                            <td><?php echo $assignmentkey['enddate']?></td>  
-                                                                            <td><?php echo $assignmentkey['totalmarks']?><td>
-                                                                            <td><button id="downloadques" class="downloadques" data-assignmenttitle="<?php echo $assignmentkey['assignmenttitle']?>">Downlaod</button></td>
-                                                                            <td>submitted</td>
-                                                                            <?php
-                                                                                if($studentassignmentkey['status'] == "unmarked"){
-                                                                                    echo "<td>unmarked</td>";
-                                                                                }
-                                                                                else{
-                                                                                    echo "<td>".$studentassignmentkey['marksobtain']."</td>";
-                                                                                }
-                                                                            ?>    
-                                                                            <td><button id="upload" class="upload" disabled>upload</button></td>                       
-                                                                        </tr>
+                                                if($studentassignmentkey['submission'] == "false"){
+
+                                                    ?>
+
+                                                        <tr>
+                                                            <td><?php echo $count?></td>
+                                                            <td><?php echo $assignmentkey['assignmenttitle']?></td>
+                                                            <td><?php echo $assignmentkey['assignmenttopic']?></td>
+                                                            <td><?php echo $assignmentkey['description']?></td>
+                                                            <td><?php echo $assignmentkey['enddate']?></td>  
+                                                            <td><?php echo $assignmentkey['totalmarks']?><td>
+                                                            <td><button id="downloadques" class="downloadques" data-assignmenttitle="<?php echo $assignmentkey['assignmenttitle']?>">Downlaod</button></td>
+                                                            <td>Not submitted</td>
+                                                            <td>Unmarked</td>    
+                                                            <td><button id="upload" class="upload" data-assignmenttitle="<?php echo $assignmentkey['assignmenttitle']?>">upload</button></td>                       
+                                                        </tr>
 
 
-                                                                    <?php
+                                                    <?php
 
+                                                }else{
+
+                                                    ?>
+
+                                                        <tr>
+                                                            <td><?php echo $count?></td>
+                                                            <td><?php echo $assignmentkey['assignmenttitle']?></td>
+                                                            <td><?php echo $assignmentkey['assignmenttopic']?></td>
+                                                            <td><?php echo $assignmentkey['description']?></td>
+                                                            <td><?php echo $assignmentkey['enddate']?></td>  
+                                                            <td><?php echo $assignmentkey['totalmarks']?><td>
+                                                            <td><button id="downloadques" class="downloadques" data-assignmenttitle="<?php echo $assignmentkey['assignmenttitle']?>">Downlaod</button></td>
+                                                            <td>submitted</td>
+                                                            <?php
+                                                                if($studentassignmentkey['status'] == "unmarked"){
+                                                                    echo "<td>unmarked</td>";
                                                                 }
-                                                                $count = $count+1;
+                                                                else{
+                                                                    echo "<td>".$studentassignmentkey['marksobtain']."</td>";
+                                                                }
+                                                            ?>    
+                                                            <td><button id="upload" class="upload" disabled>upload</button></td>                       
+                                                        </tr>
 
-                                                            }
 
-                                                        }
-
-                                                    }
-
+                                                    <?php
 
                                                 }
+                                                $count = $count+1;
 
                                             }
-                                            
-                                        
-                                        ?>
 
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                            <!-- <div id="testing">Testing</div> -->
-                        </div>
-                    </div>
-                </div>
+                                        }
+
+                                    }
+
+
+                                }
+
+                            }
+
+
+                        ?>
+
+
+
+                    </tbody>
+                </table>
             </div>
 
-           
 
+        </div>
 
-        </main>
     </div>
 
     <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-app.js"></script>
@@ -212,6 +269,15 @@
     <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-storage.js"></script>
 
     <script>
+        function showdiv() {
+            document.getElementById('welcomediv').style.display = "block";
+        }
+
+        function removediv() {
+            document.getElementById('welcomediv').style.display = "none";
+        }
+
+        
 
         // Configuration
         var firebaseConfig = {
@@ -249,7 +315,7 @@
             function DownloadFile(url,fileName) {
                 //Set the File URL.
                 // var url = "Files/" + fileName;
-    
+
                 //Create XMLHTTP Request.
                 var req = new XMLHttpRequest();
                 req.open("GET", url, true);
@@ -257,7 +323,7 @@
                 req.onload = function () {
                     //Convert the Byte Data to BLOB object.
                     var blob = new Blob([req.response], { type: "application/octetstream" });
-    
+
                     //Check the Browser type and download the File.
                     var isIE = false || !!document.documentMode;
                     if (isIE) {
@@ -352,8 +418,8 @@
 
         });
 
+</script>
     </script>
-
 </body>
 
 </html>

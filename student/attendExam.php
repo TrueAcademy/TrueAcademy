@@ -14,8 +14,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
-    <link rel="stylesheet" href="css/sidebar.css"/>
+    <link rel="stylesheet" href="../css/sidebar.css"/>
     <link rel="stylesheet" href="../css/navbar.css"/>
+    <link rel="stylesheet" href="css/stylespage.css"/>
+    <link rel="stylesheet" href="css/cards.css"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -49,8 +51,8 @@
         </div>
     </div>
 
-    <div class="main_container">
-        <div class="left_div2" id="welcomediv">
+    <div class="main_container" style="height:fit-content;">
+        <div class="left_div2" id="welcomediv" style="height: auto;">
 
             <div class="close_button" onclick="removediv()">
                 <a href="#" class="close_btn_teacher" id="close_btn"><i id="close" class="far fa-times-circle"></i></a>
@@ -58,7 +60,7 @@
 
             <div class="profile_name">
                 <div class="imagediv" >
-                    <img src="../images/person.png"  alt="">
+                    <img src="../images/person.png" alt="">
                 </div>
                 <h3><?php echo $_SESSION['email'] ?></h3>
                 <h6>student</h6>
@@ -72,7 +74,7 @@
 
         </div>
 
-        <div class="right_div2">
+        <div class="right_div2" style="display: flex;flex-direction: column;align-items: center;height: fit-content;">
             <div class="white_div">
                 <h3>Your Exams</h3>
                 <table>

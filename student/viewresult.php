@@ -14,8 +14,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
-    <link rel="stylesheet" href="css/sidebar.css"/>
+    <link rel="stylesheet" href="../css/sidebar.css"/>
     <link rel="stylesheet" href="../css/navbar.css"/>
+    <link rel="stylesheet" href="css/stylespage.css"/>
+    <link rel="stylesheet" href="css/cards.css"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -58,7 +60,7 @@
 
             <div class="profile_name">
                 <div class="imagediv" >
-                    <img src="../images/logo.png"  alt="">
+                    <img src="../images/person.png"  alt="">
                 </div>
                 <h3><?php echo $_SESSION['email'] ?></h3>
                 <h6>student</h6>

@@ -345,8 +345,8 @@
 										try{
 											$database->getReference("studentTable/".$studentToken."/assignedExam/".$examtoken."/results/answersheet" )->update($update);
 											echo "<script type='text/javascript'>document.getElementById(".$question_id.").style.backgroundColor='Red'; </script>";
-											echo "option id == ". $option_id;
-											echo "<script type='text/javascript'>document.getElementById(".$option_id.").style.texColor='green'</script>";
+											// echo "option id == ". $option_id;
+											echo "<script type='text/javascript'>document.getElementById(".$option_id.").style.color='green'; </script>";
 										}catch(Exception $e){
 											// echo "error ";
 										}

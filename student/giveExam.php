@@ -162,7 +162,7 @@
             load_question();
             question_navigation();
 
-
+           
 
             function load_question(question_id = '') {
                 console.log("in fun");
@@ -171,7 +171,7 @@
                     method: "POST",
                     data: { examtitle: examtitle, classcode: classcode, question_id: question_id, page: 'giveExam', action: 'load_question' },
                     success: function (data) {
-                        console.log('in console');
+                        // console.log('in console');
                         $('#single_question_area').html(data);
                     }
                 })
