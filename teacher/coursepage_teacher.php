@@ -84,7 +84,7 @@
 
             <div class="side_btn">
                 <a href="examdashboard.php?classcode=<?php echo $_GET['classcode']?>"><i class="fas fa-desktop"></i><span>Exam Conduction</span></a>
-                <a href="assignments/assignmentsdashboard.php?classcode=<?php echo $_GET['classcode']?>"><i class="far fa-eye"></i><span>Assignment Section</span></a>
+                <a href="assignmentdashboard.php?classcode=<?php echo $_GET['classcode']?>"><i class="far fa-eye"></i><span>Assignment Section</span></a>
             </div>
 
         </div>
